@@ -156,7 +156,7 @@ function mountApp({ router, store, device }) {
     })
   }
 
-  if (device.isPadDevice) {
+  if (device.isPadDevice && import.meta.env.MODE !== 'preview') {
     store.dispatch('softwareStatePad/init').catch(() => {})
   }
 
