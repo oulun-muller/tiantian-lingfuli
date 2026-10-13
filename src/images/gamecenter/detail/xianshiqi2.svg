@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon/显示器/大</title>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#48505E" offset="0%"></stop>
+            <stop stop-color="#39404D" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#39404D" offset="0%"></stop>
+            <stop stop-color="#39404D" stop-opacity="0.0962357955" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#48505E" offset="0%"></stop>
+            <stop stop-color="#39404D" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-4">
+            <stop stop-color="#EAF7FF" offset="0%"></stop>
+            <stop stop-color="#C7D3DD" offset="50.3414554%"></stop>
+            <stop stop-color="#7D8392" offset="100%"></stop>
+        </linearGradient>
+        <path d="M62,7 L62,47 L37,47 L37,56 L27,56 L27,47 L2,47 L2,7 L62,7 Z" id="path-5"></path>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-6">
+            <stop stop-color="#646D82" offset="0%"></stop>
+            <stop stop-color="#39404D" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-7">
+            <stop stop-color="#EAF7FF" offset="0%"></stop>
+            <stop stop-color="#4D5768" offset="50.1720935%"></stop>
+            <stop stop-color="#7D8290" offset="100%"></stop>
+        </linearGradient>
+        <polygon id="path-8" points="7 12 57 12 57 42 7 42"></polygon>
+        <rect id="path-9" x="14" y="19" width="24" height="2"></rect>
+        <filter x="-20.8%" y="-200.0%" width="141.7%" height="600.0%" filterUnits="objectBoundingBox" id="filter-10">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.4 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="硬件详情资源" transform="translate(-943.000000, -577.000000)">
+            <g id="硬件详情大图标" transform="translate(319.000000, 577.000000)">
+                <g id="icon/显示器/大" transform="translate(624.000000, 0.000000)">
+                    <rect id="矩形" x="0" y="0" width="64" height="64"></rect>
+                    <rect id="矩形" stroke="#0D0D0D" stroke-width="2" fill="url(#linearGradient-1)" opacity="0.5" x="16" y="55" width="32" height="5"></rect>
+                    <g id="形状结合" opacity="0.5">
+                        <use fill="url(#linearGradient-2)" fill-rule="evenodd" xlink:href="#path-5"></use>
+                        <path stroke="#0D0D0D" stroke-width="2" d="M63,6 L63,48 L38,48 L38,57 L26,57 L26,48 L1,48 L1,6 L63,6 Z"></path>
+                        <path stroke="url(#linearGradient-3)" stroke-width="5" d="M59.5,9.5 L59.5,44.5 L34.5,44.5 L34.5,53.5 L29.5,53.5 L29.5,44.5 L4.5,44.5 L4.5,9.5 L59.5,9.5 Z" stroke-linejoin="square"></path>
+                        <path stroke="url(#linearGradient-4)" stroke-width="1" d="M61.5,7.5 L61.5,46.5 L36.5,46.5 L36.5,55.5 L27.5,55.5 L27.5,46.5 L2.5,46.5 L2.5,7.5 L61.5,7.5 Z" stroke-linejoin="square"></path>
+                    </g>
+                    <g id="矩形">
+                        <path stroke="#191919" stroke-width="3.5" d="M55.25,13.75 L55.25,40.25 L8.75,40.25 L8.75,13.75 L55.25,13.75 Z" stroke-linejoin="square" fill="url(#linearGradient-6)" fill-rule="evenodd"></path>
+                        <path stroke="url(#linearGradient-7)" stroke-width="3" d="M55.5,13.5 L55.5,40.5 L8.5,40.5 L8.5,13.5 L55.5,13.5 Z" stroke-linejoin="square"></path>
+                        <path stroke="#191C21" stroke-width="2" d="M58,11 L58,43 L6,43 L6,11 L58,11 Z"></path>
+                    </g>
+                    <g id="矩形" fill-rule="nonzero">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-10)" xlink:href="#path-9"></use>
+                        <use fill="#EAF7FF" xlink:href="#path-9"></use>
+                    </g>
+                    <rect id="矩形备份-65" fill="#EAF7FF" opacity="0.5" x="14" y="24" width="14" height="2"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

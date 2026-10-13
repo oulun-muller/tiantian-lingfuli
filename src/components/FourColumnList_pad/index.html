@@ -1,0 +1,72 @@
+<div :class="['FourColumnList', fromPage]">
+  <div v-for="(item,index) of cdkList" :key="item.softId" @click="toDetail(item,index)">
+    <div class="item" v-exposure:multiple="{
+      events: [
+        {
+          handler: () => onExposure(item, 1,index),
+          options: { threshold: 0.5 },
+          delay: 1000
+        },
+        {
+          handler: () => onExposure(item,0,index)
+        }
+      ]
+    }">
+      <div class="img_box">
+        <b
+          :style="{backgroundImage: !$isPadDevice ?  `url('${item.showInfo.himg || defaultImg}')` : `url('${item.showInfo.logoFile}')`}">
+          <img v-if="!item.showInfo.himg && item.showInfo.logoFile && !$isPadDevice" :src="item.showInfo.logoFile"
+            alt="">
+        </b>
+      </div>
+      <span v-if="item.showInfo.ruleLabelName" :class="item.showInfo.ruleLabelClassName">{{ item.showInfo.ruleLabelName
+        }}
+      </span>
+      <section :class="{'IsGameHouse':pageType==='gameHouse','name-container':true}">
+        <div class="softName">
+          <template v-if="fromPage==='index'">
+            <p v-html="item.hlSoftName || item.softName"></p>
+          </template>
+          <template v-else>
+            <p>{{ item.softName }}</p>
+          </template>
+          <span v-if="item.softPurpose===1 && item.productInfo.exchangePlatform" class="platform">
+            <i v-if="item.productInfo.exchangePlatformFont" class="iconfont"
+              v-html="item.productInfo.exchangePlatformFont"></i>
+          </span>
+        </div>
+        <ul class="tags-wrap">
+          <img v-if="item.downloadInfo && item.downloadInfo.tagUrls && item.downloadInfo.tagUrls[0]" class="auth-icon"
+            :src="item.downloadInfo.tagUrls[0]" />
+          <li v-for="(tagItem, tagIndex) of getSoftLabels(item)" :key="tagIndex" :class="{active:tagItem === 'DLC'}"
+            v-html="tagItem"></li>
+        </ul>
+      </section>
+      <aside v-if="item.softPurpose===1">
+        <i v-if="item.productInfo.discount" class="discount">{{ item.productInfo.discount }}</i>
+        <div class="price">
+          <i class="currentPrice">¥{{ item.productInfo.currentPrice }}</i>
+          <i v-if="item.productInfo.discount && item.productInfo.originalPrice" class="originalPrice">¥{{
+            item.productInfo.originalPrice }}</i>
+        </div>
+      </aside>
+      <aside v-else-if="item.softPurpose !== 4">
+        <p>{{ item.downloadInfo.downloadCount }}</p>
+      </aside>
+
+      <div class="right-btn-content">
+        <div v-if="item.softPurpose === 3 && !item.productInfo.userPurchasedStatus" class="buy-information">
+          <div class="orgin-price-class">¥{{ item.productInfo.originalPrice || 0}}</div>
+          <div class="current-price-class">¥{{ item.productInfo.currentPrice || 0 }}</div>
+        </div>
+        <div class="buyButton common-rect-btn" v-if="item.softPurpose===1" @click.stop="showPay(item,index)">购买</div>
+        <div class="buyButton common-rect-btn" v-else-if="item.softPurpose===4">打开</div>
+        <GameDownloadButton v-else class="downloadButton" theme="rect" :downloadInfo="item.downloadInfo"
+          :softDesc="item.softDesc" :soft-id="item.softId" :soft-purpose="item.softPurpose"
+          :product-info="item.productInfo" :userPurchasedStatus="item.productInfo.userPurchasedStatus"
+          :version="item.softDesc.version" :soft-name="item.softName" :logo-file="item.showInfo.logoFile"
+          :fast-install="item.showInfo.isFastInstall" :drinfo="drinfo(item,index)" :sku-id="item.skuId" />
+      </div>
+    </div>
+  </div>
+</div>

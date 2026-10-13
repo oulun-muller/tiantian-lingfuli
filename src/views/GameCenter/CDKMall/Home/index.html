@@ -1,0 +1,11 @@
+<div class="Home">
+  <!-- <Header :scroll-top="scrollTop"/> -->
+  <main ref="scroller" @scroll="scrollHandle">
+    <component
+      v-for="item of modules"
+      :key="item.moduleId"
+      :is="[null, 'Banner', 'LimitDiscount', 'ThreeLeaderBoard', 'DoubleRowList'][item.moduleStyle]"
+      :module-data="item"
+      :server-current-time="serverCurrentTime"></component>
+  </main>
+</div>

@@ -1,0 +1,290 @@
+div.Search {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  >header {
+    height: 68px;
+    position: relative;
+
+    >i.back {
+      position: absolute;
+      left: 34px;
+      top: 34px;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+      background: url('@/images/gamecenter/game-back.png') no-repeat;
+      background-size: 100% 100%;
+    }
+
+    >div {
+      position: absolute;
+      left: 68px;
+      top: 24px;
+      width: 300px;
+      height: 36px;
+
+      >input {
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        padding-left: 20px;
+        font-size: 14px;
+        color: #eaf7ff;
+        background-color: rgba(14, 18, 23, 0.8);
+        box-sizing: border-box;
+        border: 1px solid rgba(88, 94, 102, 0.8);
+        padding-right: 36px;
+
+        &:hover {
+          border: 1px solid rgba(56, 110, 254, 0.8);
+        }
+
+        &:focus {
+          border: 1px solid rgba(56, 110, 254, 0.8);
+        }
+      }
+
+      ::-webkit-input-placeholder {
+        color: rgba(234, 247, 255, 0.6);
+        font-weight: 700;
+      }
+
+      >i {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        background: url('@/images/gamecenter/game-search.png') no-repeat;
+        background-size: cover;
+      }
+
+      .placeholder {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        max-width: 263px;
+        overflow: hidden;
+        white-space: nowrap;
+        padding-left: 20px;
+        box-sizing: border-box;
+
+        .title {
+          font-weight: 700;
+          color: rgba(234, 247, 255, 0.6);
+        }
+
+        .sub-title {
+          font-weight: 400;
+          font-size: 14px;
+          color: rgba(234, 247, 255, 0.6);
+          margin-left: 20px;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  >main {
+    height: 0;
+    flex: 1 1 auto;
+    margin: 0 8px 8px;
+    padding: 0 30px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: overlay;
+
+    >section.nothing {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .content {
+        >img {
+          display: block;
+          margin: 0 auto;
+          width: 88px;
+          height: 88px;
+        }
+
+        >p {
+          margin-top: 16px;
+          font-size: 14px;
+          color: rgba(234, 247, 255, 0.6);
+          line-height: 14px;
+          height: 14px;
+          text-align: center;
+        }
+      }
+    }
+
+    >section.list {
+      width: 100%;
+      margin: 0 auto;
+      margin-top: 21px;
+      max-width: 1760px;
+    }
+  }
+}
+
+// pad样式
+.PadDevice {
+  background-color: #000;
+
+  .pad-header {
+    margin: 0 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 74px;
+    padding: 20px 30px;
+
+    .back-icon {
+      // position: absolute;
+      //     left: 34px;
+      //     top: 34px;
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      background: url('@/images/gamecenter/game-back.png') no-repeat;
+      background-size: 100% 100%;
+    }
+
+    .search-input {
+      display: flex;
+      flex: 1;
+      margin: 0 25px;
+      height: 48px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: 0.5px solid rgba(234, 247, 255, 0.1);
+      color: #fff;
+
+      background: radial-gradient(69.42% 103.75% at 48.18% 103.75%,
+          rgba(234, 247, 255, 0) 0%,
+          rgba(234, 247, 255, 0) 100%),
+        linear-gradient(0deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.06) 100%), rgba(21, 25, 32, 0.7);
+    }
+
+    .search-text {
+      color: #EAF7FF;
+      opacity: 0.9;
+      font-family: "Microsoft YaHei";
+      font-size: 15px;
+      margin-right: 4px;
+    }
+  }
+}
+
+.PhoneDevice {
+  div.Search > main {
+    padding: 0;
+    margin: 0 0 8px;
+  }
+  .pad-header {
+    height: 56px;
+    padding: 12px 20px;
+    .search-input {
+      height: 32px;
+    }
+    .search-text {
+      font-weight: 700;
+    }
+  }
+}
+.Search header i.back:focus-visible,
+.Search header i.iconfont:focus-visible,
+.Search .pad-header i.back-icon:focus-visible,
+.Search .pad-header span.search-text:focus-visible {
+  outline: 2px solid #4fc3f7;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (forced-colors: active) {
+  div.Search.PcDevice {
+    background: Canvas;
+    color: CanvasText;
+    forced-color-adjust: auto;
+
+    > header,
+    > main,
+    > main > section.list,
+    > main > section.nothing,
+    > main > section.nothing .content {
+      background: Canvas;
+      border-color: ButtonText;
+      color: CanvasText;
+      forced-color-adjust: auto;
+    }
+
+    > header > div > input {
+      background: Canvas;
+      border: 1px solid ButtonText;
+      color: CanvasText;
+      forced-color-adjust: auto;
+    }
+
+    > header > div > input::placeholder,
+    > header > div .placeholder,
+    > header > div .placeholder .title,
+    > header > div .placeholder .sub-title,
+    > main > section.nothing .content > p {
+      color: GrayText;
+    }
+
+    > header > i.back,
+    > header > div > i,
+    > header > div > i.iconfont {
+      background: ButtonFace;
+      border: 1px solid ButtonText;
+      color: ButtonText;
+      forced-color-adjust: auto;
+    }
+
+    a {
+      color: LinkText;
+    }
+
+    .active,
+    .selected,
+    .is-active,
+    .is-selected,
+    [aria-selected="true"] {
+      background: Highlight;
+      border-color: Highlight;
+      color: HighlightText;
+    }
+
+    .disabled,
+    .is-disabled,
+    [disabled],
+    [aria-disabled="true"] {
+      color: GrayText;
+      border-color: GrayText;
+    }
+
+    header i.back:focus-visible,
+    header i.iconfont:focus-visible,
+    input:focus-visible,
+    [role="button"]:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 2px solid Highlight;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+  }
+}

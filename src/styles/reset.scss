@@ -1,0 +1,296 @@
+html, body, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, li,
+dt, dd, th, td, button, input, form, img, span, div {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  text-size-adjust: 100%;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #EAF7FF;
+  user-select: none;
+  font-family: "Microsoft YaHei", "sans-serif" !important;
+}
+body {
+  overflow: hidden;
+}
+button, input, select, textarea {
+  font-family: "Microsoft YaHei", "sans-serif" !important;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  border: none;
+}
+textarea {
+  resize: none;
+  overflow: auto;
+}
+:focus {
+  outline: none;
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+:focus-visible {
+  outline: 2px solid #4fc3f7;
+  outline-offset: 2px;
+}
+html * {
+  -webkit-tap-highlight-color: transparent;
+}
+a {
+  color: #EAF7FF;
+  text-decoration: none;
+  -webkit-user-drag: none;
+}
+img, textarea {
+  border: 0;
+  vertical-align: middle;
+}
+ul, ol, li {
+  list-style: none;
+}
+i, em {
+  font-style: normal;
+}
+table {
+  border-spacing: initial;
+  border-collapse: collapse;
+}
+img {
+  vertical-align: top;
+  -webkit-user-drag: none;
+}
+::placeholder {
+  color: rgba(234, 247, 255, 0.4);
+}
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(57, 64, 77, 1);
+}
+[v-cloak] {
+  display: none;
+}
+.public-no-network {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  p {
+    margin-top: 24px;
+    font-size: 14px;
+    line-height: 24px;
+    span {
+      margin-right: 10px;
+      color: #2E79FF;
+      cursor: pointer;
+    }
+  }
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url('~@/fonts/Montserrat_Semi_Bold.otf');
+}
+@font-face {
+  font-family: 'Orbitron';
+  src: url('~@/fonts/Orbitron-VariableFont_wght.ttf');
+}
+@font-face {
+  font-family: 'Quantico';
+  src: url('~@/fonts/Quantico-Regular.ttf');
+}
+@font-face {
+  font-family: 'Baunk';
+  src: url('~@/fonts/Baunk.ttf');
+}
+@font-face {
+  font-family: "D-DIN";
+  src: url('~@/fonts/D-DIN.ttf');
+}
+@font-face {
+  font-family: "YouSheBiaoTiHei";
+  src: url('~@/fonts/YouSheBiaoTiHei.ttf');
+}
+@font-face {
+  font-family: "iconfont";
+  src: url('~@/fonts/iconfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.common-abnormal-rect-btn {
+  cursor: pointer;
+  display: inline-block;
+  width: 204px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 1);
+  text-align: left;
+  background: transparent url('~@/images/gamecenter/button/abnormal-rect-btn.png') no-repeat center center/ contain;
+  border: 0 none;
+  &:hover {
+    background-image: url('~@/images/gamecenter/button/abnormal-rect-hover-btn.png');
+    color: rgba(255, 255, 255, 1);
+  }
+  &:active {
+    background-image: url('~@/images/gamecenter/button/abnormal-rect-active-btn.png');
+    color: rgba(255, 255, 255, 1);
+  }
+  &:focus-visible {
+    outline: 2px solid #4fc3f7;
+    outline-offset: 2px;
+  }
+  .text {
+    display: inline-block;
+    width: 204px;
+    text-align: center;
+  }
+}
+
+.minigame-notify {
+  width: 311px;
+  border-radius: 8px;
+  border: 1px solid rgba(234, 247, 255, 0.10);
+  background: #1E242B;
+  box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.16), 0px 2px 16px 0px rgba(0, 0, 0, 0.16), 0px 2px 16px 0px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(32px);
+  padding: 14px 38px 14px 19px;
+  .process-notify {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    .loading {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background: transparent url('~@/images/notify-loading.png') no-repeat center center / contain;
+      animation: rotateLoading 0.5s linear infinite;
+    }
+    .text {
+      color: #EAF7FF;
+      font-size: 14px;
+      font-weight: 400;
+      text-align: left;
+      flex: 1;
+    }
+    .percent {
+      color: rgba(234, 247, 255, 0.60);
+      font-size: 12px;
+      font-weight: 400;
+    }
+  }
+  .el-notification__group {
+    width: 100%;
+    margin: 2px 0;
+  }
+  .el-notification__content {
+    margin: 0;
+  }
+  .el-icon-close {
+    right: 16px;
+    top: 23px;
+  }
+}
+@keyframes rotateLoading {
+  100% { transform: rotate(360deg); }
+}
+
+@media (forced-colors: active) {
+  .PcDevice {
+      .public-no-network {
+        background: Canvas;
+        color: CanvasText;
+        forced-color-adjust: auto;
+      }
+
+      .public-no-network .card,
+      .public-no-network .panel,
+      .public-no-network .tile,
+      .public-no-network .item,
+      .public-no-network li,
+      .public-no-network section,
+      .public-no-network article,
+      .public-no-network .content,
+      .public-no-network .wrapper,
+      .public-no-network .container {
+        background: Canvas;
+        border-color: ButtonText;
+        color: CanvasText;
+      }
+
+      .public-no-network button,
+      .public-no-network [role="button"],
+      .public-no-network .btn,
+      .public-no-network .button,
+      .public-no-network .close,
+      .public-no-network .back,
+      .public-no-network .more,
+      .public-no-network .prev,
+      .public-no-network .next,
+      .public-no-network .arrow,
+      .public-no-network .search-icon {
+        background: ButtonFace;
+        border: 1px solid ButtonText;
+        color: ButtonText;
+      }
+
+      .public-no-network input,
+      .public-no-network textarea,
+      .public-no-network select {
+        background: Canvas;
+        border: 1px solid ButtonText;
+        color: CanvasText;
+      }
+
+      .public-no-network input::placeholder,
+      .public-no-network textarea::placeholder,
+      .public-no-network .empty,
+      .public-no-network .nothing,
+      .public-no-network .placeholder,
+      .public-no-network .disabled,
+      .public-no-network .is-disabled,
+      .public-no-network [disabled],
+      .public-no-network [aria-disabled="true"] {
+        color: GrayText;
+        border-color: GrayText;
+      }
+
+      .public-no-network .active,
+      .public-no-network .selected,
+      .public-no-network .is-active,
+      .public-no-network .is-selected,
+      .public-no-network [aria-selected="true"] {
+        background: Highlight;
+        border-color: Highlight;
+        color: HighlightText;
+      }
+
+      .public-no-network a {
+        color: LinkText;
+      }
+
+      .public-no-network button:focus-visible,
+      .public-no-network a:focus-visible,
+      .public-no-network input:focus-visible,
+      .public-no-network textarea:focus-visible,
+      .public-no-network select:focus-visible,
+      .public-no-network [role="button"]:focus-visible,
+      .public-no-network [tabindex]:focus-visible {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+  }
+}

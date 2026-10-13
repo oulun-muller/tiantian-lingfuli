@@ -1,0 +1,9 @@
+<svg preserveAspectRatio="none" width="35.0086" height="3.19978" viewBox="0 0 35.0086 3.19978" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.00623783 3.09997C8.00624 2.59997 13.5062 0.599973 35.0062 0.099973" stroke="url(#glow-cap)" stroke-width="0.2"/>
+<defs>
+<radialGradient id="glow-cap" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(16.5062 2.09997) rotate(-90) scale(7 21.3259)">
+<stop stop-color="#68B5FF"/>
+<stop offset="1" stop-color="#0082FF" stop-opacity="0"/>
+</radialGradient>
+</defs>
+</svg>

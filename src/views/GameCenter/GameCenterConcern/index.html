@@ -1,0 +1,63 @@
+<div class="GameCenterConcern" @keydown.esc="hideSearchUp">
+  <div class="backdrop"></div>
+  <header
+    draggable
+    @dragstart.prevent="$startDrag"
+    @dblclick.self="$toggleMaximize">
+    <i class="el-icon-arrow-left back" tabindex="0" role="button" aria-label="返回" @click="back" @keydown.enter.prevent.stop="back" @keydown.space.prevent.stop="back" draggable @dragstart.prevent.stop></i>
+    <div draggable @dragstart.prevent.stop>
+      <input
+        type="text"
+        aria-label="搜索游戏"
+        v-model.trim="keyword"
+        @keydown.enter="toSearch"
+        @keydown.esc="hideSearchUp"
+        @click.stop="handleShowSearchUp"
+        @focus="handleShowSearchUp"
+        @input="searchGameListByKeyword"
+        @mouseenter="handleIsEntered">
+      <i class="iconfont" tabindex="0" role="button" aria-label="搜索" @click="toSearch" @keydown.enter.prevent.stop="toSearch" @keydown.space.prevent.stop="toSearch">&#xe67e;</i>
+      <span
+        class="placeholder"
+        v-if="!isEntered"><i class="title">{{ defaultKeyword }}</i><i class="sub-title">{{ description }}</i></span>
+
+      <UpSearch
+        @click.stop
+        @keydown.esc="hideSearchUp"
+        v-if="showSearchUp"
+        :keyword="keyword"
+        :show-search-up="showSearchUp"
+        :search-word="searchWord"
+        :search-game-list="searchGameList"
+        @selectSearchWord="selectSearchWord"
+        search-up-source="searchPage"
+        :first-local="firstLocal" />
+    </div>
+  </header>
+  <h1>我关注的游戏</h1>
+  <el-tabs 
+    :class="{'hideTab2':!reducedPriceListLength}" 
+    v-model="activeName" 
+    @tab-click="handleClick">
+    <el-tab-pane :label="`全部（ ${concernListLength} ）`" name="1">
+      <All 
+        ref="all"
+        :activeName="activeName"
+        :first-local="firstLocal"
+        :second-local="secondLocal"
+        :third-local="thirdLocal"
+        @setConcernListLength="setConcernListLength"
+        @deleteCurrent="deleteCurrent" />
+    </el-tab-pane>
+    <el-tab-pane :label="`比关注时降价（ ${reducedPriceListLength} ）`" name="2">
+      <ReducedPrice 
+        ref="reducedPrice"
+        :activeName="activeName"
+        :first-local="firstLocal"
+        :second-local="secondLocal"
+        :third-local="thirdLocal"
+        @setReducedPriceListLength="setReducedPriceListLength"
+        @deleteCurrent="deleteCurrent" />
+    </el-tab-pane>
+  </el-tabs>
+</div>

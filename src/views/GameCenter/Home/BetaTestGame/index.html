@@ -1,0 +1,77 @@
+<div 
+  class="BetaTestGame" 
+  v-if="rankSoftList.data">
+  <div class="title">
+    <h1>
+      <span class="title-english">{{ moduleEname }}</span>
+      <sub class="text"><i class="left-icon"></i>{{ rankSoftList.name }}<i class="right-icon"></i></sub>
+    </h1>
+    <span
+      class="more"
+      tabindex="0"
+      role="button"
+      @click="toList(rankSoftList.id,rankSoftList.name)"
+      @keydown.enter.prevent.stop="toList(rankSoftList.id,rankSoftList.name)"
+      @keydown.space.prevent.stop="toList(rankSoftList.id,rankSoftList.name)">更多</span>
+  </div>
+  <section ref="observedElement">
+    <b
+      tabindex="0"
+      role="button"
+      :aria-label="rankSoftList.data.softInfo && rankSoftList.data.softInfo.softName ? rankSoftList.data.softInfo.softName + '，点击查看详情' : '点击查看详情'"
+      @click.stop="toDetail(rankSoftList.data.softInfo)"
+      @keydown.enter.prevent.stop="toDetail(rankSoftList.data.softInfo)"
+      @keydown.space.prevent.stop="toDetail(rankSoftList.data.softInfo)"
+      :style="{ backgroundImage: `url('${ rankSoftList.data.imgUrls }')` }">
+      <sub class="bor-left-top"></sub>
+      <sub class="bor-left-bottom"></sub>
+      <sub class="bor-right-bottom"></sub>
+      <div class="content">
+        <div class="top">
+          <div class="url" v-if="elementAppear">
+            <video
+              v-if="rankSoftList.data.videoUrls"
+              :src="rankSoftList.data.videoUrls"
+              :poster="rankSoftList.data.screenshotUrls"
+              muted
+              autoplay
+              loop>
+            </video>
+            <img
+              v-else
+              :src="rankSoftList.data.screenshotUrls" :alt="rankSoftList.data.softInfo && rankSoftList.data.softInfo.softName ? rankSoftList.data.softInfo.softName + '截图' : '游戏截图'">
+          </div>
+        </div>
+        <div class="bottom">
+          <div class="left">
+            <h1>{{ rankSoftList.data.softInfo.softName }}</h1>
+            <ul v-if="rankSoftList.data.softInfo.showInfo.softLabels.length">
+              <li
+                v-for="(tagItem, tagIndex) of rankSoftList.data.softInfo.showInfo.softLabels.slice(0,4)"
+                :key="tagIndex">{{ tagItem }}
+              </li>
+            </ul>
+            <p>{{ rankSoftList.data.softInfo.downloadInfo.testActivityName }}</p>
+          </div>
+          <div class="right">
+            <GameDownloadButton
+              class="downloadButton"
+              buttonStyle="abnormal"
+              :downloadInfo="rankSoftList.data.softInfo.downloadInfo"
+              :soft-desc="rankSoftList.data.softInfo.softDesc"
+              :soft-id="rankSoftList.data.softInfo.softId"
+              :soft-purpose="rankSoftList.data.softInfo.softPurpose"
+              :product-info="rankSoftList.data.softInfo.productInfo"
+              :userPurchasedStatus="rankSoftList.data.softInfo.productInfo.userPurchasedStatus"
+              :version="rankSoftList.data.softInfo.softDesc.version"
+              :soft-name="rankSoftList.data.softInfo.softName"
+              :logo-file="rankSoftList.data.softInfo.showInfo.logoFile"
+              :fast-install="rankSoftList.data.softInfo.showInfo.isFastInstall"
+              :drinfo="drinfo(rankSoftList.data.softInfo)"
+              :sku-id="rankSoftList.data.softInfo.skuId" />
+          </div>
+        </div>
+      </div>
+    </b>
+  </section>
+</div>

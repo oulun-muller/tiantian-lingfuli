@@ -1,0 +1,25 @@
+<div class="Main">
+  <i
+    class="close iconfont"
+    tabindex="0"
+    role="button"
+    aria-label="关闭"
+    @click="close"
+    @keydown.enter.prevent.stop="close"
+    @keydown.space.prevent.stop="close"
+  >&#xe61b;</i>
+  <main v-if="mediaList.length">
+    <ul :style="{ transform: `translate(-${mediaIndex * 100}vw, 0)` }" role="list" :aria-label="'媒体播放，第 ' + (mediaIndex + 1) + ' 项，共 ' + mediaList.length + ' 项'">
+      <li v-for="(item, index) of mediaList" :key="index">
+
+        <video v-if="item.type === 'video' && index === mediaIndex" :poster="item.poster" :src="item.url" muted autoplay
+          loop controls controlslist="nofullscreen nodownload noplaybackrate" disablepictureinpicture></video>
+        <img v-else-if="item.type === 'image'" :src="item.url" :alt="'图片 ' + (index + 1)" />
+      </li>
+    </ul>
+  </main>
+        <div class="btn-class">
+          <button v-if="mediaList.length && mediaIndex > 0" class="prev" aria-label="上一张" @click="prev"></button>
+        <button v-if="mediaList.length && mediaIndex < mediaList.length - 1" class="next" aria-label="下一张" @click="next"></button>
+      </div>
+</div>

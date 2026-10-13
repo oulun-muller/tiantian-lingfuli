@@ -1,0 +1,107 @@
+<div class="common">
+  <section
+    class="list">
+    <div
+      v-for="item of concernList"
+      :key="item.id"
+      tabindex="0"
+      role="button"
+      :aria-label="item.softName + '，点击查看详情'"
+      @click="toDetail(item)"
+      @keydown.enter.prevent.stop="toDetail(item)"
+      @keydown.space.prevent.stop="toDetail(item)">
+      <div :class="{item:true, 'is-remove-game':!item.status}">
+        <div class="img_box">
+          <b
+            :style="{ backgroundImage:`url('${item.showInfo.himg || defaultImg}')` }"
+            aria-hidden="true">
+            <img
+              v-if="!item.showInfo.himg && item.showInfo.logoFile"
+              :src="item.showInfo.logoFile"
+              alt="">
+          </b>
+        </div>
+        <span
+          v-if="item.showInfo.ruleLabelName"
+          :class="item.showInfo.ruleLabelClassName"
+          aria-hidden="true">{{ item.showInfo.ruleLabelName }}
+        </span>
+        <section>
+          <div class="softName">
+            <p>{{ item.softName }}</p>
+            <span
+              v-if="item.softPurpose===1 && item.productInfo.exchangePlatform"
+              class="platform">
+              <i
+                v-if="item.productInfo.exchangePlatformFont"
+                class="iconfont"
+                v-html="item.productInfo.exchangePlatformFont"></i>
+            </span>
+          </div>
+          <ul>
+            <img
+              v-if="item.downloadInfo && item.downloadInfo.tagUrls && item.downloadInfo.tagUrls[0]"
+              class="auth-icon"
+              aria-hidden="true"
+              :src="item.downloadInfo.tagUrls[0]" />
+            <li
+              v-for="(tagItem, tagIndex) of item.showInfo.softLabels.slice(0, softLabelsLenght(item))"
+              :key="tagIndex"
+              :class="{active:tagItem === 'DLC'}">{{ tagItem }}</li>
+          </ul>
+        </section>
+        <aside v-if="item.softPurpose===1">
+          <i 
+            v-if="item.reducePrice"
+            class="price-reduction-ratio">比关注时降价<sub>{{ item.reducePrice }}</sub><strong>元</strong>
+          </i>
+          <i
+            v-if="item.productInfo.discount && !item.reducePrice"
+            class="discount">{{ item.productInfo.discount }}
+          </i>
+          <div class="price">
+            <i class="currentPrice">¥{{ item.productInfo.currentPrice }}</i>
+            <i
+              v-if="item.productInfo.discount && item.productInfo.originalPrice"
+              class="originalPrice">¥{{ item.productInfo.originalPrice }}</i>
+          </div>
+        </aside>
+        <aside v-else>
+          <p v-if="item.showInfo.playersNum>=100">最近{{ item.showInfo.playersNum }}人玩过</p>
+          <p v-else>{{ item.downloadInfo.downloadCount }}</p>
+        </aside>
+        <div class="unfollow" tabindex="0" role="button" aria-label="取消关注" @click.stop="toUnfollow(item)" @keydown.enter.prevent.stop="toUnfollow(item)" @keydown.space.prevent.stop="toUnfollow(item)">
+          <img src="./is-concern.png" alt="" aria-hidden="true">
+          <p aria-hidden="true">取消关注</p>
+        </div>
+        <div
+          v-if="item.softPurpose===1 && item.status"
+          class="buyButton common-rect-btn"
+          tabindex="0"
+          role="button"
+          aria-label="购买"
+          @click.stop="showPay(item)"
+          @keydown.enter.prevent.stop="showPay(item)"
+          @keydown.space.prevent.stop="showPay(item)">购买</div>
+        <GameDownloadButton
+          v-else-if="![1,2].includes(item.downloadInfo.bizType) && (item.softPurpose===2 || item.softPurpose===3) && item.status"
+          class="downloadButton"
+          theme="rect"
+          :download-info="item.downloadInfo"
+          :soft-desc="item.softDesc"
+          :soft-id="item.softId"
+          :soft-purpose="item.softPurpose"
+          :product-info="item.productInfo"
+          :userPurchasedStatus="item.productInfo.userPurchasedStatus"
+          :version="item.softDesc.version"
+          :soft-name="item.softName"
+          :logo-file="item.showInfo.logoFile"
+          :fast-install="item.showInfo.isFastInstall"
+          :drinfo="drinfo(item)"
+          :sku-id="item.skuId" />
+          <div v-else-if="[1,2].includes(item.downloadInfo.bizType) && item.softPurpose===2 && item.status" class="appointment">已预约</div>
+          <div v-else-if="!item.status" class="remove">已下架</div>
+      </div>
+    </div>
+  </section>
+</div>

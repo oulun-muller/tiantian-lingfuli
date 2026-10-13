@@ -1,0 +1,197 @@
+<div 
+  class="EvaluationRecommendation"
+  v-if="rankSoftList.data.length">
+  <h3 class="title-wrap">
+    <span class="title-bac gc-text-stroke-around">{{ moduleEname }}</span>
+    <span v-if="!$isPadDevice" class="gc-title-text"><i class="gc-title-quote-icon"></i>&nbsp;{{ rankSoftList.name }}&nbsp;<i class="gc-title-quote-icon"></i></span>
+    <span v-else class="gc-title-text">{{ rankSoftList.name }}</span>
+  </h3>
+  <div class="list" ref="sliderWrapper">
+    <section v-if="!$isPadDevice" :class="{ prev: pageNo > 0,next: pageNo < rankSoftList.data.length-1 }" class="slider">
+      <ul :style="pageStyle" class="ul-class" role="listbox" :aria-label="rankSoftList.name" ref="ulList" @keydown="onGridKeydown">
+        <li
+          v-for="(item, index) of rankSoftList.data"
+          :key="index"
+           class="li-class"
+          :tabindex="index === focusedIndex ? 0 : -1"
+          role="option"
+          :aria-selected="index === focusedIndex"
+          :aria-label="item.softInfo && item.softInfo.softName ? item.softInfo.softName + '，点击查看详情' : '点击查看详情'"
+          @focus="focusedIndex = index"
+          @click.stop="toDetail(item)"
+          @keydown.enter.prevent.stop="toDetail(item)"
+          @keydown.space.prevent.stop="toDetail(item)">
+          <div class="left">
+            <video
+              v-if="pageNo === index &&
+                item.softInfo.softDesc &&
+                item.softInfo.softDesc.mediaList[0] &&
+                item.softInfo.softDesc.mediaList[0].type === 'video'"
+              :src="item.softInfo.softDesc.mediaList[0].url"
+              :poster="item.softInfo.showInfo.himg || defaultImg"
+              muted
+              autoplay
+              loop>
+            </video>
+            <img
+              v-else="item.softInfo.showInfo.himg"
+              :src="item.softInfo.showInfo.himg || defaultImg" :alt="item.softInfo.softName" aria-hidden="true">
+            <h1>
+              <p>{{ item.softInfo.softName }}</p>
+              <span
+                :tabindex="pageNo === index ? 0 : -1"
+                role="button"
+                :aria-label="item.softInfo.isFollower ? '取消关注' : '关注' + item.softInfo.softName"
+                @click.stop="toFollowers(item)"
+                @keydown.enter.prevent.stop="toFollowers(item)"
+                @keydown.space.prevent.stop="toFollowers(item)">
+                <b :class="{'isFollower':item.softInfo.isFollower}" aria-hidden="true"></b>
+                <i aria-hidden="true">{{ item.softInfo.softDesc.followerCount }}关注</i>
+              </span>
+            </h1>
+          </div>
+          <div class="right">
+            <div class="header">
+              <p class="img-box">
+                <img :src="item.reviewsInfo.userIcon || 'https://i.app.lefile.cn/head/picdefault1477559405444/sdefault1477559405444.png'" :alt="item.reviewsInfo.userName + '头像'" aria-hidden="true">
+              </p>
+              <div class="user-info">
+                <p class="user-name">{{ item.reviewsInfo.userName }}</p>
+                <p class="user-duration">
+                  <i>总时长：{{ filterDuration(item.reviewsInfo.userGameDurationTotal) }}</i>
+                  <i>测评时：{{ filterDuration(item.reviewsInfo.userGameDurationCurrent) }}</i></p>
+              </div>
+            </div>
+            <h5>{{ item.reviewsInfo.content }}</h5>
+            <div class="bottom">
+              <span
+                class="zan"
+                :tabindex="pageNo === index ? 0 : -1"
+                role="button"
+                :aria-label="'点赞，' + item.reviewsInfo.likeCount + '次'"
+                :aria-pressed="item.reviewsInfo.isLikes ? 'true' : 'false'"
+                @click.stop="toZan(item)"
+                @keydown.enter.prevent.stop="toZan(item)"
+                @keydown.space.prevent.stop="toZan(item)">
+                <b :class="{'isLikes':item.reviewsInfo.isLikes}" aria-hidden="true"></b>
+                <i aria-hidden="true">{{ item.reviewsInfo.likeCount }}</i>
+              </span>
+              <span
+                class="comment"
+                :tabindex="pageNo === index ? 0 : -1"
+                role="button"
+                :aria-label="'评论，' + item.reviewsInfo.replyCount + '条'"
+                @click.stop="toComment(item)"
+                @keydown.enter.prevent.stop="toComment(item)"
+                @keydown.space.prevent.stop="toComment(item)">
+                <b aria-hidden="true"></b>
+                <i aria-hidden="true">{{ item.reviewsInfo.replyCount }}</i>
+              </span>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <button class="prev" aria-label="上一条" @click="prevPage"></button>
+      <button class="next" aria-label="下一条" @click="nextPage"></button>
+    </section>
+     <section v-else class="slider-pad" :show-indicators="false" lazy-render>
+      <swiper  class="ul-class" @slideChange="onSwiperChange" ref="swiper" :options="swiperOption">
+        <swiper-slide 
+          v-for="(item, index) of rankSoftList.data" 
+          :key="index"
+          class="li-class">
+          <div class="left" tabindex="0" role="button" :aria-label="item.softInfo && item.softInfo.softName ? item.softInfo.softName + '，点击查看详情' : '点击查看详情'" @click.stop="toDetail(item)" @keydown.enter.prevent.stop="toDetail(item)" @keydown.space.prevent.stop="toDetail(item)">
+            <video
+              v-if="pageNo === index &&
+                item.softInfo.softDesc &&
+                item.softInfo.softDesc.mediaList[0] &&
+                item.softInfo.softDesc.mediaList[0].type === 'video'"
+              :src="item.softInfo.softDesc.mediaList[0].url"
+              :poster="item.softInfo.showInfo.himg || defaultImg"
+              muted
+              autoplay
+              loop>
+            </video>
+            <img
+              v-else="item.softInfo.showInfo.himg"
+              :src="item.softInfo.showInfo.himg || defaultImg" :alt="item.softInfo.softName" aria-hidden="true">
+            <h1 class="game-info">
+              <p class="name">{{ item.softInfo.softName }}</p>
+              <span
+                tabindex="0"
+                role="button"
+                :aria-label="item.softInfo.isFollower ? '取消关注' : '关注' + item.softInfo.softName"
+                @click.stop="toFollowers(item)"
+                @keydown.enter.prevent.stop="toFollowers(item)"
+                @keydown.space.prevent.stop="toFollowers(item)">
+                <b :class="{'isFollower':item.softInfo.isFollower}" :style="{width: '16px',height: '16px'}" aria-hidden="true"></b>
+                <i class="text" :style="{'vertical-align': '2px'}" aria-hidden="true">{{ item.softInfo.softDesc.followerCount }}关注</i>
+              </span>
+            </h1>
+          </div>
+          <div class="right">
+            <div class="header">
+              <p class="img-box">
+                <img :src="item.reviewsInfo.userIcon || 'https://i.app.lefile.cn/head/picdefault1477559405444/sdefault1477559405444.png'" :alt="item.reviewsInfo.userName + '头像'" aria-hidden="true">
+              </p>
+              <div class="user-info">
+                <p class="user-name">{{ item.reviewsInfo.userName }}</p>
+                <p class="user-duration">
+                  <i>总时长：{{ filterDuration(item.reviewsInfo.userGameDurationTotal) }}</i>
+                  <i>测评时：{{ filterDuration(item.reviewsInfo.userGameDurationCurrent) }}</i></p>
+              </div>
+            </div>
+            <h5>{{ item.reviewsInfo.content }}</h5>
+            <div class="bottom">
+              <span
+                class="zan"
+                tabindex="0"
+                role="button"
+                :aria-label="'点赞，' + item.reviewsInfo.likeCount + '次'"
+                :aria-pressed="item.reviewsInfo.isLikes ? 'true' : 'false'"
+                @click.stop="toZan(item)"
+                @keydown.enter.prevent.stop="toZan(item)"
+                @keydown.space.prevent.stop="toZan(item)">
+                <b :class="{'isLikes':item.reviewsInfo.isLikes}" aria-hidden="true"></b>
+                <i :style="{fontSize: '14px'}" aria-hidden="true">{{ item.reviewsInfo.likeCount }}</i>
+              </span>
+              <span
+                class="comment"
+                tabindex="0"
+                role="button"
+                :aria-label="'评论，' + item.reviewsInfo.replyCount + '条'"
+                @click.stop="toComment(item)"
+                @keydown.enter.prevent.stop="toComment(item)"
+                @keydown.space.prevent.stop="toComment(item)">
+                <b aria-hidden="true"></b>
+                <i :style="{fontSize: '14px'}" aria-hidden="true">{{ item.reviewsInfo.replyCount }}</i>
+              </span>
+            </div>
+          </div>
+        </swiper-slide >
+      </swiper>
+      <button class="prev" aria-label="上一条" @click="prevPage"></button>
+      <button class="next" aria-label="下一条" @click="nextPage"></button>
+    </section>
+    <ol v-if="!$isPadDevice" role="list">
+      <li
+        v-for="(item, index) of rankSoftList.data"
+        :key="index"
+        role="button"
+        tabindex="0"
+        :aria-label="`切换到第${index + 1}条`"
+        :aria-current="pageNo === index ? 'true' : 'false'"
+        :class="{'active':pageNo===index}"
+        @click.stop="toIndicator(index)"
+        @keydown.enter.prevent.stop="toIndicator(index)"
+        @keydown.space.prevent.stop="toIndicator(index)"></li>
+    </ol>
+    <ul v-if="rankSoftList.data.length > 1" class="pad-device-nav" aria-hidden="true">
+      <li v-for="(item, index) in rankSoftList.data" :key="index" :class="[currentIndex === index ? 'selected':'']">
+      </li>
+    </ul>
+    <!-- <b class="left-top-line"></b>
+    <b class="left-bottom-line"></b>
+    <b class="right-top-line"></b> -->
+  </div>
+</div>

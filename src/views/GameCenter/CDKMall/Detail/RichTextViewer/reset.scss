@@ -1,0 +1,283 @@
+.RichTextViewer 
+  :deep(h1) {
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    font-weight: bold;
+  }
+  :deep(h2) {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    font-weight: bold;
+  }
+  :deep(h3) {
+    display: block;
+    font-size: 1.17em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-weight: bold;
+  }
+  :deep(h4) {
+    display: block;
+    margin-top: 1.33em;
+    margin-bottom: 1.33em;
+    font-weight: bold;
+  }
+  :deep(h5) {
+    display: block;
+    font-size: 0.83em;
+    margin-top: 1.67em;
+    margin-bottom: 1.67em;
+    font-weight: bold;
+  }
+  :deep(p) {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  :deep(blockquote) {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+  :deep(strong) {
+    font-weight: bold;
+  }
+  :deep(u) {
+    text-decoration: underline;
+  }
+  :deep(em) {
+    font-style: italic;
+  }
+  :deep(s) {
+    text-decoration: line-through;
+  }
+  :deep(code) {
+    font-family: monospace;
+  }
+  :deep(sup) {
+    vertical-align: super;
+    font-size: smaller;
+  }
+  :deep(sub) {
+    vertical-align: sub;
+    font-size: smaller;
+  }
+  :deep(ul) {
+    display: block;
+    list-style-type: disc;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-left: 40px;
+  }
+  :deep(li) {
+    display: list-item;
+    text-align: -webkit-match-parent;
+  }
+  :deep(ol) {
+    display: block;
+    list-style-type: decimal;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-left: 40px;
+  }
+  :deep(div) {
+    display: block;
+  }
+  :deep(a:-webkit-any-link) {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  :deep(img) {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+  }
+  :deep(video) {
+    object-fit: contain;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+  }
+  :deep(table) {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 2px;
+    border-color: gray;
+  }
+  :deep(thead) {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+  }
+  :deep(tbody) {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+  }
+  :deep(tr) {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+  }
+  :deep(th) {
+    display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+    text-align: -internal-center;
+  }
+  :deep(td) {
+    display: table-cell;
+    vertical-align: inherit;
+  }
+  :deep(pre) {
+    display: block;
+    font-family: monospace;
+    white-space: pre;
+    margin: 1em 0px;
+  }
+  :deep(hr) {
+    display: block;
+    unicode-bidi: isolate;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    height: 0;
+    border: 0;
+    border-style: inset;
+    border-width: 1px;
+  }
+  :deep(button) {
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
+    background-color: buttonface;
+    margin: 0em;
+    padding: 1px 6px;
+    vertical-align: baseline;
+  }
+  :deep(textarea) {
+    resize: auto;
+    overflow: auto;
+    margin: 0em;
+    padding: 2px;
+    vertical-align: baseline;
+  }
+  :deep(input[type="checkbox"]) {
+    border: initial;
+    box-sizing: border-box;
+    appearance: auto;
+    cursor: default;
+    background-color: initial;
+    margin: 3px 3px 3px 4px;
+    padding: initial;
+    vertical-align: baseline;
+  }
+  :deep(input[type="text"],
+  input[type="number"]) {
+    border-width: 2px;
+    border-style: inset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+    background-color: field;
+    margin: 0em;
+    padding: 1px 2px;
+    vertical-align: baseline;
+  }
+
+
+@media (forced-colors: active) {
+  .PcDevice {
+      .RichTextViewer {
+        background: Canvas;
+        color: CanvasText;
+        forced-color-adjust: auto;
+      }
+
+      .RichTextViewer .card,
+      .RichTextViewer .panel,
+      .RichTextViewer .tile,
+      .RichTextViewer .item,
+      .RichTextViewer li,
+      .RichTextViewer section,
+      .RichTextViewer article,
+      .RichTextViewer .content,
+      .RichTextViewer .wrapper,
+      .RichTextViewer .container {
+        background: Canvas;
+        border-color: ButtonText;
+        color: CanvasText;
+      }
+
+      .RichTextViewer button,
+      .RichTextViewer [role="button"],
+      .RichTextViewer .btn,
+      .RichTextViewer .button,
+      .RichTextViewer .close,
+      .RichTextViewer .back,
+      .RichTextViewer .more,
+      .RichTextViewer .prev,
+      .RichTextViewer .next,
+      .RichTextViewer .arrow,
+      .RichTextViewer .search-icon {
+        background: ButtonFace;
+        border: 1px solid ButtonText;
+        color: ButtonText;
+      }
+
+      .RichTextViewer input,
+      .RichTextViewer textarea,
+      .RichTextViewer select {
+        background: Canvas;
+        border: 1px solid ButtonText;
+        color: CanvasText;
+      }
+
+      .RichTextViewer input::placeholder,
+      .RichTextViewer textarea::placeholder,
+      .RichTextViewer .empty,
+      .RichTextViewer .nothing,
+      .RichTextViewer .placeholder,
+      .RichTextViewer .disabled,
+      .RichTextViewer .is-disabled,
+      .RichTextViewer [disabled],
+      .RichTextViewer [aria-disabled="true"] {
+        color: GrayText;
+        border-color: GrayText;
+      }
+
+      .RichTextViewer .active,
+      .RichTextViewer .selected,
+      .RichTextViewer .is-active,
+      .RichTextViewer .is-selected,
+      .RichTextViewer [aria-selected="true"] {
+        background: Highlight;
+        border-color: Highlight;
+        color: HighlightText;
+      }
+
+      .RichTextViewer a {
+        color: LinkText;
+      }
+
+      .RichTextViewer button:focus-visible,
+      .RichTextViewer a:focus-visible,
+      .RichTextViewer input:focus-visible,
+      .RichTextViewer textarea:focus-visible,
+      .RichTextViewer select:focus-visible,
+      .RichTextViewer [role="button"]:focus-visible,
+      .RichTextViewer [tabindex]:focus-visible {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+  }
+}

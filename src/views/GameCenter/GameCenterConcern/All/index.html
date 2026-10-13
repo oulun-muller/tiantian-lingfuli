@@ -1,0 +1,23 @@
+<div class="All">
+  <main ref="concernListScroller" @scroll="scrollHandleAll">
+    <section v-if="!fetching && concernList.length <= 0" class="nothing">
+      <img src="./nothing.png" alt="">
+      <p
+          tabindex="0"
+          role="button"
+          aria-label="您还没有关注过游戏，点击前往游戏中心"
+          @click.stop="toGameCenter"
+          @keydown.enter.prevent.stop="toGameCenter"
+          @keydown.space.prevent.stop="toGameCenter"
+        >您还没有关注过游戏，快去<a>游戏中心</a>看看吧！<i class="iconfont" aria-hidden="true">&#xe628;</i></p>
+    </section>
+    <common 
+      v-else
+      :concern-list="concernList"
+      :first-local="firstLocal"
+      :second-local="secondLocal"
+      :third-local="thirdLocal"
+      :last-id="lastId"
+      @deleteCurrent="deleteCurrent" />
+  </main>
+</div>

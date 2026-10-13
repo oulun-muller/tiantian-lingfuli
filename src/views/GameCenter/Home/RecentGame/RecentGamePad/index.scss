@@ -1,0 +1,444 @@
+.RecentGame {
+  margin: 0 auto;
+  box-sizing: content-box;
+  padding: 28px 40px 0 40px;
+  max-width: 1760px;
+  overflow: hidden;
+
+  h3.title-wrap {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 17px 0 30px 0;
+
+    .title-bac {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+
+    .more {
+      font-weight: 400;
+      font-size: 14px;
+      opacity: 0.6;
+      color: #EAF7FF;
+      margin-right: 32px;
+    }
+  }
+
+  >div.list-wrapper {
+    position: relative;
+
+    >ul {
+      gap: 20px;
+      display: flex;
+      justify-content: left;
+
+      &.ulActive {
+        transition: all .3s ease-in-out 0s;
+      }
+
+      >li {
+        flex: 1;
+        // margin-right: 20px;
+        min-width: 280px;
+        position: relative;
+        transition: all .3s ease-in-out 0s;
+
+        >section {
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+
+    >button {
+      background-color: transparent;
+      border: none;
+      z-index: 6;
+      width: 44px;
+      height: 44px;
+      margin-top: -22px;
+      border-radius: 44px;
+      box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.9);
+      // background-image: url('../next.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      cursor: pointer;
+      opacity: 0.8;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &.prev {
+        position: absolute;
+        left: -20px;
+        top: 50%;
+        transform: rotate(180deg);
+      }
+
+      &.next {
+        position: absolute;
+        right: -20px;
+        top: 50%;
+      }
+    }
+
+    &.left-mask {
+      &::before {
+        position: absolute;
+        left: -40px;
+        top: 0;
+        content: '';
+        width: 40px;
+        height: 100%;
+        background: linear-gradient(90deg, #000 25.22%, rgba(13, 15, 19, 0.00) 100%);
+        z-index: 5;
+      }
+    }
+
+    &.right-mask {
+      &::after {
+        position: absolute;
+        right: -40px;
+        top: 0;
+        content: '';
+        width: 50px;
+        height: 100%;
+        background: linear-gradient(-90deg, #000 25.22%, rgba(13, 15, 19, 0.00) 100%);
+        z-index: 5;
+      }
+    }
+  }
+
+  >div.bar {
+    width: 500px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px auto 0px;
+
+    >span {
+      display: inline-block;
+      width: 68px;
+      height: 20px;
+      z-index: 2;
+    }
+
+    >span.left {
+      width: 68px;
+      height: 20px;
+      background: url('@/images/gamecenter/btn-left.png') no-repeat;
+      background-size: 100% 100%;
+      position: relative;
+      left: 5px;
+    }
+
+    >span.right {
+      width: 68px;
+      height: 20px;
+      background: url('@/images/gamecenter/btn-right.png') no-repeat;
+      background-size: 100% 100%;
+      position: relative;
+      right: 4px;
+    }
+
+    .slider {
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(270deg, rgba(234, 247, 255, 0.10) 0%, rgba(234, 247, 255, 0.78) 7.45%, rgba(234, 247, 255, 0.52) 93.63%, rgba(234, 247, 255, 0.10) 100%);
+      position: relative;
+
+      :deep(.slider-bar) {
+        width: 130px !important;
+        height: 20px;
+        border: none;
+        border-radius: 0;
+        background: url('@/images/gamecenter/btn-bar.png') no-repeat;
+        background-size: contain;
+        top: -6.5px;
+        z-index: 0;
+      }
+
+      &::before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        content: '';
+        width: 5px;
+        height: 7px;
+        background: #000;
+        z-index: 0;
+      }
+
+      &::after {
+        position: absolute;
+        right: 0;
+        top: 0;
+        content: '';
+        width: 4px;
+        height: 7px;
+        background: #000;
+        z-index: 0;
+      }
+    }
+  }
+
+  >div.game-normal {
+    position: relative;
+
+    >ol {
+      gap: 20px;
+      display: flex;
+      justify-content: left;
+
+      >li {
+        background: linear-gradient(76.56deg, rgba(30, 34, 39, 0.4) 4.98%, rgba(112, 118, 150, 0.2) 100.17%);
+        flex: 1;
+        min-width: 280px;
+        position: relative;
+        transition: all .3s ease-in-out 0s;
+
+        >section {
+          display: flex;
+          align-items: center;
+          border-radius: 4px;
+          height: 96px;
+          width: 100%;
+          z-index: 1;
+          box-sizing: border-box;
+          position: relative;
+          background: linear-gradient(76.56deg, rgba(30, 34, 39, 0.4) 4.98%, rgba(112, 118, 150, 0.2) 100.17%);
+          gap: 16px;
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: inherit;
+            /* 继承按钮圆角 */
+            // padding: 0.5px; /* 边框宽度：1px */
+            // background: linear-gradient(to right, rgba(234, 247, 255, 0.1), rgba(255, 255, 255, 0.1)); /* 渐变方向和颜色 */
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: -1;
+            pointer-events: none;
+            /* 不影响按钮点击 */
+          }
+
+          >i {
+            width: 96px;
+            height: 96px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 8px;
+            flex: none;
+            position: relative;
+            z-index: 1;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+
+          >div.loading-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: rgba(234, 247, 255, 1);
+            gap: 12px;
+            max-width: calc(100% - 96px - 12px);
+
+            .top {
+              width: 130px;
+              height: 20px;
+              border-radius: 4px;
+              position: relative;
+              overflow: hidden;
+              background: transparent;
+
+              &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                animation: slideMove 1s linear infinite;
+                background: linear-gradient(78.96deg, rgba(112, 118, 150, 0.3) -9.64%, rgba(30, 34, 39, 0.5) 80.95%);
+              }
+            }
+
+            .bottom {
+              width: 100px;
+              height: 16px;
+              border-radius: 4px;
+              position: relative;
+              overflow: hidden;
+              background: transparent;
+
+              &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(78.96deg, rgba(112, 118, 150, 0.3) -9.64%, rgba(30, 34, 39, 0.5) 80.95%);
+                animation: slideMove 1s linear infinite;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* 滑动动画关键帧：从左外滑到右外，循环 */
+@keyframes slideMove {
+  0% {
+    left: -100%;
+    opacity: .9;
+  }
+
+  100% {
+    left: 100%;
+    opacity: .7;
+  }
+}
+
+@keyframes moveUp {
+  0% {
+    transform: translateY(20%);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  div .RecentGame>div.bar {
+    margin: 50px auto;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  div .RecentGame>div.bar {
+    margin: 60px auto;
+  }
+}
+
+@media screen and (min-width: 1110px) {
+  div .RecentGame>div.list-wrapper>ul>li>section.bigCard>b::after {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 52%, rgb(0 0 0 / 93%) 85%);
+  }
+}
+
+// pad
+
+.PadDevice {
+  .RecentGame {
+    .bar {
+      display: none;
+    }
+
+    .list-wrapper {
+      overflow-x: scroll;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .right-mask {
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  div .RecentGame>div.list-wrapper>ul>li>section.smallCard>b {
+    height: 34.887vw;
+  }
+
+  @media screen and (max-width: 800px) {
+    .RecentGame {
+      padding: 28px 0vw 0 5vw;
+    }
+
+    .RecentGame h3.title-wrap {
+      padding: 17px 0 2.5vw 0;
+    }
+
+    .RecentGame>div.list-wrapper>ul>li>section.smallCard>div.date>span {
+      font-size: 14px;
+    }
+
+    .RecentGame>div.list-wrapper>ul>li>section.smallCard>div.date>i {
+      width: 6.5vw;
+    }
+
+    .RecentGame>div.list-wrapper>ul {
+      gap: 2.5vw;
+      padding-right: 5vw;
+    }
+
+    .RecentGame>div.list-wrapper>ul>li {
+      // margin-right: 2.5vw;
+    }
+
+    .RecentGame>div.list-wrapper>ul>li {
+      min-width: 280px;
+    }
+  }
+}
+
+.PhoneDevice {
+  .RecentGame {
+    padding: 20px 0 0 20px;
+
+    .list-wrapper {
+
+      overflow-y: scroll;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Firefox */
+    }
+  }
+
+  .RecentGame>div.list-wrapper>ul>li {
+    display: inline-block;
+    flex: none;
+    width: 349px;
+  }
+
+  .RecentGame h3.title-wrap .more {
+    position: initial;
+    margin-right: 20px;
+
+  }
+
+}

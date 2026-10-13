@@ -1,0 +1,326 @@
+.FourColumnList {
+  .item {
+    width: 100%;
+    height: 96px;
+    margin-bottom: 20px;
+    background: linear-gradient(
+      77deg,
+      rgba(30, 34, 39, 0.2) 4.98%,
+      rgba(112, 118, 150, 0.2) 100.17%
+    );
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    :deep(em) {
+      color: rgba(56, 110, 254, 1);
+      vertical-align: text-bottom;
+    }
+    > div.img_box {
+      width: 136px;
+      height: 96px;
+      overflow: hidden;
+      > b {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        transition: transform .4s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        > img {
+          width: 42px;
+          height: 42px;
+          object-fit: cover;
+        }
+      }
+    }
+    > span {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 3;
+      font-size: 12px;
+      font-style: italic;
+      color: #ffffff;
+      font-weight: bold;
+      line-height: 1;
+      box-sizing: content-box;
+      padding: 4px 7px 6px 5px;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.31);
+      border: 1px solid transparent;
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: linear-gradient(0deg, #0c9b34, #0c9b34),
+        linear-gradient(135deg, #4ad370 7.43%, #0c8e30 94.88%);
+      &.hot {
+        background-image: linear-gradient(0deg, #eb2051, #eb2051),
+          linear-gradient(135deg, #ff5981 7.43%, #a9062e 94.88%);
+      }
+      &.lowest {
+        background-image: linear-gradient(0deg, #2420eb, #2420eb),
+          linear-gradient(135deg, #6b68ff 7.43%, #13119a 94.88%);
+      }
+      &.limit {
+        background-image: linear-gradient(0deg, #7d1bf9, #7d1bf9),
+          linear-gradient(135deg, #b275ff 7.43%, #4c0e9b 94.88%);
+      }
+    }
+    > section {
+      width: 46%;
+      margin-left: 20px;
+      > div.softName {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        p {
+          color: #eaf7ff;
+          font-size: 16px;  
+          font-style: normal;
+          font-weight: 700;
+          margin: 11px 0;
+          display: -webkit-box !important;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+        > span.platform {
+          margin-left: 12px;
+          font-size: 12px;
+          color: rgba(234, 247, 255, 0.6);
+          > i {
+            display: inline-block;
+            margin-right: 8px;
+            font-size: 16px;
+          }
+        }
+      }
+      > ul {
+        overflow: hidden;
+        white-space: nowrap;
+        > li {
+          display: inline-block;
+          vertical-align: top;
+          // min-width: 64px;
+          box-sizing: border-box;
+          border: 0.5px solid rgba(255, 255, 255, 0.2);
+          font-size: 12px;
+          color: #EAF7FF;
+          padding: 4px 6px;
+          opacity: 0.7;
+          line-height: 1;
+          margin-right: 8px;
+          text-align: center;
+          &.active {
+            font-weight: bold;
+            color: #386EFE;
+            border-color: rgba(56, 110, 254, 0.6);
+          }
+        }
+      }
+      &.IsGameHouse {
+        width: 40%;
+      }
+    }
+    > aside {
+      height: 100%;
+      margin-left: 20px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      > i.discount {
+        background-color: #f24a44;
+        font-size: 14px;
+        color: #eaf7ff;
+        font-weight: bold;
+        width: 46px;
+        height: 22px;
+        text-align: center;
+        line-height: 22px;
+        margin-top: 6px;
+      }
+      > div.price {
+        margin-top: 7px;
+        > i.currentPrice {
+          font-size: 16px;
+          color: #eaf7ff;
+          font-weight: bold;
+        }
+        > i.originalPrice {
+          font-size: 12px;
+          color: rgba(234, 247, 255, 0.4);
+          text-decoration: line-through;
+          margin-left: 6px;
+        }
+      }
+      > p {
+        color: rgba(234, 247, 255, .6);
+        font-style: normal;
+        font-weight: 400;
+      }
+    }
+    > div.buyButton, :deep(.buyButton) {
+      z-index: 8;
+      width: 90px;
+      height: 34px;
+      text-align: center;
+      line-height: 34px;
+      font-size: 12px;
+    }
+    .right-btn-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: auto;
+      margin-right: 20px;
+      .buy-information {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 34px;
+        padding: 6px 12px;
+        background-color: rgba(48,53,61);
+        font-size: 12px;
+        .orgin-price-class {
+          opacity: 0.3;
+           text-decoration: line-through 1px rgba(234, 247, 255, ); /* 删除线：类型 粗细 颜色 */
+           margin-right: 4px
+        }
+        .current-price-class {
+          font-weight: 700;
+        }
+      }
+    }
+      .downloadButton {
+        position: relative;
+        // right: 20px;
+        // top: 24px;
+        // z-index: 8;
+        width: 90px;
+        height: 34px;
+      :deep(div span) {
+        font-size: 12px;
+        width: 100%;
+      }
+      
+        :deep(.grey-rect-btn) {
+          font-size: 12px;
+          height: 34px;
+          line-height: 28px;
+        }
+      
+    }
+    &:hover {
+      background: linear-gradient(77deg, rgba(30, 34, 39, 0.3) 4.98%, rgba(112, 118, 150, 0.3) 100.17%);
+      > div.img_box {
+        > b {
+         transform: scale(1.15);
+       }
+     }
+    }
+  }
+}
+.auth-icon {
+  height: 20px;
+  margin-right: 6px;
+  vertical-align: -6px;
+}
+
+  :deep(.downloadButton .buyButton) {
+    top: 0px !important;
+    right: 0px !important;  
+  }
+
+.FourColumnList .tags-wrap {
+  :deep(em) {
+    color: rgba(56, 110, 254, 1);
+    vertical-align: 0;
+  }
+}
+.FourColumnList.index {
+  .item {
+    margin-bottom: 20px;
+    height: 80px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%), linear-gradient(77deg, rgba(30, 34, 39, 0.2) 4.98%, rgba(112, 118, 150, 0.2) 100.17%);
+    &:hover {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%), linear-gradient(77deg, rgba(30, 34, 39, 0.3) 4.98%, rgba(112, 118, 150, 0.3) 100.17%);
+    }
+  }
+}
+
+.PadDevice {
+  .FourColumnList  {
+      .name-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  }
+  .FourColumnList .item > div.img_box {
+    width: 96px;
+    height: 96px;
+    border-radius: 16px;
+  }
+  .FourColumnList .item > section.IsGameHouse {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+.FourColumnList .item > section > div.softName p {
+  margin: 0 0 9px 0;
+}
+  .FourColumnList .item > section {
+    width: 30%;
+  }
+  .FourColumnList .item > section > ul > li {
+    // color: rgba(234, 247, 255, 0.7);
+    // height: 22px;
+    // padding: 4px 6px;
+  }
+  // .FourColumnList .item  .downloadButton {
+  //   top: 32px
+  // }
+}
+
+@media screen and (max-width:800px){
+    .FourColumnList .item > div.img_box {
+    width: 12vw;
+    height: 12vw;
+  }
+  // .PadDevice  .FourColumnList .item  .downloadButton {
+  //   top: calc(6vw - 17px)
+  // }
+  
+  .FourColumnList .item > section > ul > li {
+    padding: 4px 6px 3px;
+  }
+    .FourColumnList .item {
+    height: 12vw;
+  }
+  .PadDevice .FourColumnList .item > div.img_box {
+    height: 12vw;
+    width: 12vw;
+  }
+  
+}
+.FourColumnList > div:focus-visible {
+  outline: 2px solid #4fc3f7;
+  outline-offset: -2px;
+  border-radius: 4px;
+}
+
+@media (forced-colors: active) {
+  .FourColumnList > div:focus-visible {
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}

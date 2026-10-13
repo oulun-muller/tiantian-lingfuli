@@ -1,0 +1,363 @@
+div.common {
+  width: 100%;
+  height: 100%;
+  > section.list {
+    width: calc(100% - 64px);
+    margin: 0 auto;
+    .item {
+      width: 100%;
+      height: 80px;
+      margin-bottom: 20px;
+      border-top: 0.5px solid rgba(234, 247, 255, 0.10);
+      background: linear-gradient(0deg, #0F1014 0%, #0F1014 100%), linear-gradient(77deg, rgba(30, 34, 39, 0.20) 4.98%, rgba(112, 118, 150, 0.20) 100.17%);
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      > div.img_box {
+        width: 140px;
+        height: 78px;
+        overflow: hidden;
+        > b {
+          display: inline-block;
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-position: center center;
+          background-repeat: no-repeat;
+          transition: transform .4s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          > img {
+            width: 42px;
+            height: 42px;
+            object-fit: cover;
+          }
+        }
+      }
+      > span {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 3;
+        font-size: 12px;
+        font-style: italic;
+        color: #ffffff;
+        font-weight: bold;
+        line-height: 1;
+        box-sizing: content-box;
+        padding: 4px 7px 6px 5px;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.31);
+        border: 1px solid transparent;
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: linear-gradient(0deg, #0c9b34, #0c9b34),
+          linear-gradient(135deg, #4ad370 7.43%, #0c8e30 94.88%);
+        &.hot {
+          background-image: linear-gradient(0deg, #eb2051, #eb2051),
+            linear-gradient(135deg, #ff5981 7.43%, #a9062e 94.88%);
+        }
+        &.lowest {
+          background-image: linear-gradient(0deg, #2420eb, #2420eb),
+            linear-gradient(135deg, #6b68ff 7.43%, #13119a 94.88%);
+        }
+        &.limit {
+          background-image: linear-gradient(0deg, #7d1bf9, #7d1bf9),
+            linear-gradient(135deg, #b275ff 7.43%, #4c0e9b 94.88%);
+        }
+      }
+      > section {
+        width: 40.78%;
+        margin-left: 10px;
+        > div.softName {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          p {
+            font-size: 16px;  
+            font-style: normal;
+            font-weight: 700;
+            margin: 11px 0;
+            display: -webkit-box !important;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            background: linear-gradient(178deg, #929292 1.88%, #EAF7FF 98.12%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+          > span.platform {
+            margin-left: 12px;
+            font-size: 12px;
+            color: rgba(234, 247, 255, 0.6);
+            > i {
+              display: inline-block;
+              margin-right: 8px;
+              font-size: 16px;
+            }
+          }
+        }
+        > ul {
+          overflow: hidden;
+          white-space: nowrap;
+          .auth-icon {
+            height: 24px;
+            margin-right: 6px;
+            vertical-align: -6px;
+          }
+          > li {
+            display: inline-block;
+            vertical-align: top;
+            min-width: 62px;
+            box-sizing: border-box;
+            padding: 5.5px 0px 5.5px;
+            border: 0.5px solid rgba(234, 247, 255, 0.4);
+            font-size: 12px;
+            line-height: 1;
+            margin-right: 8px;
+            text-align: center;
+            text-transform: capitalize;
+            background: linear-gradient(178deg, rgba(146, 146, 146, 0.60) 1.88%, rgba(234, 247, 255, 0.60) 98.12%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            &.active {
+              font-weight: bold;
+              color: #386EFE;
+              border-color: rgba(56, 110, 254, 0.6);
+            }
+          }
+        }
+      }
+      > aside {
+        height: 100%;
+        margin-left: 20px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        > i.discount {
+          background-color: #f24a44;
+          font-size: 14px;
+          color: #eaf7ff;
+          font-weight: bold;
+          width: 46px;
+          height: 22px;
+          text-align: center;
+          line-height: 22px;
+          margin: 6px 0;
+        }
+        > div.price {
+          > i.currentPrice {
+            font-size: 16px;
+            color: #eaf7ff;
+            font-weight: bold;
+          }
+          > i.originalPrice {
+            font-size: 12px;
+            color: rgba(234, 247, 255, 0.4);
+            text-decoration: line-through;
+            margin-left: 6px;
+          }
+        }
+        > p {
+          color: rgba(234, 247, 255, .6);
+          font-style: normal;
+          font-weight: 400;
+        }
+        > i.price-reduction-ratio {
+          color: rgba(234, 247, 255, 0.60);
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          vertical-align: middle;
+          margin-top: 6px;
+          height: 26px;
+          > sub {
+            color: #F24A44;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 700;
+            vertical-align: top;
+          }
+          > strong {
+            color: #F24A44;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            vertical-align: top;
+          }
+        }
+      }
+      > div.unfollow {
+        position: absolute;
+        right: 130px;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: center;
+        opacity: 0;
+        transition: all 0.3s;
+        > img {
+          width: 18px;
+          height: 18px;
+          margin-top: 2px;
+        }
+        > p {
+          color: rgba(234, 247, 255, 0.60);
+          font-size: 12px;
+          transform: scale(0.75);
+          font-style: normal;
+          font-weight: 400;
+          margin-top: 1px;
+        }
+        &:hover {
+          > p {
+            color: #EAF7FF;
+          }
+        }
+      }
+      > div.buyButton, :deep(.buyButton) {
+        position: absolute;
+        right: 31px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 8;
+        width: 90px;
+        height: 34px;
+        text-align: center;
+        line-height: 33px;
+        font-size: 14px;
+      }
+      > div.downloadButton {
+        position: absolute;
+        right: 31px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 8;
+        width: 90px;
+        height: 34px;
+        :deep(div span) {
+          font-size: 14px;
+          width: 100%;
+        }
+      }
+      > div.remove {
+        position: absolute;
+        right: 31px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 90px;
+        height: 34px;
+        text-align: center;
+        line-height: 34px;
+        color: rgba(234, 247, 255, 0.60);
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        letter-spacing: 2px;
+      }
+      > div.appointment {
+        position: absolute;
+        right: 31px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 90px;
+        height: 34px;
+        text-align: center;
+        line-height: 34px;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        letter-spacing: 2px;
+      }
+      &:hover,
+      &:focus-within {
+        background: linear-gradient(77deg, rgba(30, 34, 39, 0.3) 4.98%, rgba(112, 118, 150, 0.3) 100.17%);
+        > div.img_box {
+          > b {
+           transform: scale(1.15);
+         }
+       }
+       > div.unfollow {
+         opacity: 1;
+       }
+      }
+      &.is-remove-game {
+        position: relative;
+        pointer-events: none;
+        z-index: 1;
+        &::after {
+          position: absolute;
+          left: 0;
+          top: 0;
+          content:'';
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.6);
+          z-index: 8;
+        }
+        > section {
+          > ul {
+            display: none;
+          }
+        }
+        > div.unfollow {
+          opacity: 1;
+          z-index: 9;
+          pointer-events: auto;
+        }
+      }
+    }
+  }
+}
+
+  :deep(div.downloadButton) {
+    .grey-rect-btn, .DownloadButton {
+      width: 90px;
+      height: 34px;
+      line-height: 32px;
+    }
+    .buyButton {
+      right: 0px !important;
+    }
+  }
+  :deep(.grey-rect-btn) {
+    .text {
+      font-size: 14px;
+      margin-right: -2px;
+    }
+  }
+
+
+div.common .unfollow:focus-visible,
+div.common .buyButton:focus-visible {
+  outline: 2px solid #4fc3f7 !important;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+div.common .item:focus-visible {
+  outline: 2px solid #4fc3f7 !important;
+  outline-offset: -2px;
+}
+
+div.common .unfollow:focus-visible {
+  opacity: 1;
+}
+
+div.common .item:focus-within > div.unfollow {
+  opacity: 1;
+}
+
+@media (forced-colors: active) {
+  div.common .item:focus-visible,
+  div.common .unfollow:focus-visible,
+  div.common .buyButton:focus-visible {
+    outline: 2px solid Highlight;
+  }
+}

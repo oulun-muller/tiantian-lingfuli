@@ -1,0 +1,186 @@
+<div 
+  class="HorizontalList" 
+  v-if="rankSoftList.data.length"
+  v-exposure="{
+    handler: ()=>onExposure(),
+    delay: 1000,
+    options: { threshold: 0.5 },
+    once: true
+    }"
+  >
+  <h3 class="title-wrap">
+    <span class="title-bac gc-text-stroke-around">{{ moduleEname }}</span>
+    <span v-if="!$isPadDevice" class="gc-title-text"><i class="gc-title-quote-icon"></i>&nbsp;{{ rankSoftList.name }}&nbsp;<i class="gc-title-quote-icon"></i></span>
+    <span v-else class="gc-title-text">{{ rankSoftList.name }}</span>
+    <span class="more" @click="toList(rankSoftList.id,rankSoftList.name)" tabindex="0" role="button" @keydown.enter.prevent.stop="toList(rankSoftList.id,rankSoftList.name)" @keydown.space.prevent.stop="toList(rankSoftList.id,rankSoftList.name)">更多</span>
+  </h3>
+  <ul ref="stage" role="listbox" :aria-label="rankSoftList.name" @keydown="onGridKeydown">
+    <li
+      v-for="(item, index) of rankSoftList.data"
+      :key="item.softId"
+      :tabindex="index === focusedIndex ? 0 : -1"
+      role="option"
+      :aria-selected="index === focusedIndex"
+      :aria-label="item.softName + '，点击查看详情'"
+      @focus="handleCardFocus(index)"
+      @click="toDetail(item)"
+      @keydown.enter.prevent.stop="toDetail(item)"
+      @keydown.space.prevent.stop="toDetail(item)"
+      :class="{ 'isHover': index === curBigCrad }"
+      :style="{
+        width: `${item.width}px`,
+      }">
+      <section class="bigCard" v-if="index===curBigCrad">
+        <b class="hover-container">
+        <!-- <b :style="{ backgroundImage: `url('${ item.showInfo.img354x285 || item.showInfo.himg || defaultImg }')` }"></b> -->
+        <sub class="cover-top"></sub>
+        <sub class="horn-right"></sub>
+        <sub class="horn-left"></sub>
+        <sub class="bor-top"></sub>
+        <sub class="bor-right"></sub>
+        <sub class="bor-bottom"></sub>
+        <sub class="bor-left"></sub>
+        <!-- <sub class="bor-dot0"></sub> -->
+        <sub class="bor-dot1"></sub>
+        <sub class="bor-dot2"></sub>
+        <img
+          v-if="!item.showInfo.img354x285 && !item.showInfo.himg && item.showInfo.logoFile"
+          :src="item.showInfo.logoFile" :alt="item.softName || ''">
+        <div class="radio-img-class">
+          <template v-if="item && item.softDesc.mediaList[0].type === 'video'">
+            <video ref="videoDom" class="img-item" :src="item.softDesc.mediaList[0].url" autoplay muted loop></video>
+          </template>
+          <template v-else>
+              <img class="img-item" :src="item.softDesc.mediaList[0].url" :alt="item.softName || ''" />
+          </template>
+        </div>
+        <div 
+          :class="{
+            'hover_content':true
+          }">
+          <div class="titile-content">
+            <h1>{{ item.softName }}</h1>
+            <div class="tagType">
+              <span v-if="item.downloadInfo.tagUrls.length">
+                <img :src="item.downloadInfo.tagUrls[0]" alt="" class="tag-img">
+              </span>
+              <!-- <p 
+                v-if="item.showInfo.mediaScores.length"
+                v-for="(scoresItem, scoresIndex) of item.showInfo.mediaScores.slice(0,2)"
+                :key="scoresIndex">
+                <i>{{ scoresItem.score }}</i>{{ scoresItem.mediaName }}
+              </p> -->
+            </div>            
+          </div>
+          <template v-if="item.softDesc.introduction">
+            <div class="game-introduction" style="margin-top: 9px; margin-right: 100px">{{item.softDesc.introduction}}</div>
+          </template>
+          <template v-else>
+            <ol v-if="item.showInfo.softLabels.length">
+                <TagNormal 
+                  v-for="(tagItem, tagIndex) of item.showInfo.softLabels.slice(0, 4)"
+                  style="margin-right: 4px;"
+                  :key="tagIndex" :title="tagItem" />
+            </ol>
+          </template>
+          <div class="tag-wrap-2" @click.stop="(e) => {e.preventDefault()}">
+            <TagRank v-if="item.showInfo.rankingLabelInfos.length" style="margin-right: 6px;" :rank-list="item.showInfo.rankingLabelInfos"/>
+            <template v-if="item.relateActivitys.length" >
+              <TagActivity 
+              :class="{ 'tag-has-rank': item.showInfo.rankingLabelInfos.length }"
+              :title="item.relateActivitys[0].title"
+              :plate-name="rankSoftList.name"
+              :game-item="item"
+               />
+            </template>
+            <template v-else-if="item.softDesc.recommendIntroduction">
+              <TagActivity
+              :class="{ 'tag-has-rank': item.showInfo.rankingLabelInfos.length }"
+              :title="item.softDesc.recommendIntroduction"
+              :plate-name="rankSoftList.name"
+              :type="2"
+              :game-item="item"/>
+             </template>
+          </div>  
+          <div class="bottom-btn" @click.stop="(e) => {e.preventDefault()}">
+            <GameDownloadButton
+              class="downloadButton"
+              theme="rect"
+              :downloadInfo="item.downloadInfo"
+              :soft-desc="item.softDesc"
+              :soft-id="item.softId"
+              :soft-purpose="item.softPurpose"
+              :product-info="item.productInfo"
+              :user-purchased-status="item.productInfo.userPurchasedStatus"
+              :version="item.softDesc.version"
+              :soft-name="item.softName"
+              :logo-file="item.showInfo.logoFile"
+              :fast-install="item.showInfo.isFastInstall"
+              :sku-id="item.skuId"
+              :drinfo="drinfo(item)" />
+              <template>
+                <div v-if="item.downloadInfo.bizType === 0 && item.showInfo.playersNum"  class="people-num"><div>{{ gamePeopleFilter(item.showInfo.playersNum) }}人玩过</div></div>
+                <div v-else-if="[1, 2].includes(item.downloadInfo.bizType) && item.downloadInfo.reservationCount"  class="people-num">{{ gamePeopleFilter(item.downloadInfo.reservationCount) }}人已预约</div>
+              </template>
+          </div>
+            <div class="game-rating">
+              <template v-if="item.downloadInfo.bizType === 0 && item.softDesc.positiveReviewRate">
+                    <p class="text">推荐率</p>
+                    <div class="rating-num">{{ item.softDesc.positiveReviewRate }} <span class="symble-100">%</span></div>
+              </template>
+              <template v-else-if="[1, 2].includes(item.downloadInfo.bizType) && item.expectations">
+                    <p class="text">期待值</p>
+                    <div class="rating-num">{{ item.expectations }}</div>
+              </template>
+            </div>                  
+        </div>
+        <div
+          class="concern"
+          tabindex="0"
+          role="button"
+          :aria-label="isFollower ? '取消关注' : '关注'"
+          @click.stop="toFollowers"
+          @keydown.enter.prevent.stop="toFollowers"
+          @keydown.space.prevent.stop="toFollowers"
+          v-if="![1,2].includes(item.downloadInfo.bizType)" >
+          <img v-if="isFollower" src="../image/concern-active.png" aria-hidden="true" alt="">
+          <img v-else src="../image/concern-normal.png" aria-hidden="true" alt="">
+          <p aria-hidden="true">{{ item.softDesc.followerCount }}</p>
+        </div>
+        </b>
+      </section>
+      <section class="smallCard" v-else>
+        <!-- himg:横图，vimg:竖图 -->
+        <b :style="{ backgroundImage: `url('${ item.showInfo.img162x285 || item.showInfo.vimg || defaultImg }')` }" 
+      @mouseenter="curBigCradIn(index)">
+          <sub class="horn-right"></sub>
+          <sub class="horn-left"></sub>
+          <sub class="bor-top"></sub>
+          <sub class="bor-right"></sub>
+          <sub class="bor-bottom"></sub>
+          <sub class="bor-left"></sub>
+          <sub class="bor-dot0"></sub>
+          <sub class="bor-dot2"></sub>
+          <img 
+            v-if="!item.showInfo.img162x285 && !item.showInfo.vimg && item.showInfo.logoFile" 
+            :src="item.showInfo.logoFile" alt="">
+        </b>
+        <div class="bottom_small">
+          <h1>{{ item.softName }}</h1>
+          <template v-if="item.relateActivitys.length">
+            <div style="margin-top: 4px">
+              <TagActivity 
+              :title="item.relateActivitys[0].title"
+              :plate-name="rankSoftList.name"
+              :show-shadow="false"
+              :game-item="item"/>
+            </div>
+          </template>
+          <template v-else-if="item.softDesc.introduction">
+            <div class="game-introduction" style="margin-top: 6px">{{item.softDesc.introduction}}</div>
+          </template>
+        </div>
+      </section>
+    </li>
+  </ul>
+</div>

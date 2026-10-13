@@ -1,0 +1,147 @@
+@import url('./variable.scss');
+.PhoneDevice {
+  .gamecenter{
+    .phone_style > main{
+        padding-top: 119px;
+    }
+    .phone_style > main > div.container .activity-ing{
+        padding: 0 20px;
+    }
+    .phone_style > main > div.container .activity-begin-list{
+       h1{
+        font-size: 18px;
+        padding: 10px 0 20px 0;
+       }
+       .title-bac {
+        font-size: 12px;
+       }
+    }
+    .ActivityZone > main > div.container .activity-ing{
+        margin: 0 auto 31px;
+    }
+  
+    .phone_style > main > div.container .activity-begin-list > b{
+        grid-template-columns: repeat(1, 1fr);
+        li{
+            aspect-ratio: auto;
+            max-height: 269px;
+            height: 269px;
+            padding-bottom: 0;
+            div.w100{
+                width: fit-content;
+            }
+          
+        }
+        .begin-list-item{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .game-banner{
+               
+                max-height: auto;
+                height: 209px;
+                background-size: cover;       /* 铺满 + 保持比例 */
+                background-repeat: no-repeat;
+                background-position: center;
+                aspect-ratio: auto;
+
+            }
+            .game-info{
+              margin-top: 16px;
+                justify-content: space-between;
+                position: relative;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                .title{
+                    h2{
+                        color: #EAF7FF;
+                        font-size: 15px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: normal;
+                        text-transform: capitalize;
+                    }
+                    
+                    .begin-time-text{
+                        color: rgba(234, 247, 255, 0.60);
+                        font-family: Orbitron;
+                        font-size: 12px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: 16px; /* 133.333% */
+
+                    }
+                    .sand-icon{
+                        width: 16px;
+                        height: 16px;
+                        margin-right: 8px;
+                        margin-top: 0;
+                    }
+                }
+                .common-rect-btn{
+                    width: 72px;
+                    height: 28px;
+                    border: 1px solid transparent; /* 1px透明边框，作为渐变载体 */
+                    border-image: linear-gradient(to bottom, #fff, #999) 1 stretch; 
+                    color: #020202;
+                    text-align: center;
+                    font-size: 12px;
+                    font-style: normal;
+                    font-weight: 700;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    letter-spacing: 0
+
+                    
+                }
+            }
+        }
+    }
+    .phone_style > main > div.container{
+        .expire{
+            padding: 0;
+            padding-bottom: 180px;
+            margin-top: 6px;
+            h1{
+                display: none;
+            }
+        }
+        .phone_previous_title{
+            .previous{
+                width: 195px;
+                height: 37px;
+                margin: 0 auto;
+                background: url('./image/previous.svg');
+                background-size: 195px 37px;
+                margin-bottom: 0px;
+            }
+
+        }
+    }
+
+    .banner-img-item{
+        border-radius: 6px !important;
+        width: 287px !important;
+        height: 162px !important;
+        box-sizing: border-box;
+
+    }
+    .isExpire{
+        margin-top: 30px;
+        position: relative;
+       
+    }
+    .infinite-scroll-component-box-left{
+        height: 164px;
+        margin-top: 0px;
+
+    }
+    .infinite-scroll-component-box-right{
+        height: 164px;
+
+        margin-top: 20px;
+    }
+  }
+}

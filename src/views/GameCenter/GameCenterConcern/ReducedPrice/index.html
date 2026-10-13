@@ -1,0 +1,16 @@
+<div class="ReducedPrice">
+  <main ref="reducedPriceListScroller" @scroll="scrollHandle">
+    <section v-if="!fetching && reducedPriceList.length <= 0" class="nothing">
+      <img src="./nothing.png" alt="">
+      <p>暂时没有降价的游戏</p>
+    </section>
+    <common 
+      v-else
+      :concern-list="reducedPriceList"
+      :first-local="firstLocal"
+      :second-local="secondLocal"
+      :third-local="thirdLocal"
+      :last-id="lastId"
+      @deleteCurrent="deleteCurrent" />
+  </main>
+</div>

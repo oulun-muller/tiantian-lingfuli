@@ -1,0 +1,56 @@
+<div
+  v-if="rankSoftList.length"
+  :style="{ backgroundImage: `url('${currentBanner.rankingListLabelImg}')` }"
+  class="Banner"
+  tabindex="0"
+  role="button"
+  :aria-label="(currentBanner.softName || '') + '，点击查看详情'"
+  @pointerenter="stop"
+  @pointerleave="play"
+  @click="toDetail(currentBanner)"
+  @keydown.enter.prevent.stop="toDetail(currentBanner)"
+  @keydown.space.prevent.stop="toDetail(currentBanner)">
+  <h1 aria-hidden="true">{{ currentBanner.softName }}</h1>
+  <p class="cdk" v-if="currentBanner.softPurpose === 1">
+    <span v-if="currentBanner.productInfo.discount" class="discount">{{ currentBanner.productInfo.discount }}</span>
+    <span class="currentPrice">¥{{ currentBanner.productInfo.currentPrice }}</span>
+    <span v-if="currentBanner.productInfo.discount && currentBanner.productInfo.originalPrice" class="originalPrice">¥{{ currentBanner.productInfo.originalPrice }}</span>
+    <span v-if="currentBanner.productInfo.exchangePlatformFont" class="iconfont platform" v-html="currentBanner.productInfo.exchangePlatformFont"></span>
+  </p>
+  <p class="download" v-else>免费开玩<i>|</i>{{ currentBanner.downloadInfo.downloadCount }}</p>
+  <div
+    v-if="rankSoftList.length > 1"
+    class="dotIndicator"
+    @click.stop>
+    <i
+      v-for="(item, index) of rankSoftList"
+      :key="item.softId"
+      tabindex="0"
+      role="button"
+      :aria-label="`切换到第${index + 1}项`"
+      :aria-pressed="activeIndex === index ? 'true' : 'false'"
+      :class="{ active: activeIndex === index }"
+      @pointerenter="setActiveIndex(index)"
+      @click.stop="setActiveIndex(index)"
+      @keydown.enter.prevent.stop="setActiveIndex(index)"
+      @keydown.space.prevent.stop="setActiveIndex(index)"></i>
+  </div>
+  <div
+    v-if="rankSoftList.length > 1"
+    class="imgIndicator"
+    @click.stop>
+    <i
+      v-for="(item, index) of rankSoftList"
+      :key="item.softId"
+      tabindex="0"
+      role="button"
+      :aria-label="`切换到第${index + 1}项`"
+      :aria-pressed="activeIndex === index ? 'true' : 'false'"
+      :class="{ active: activeIndex === index }"
+      :style="{ backgroundImage: `url('${item.rankingListLabelImg}')` }"
+      @pointerenter="setActiveIndex(index)"
+      @click.stop="setActiveIndex(index)"
+      @keydown.enter.prevent.stop="setActiveIndex(index)"
+      @keydown.space.prevent.stop="setActiveIndex(index)"></i>
+  </div>
+</div>

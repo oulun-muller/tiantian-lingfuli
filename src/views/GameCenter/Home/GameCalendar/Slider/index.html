@@ -1,0 +1,19 @@
+<div
+  class="slider"
+  :class="{ 'move':!this.isDragging || isClick }"
+  ref="slider"
+  role="slider"
+  tabindex="0"
+  aria-label="日历滑块"
+  :aria-valuenow="Math.round(value)"
+  aria-valuemin="0"
+  aria-valuemax="100"
+  @mousedown="handleMouseDown"
+  @touchstart="handleTouchStart"
+  @keydown="handleKeydown">
+  <div
+    class="slider-bar"
+    ref="sliderBar"
+    :style="{ left: currentLeft + 'px', width: '25%'}">
+  </div>
+</div>

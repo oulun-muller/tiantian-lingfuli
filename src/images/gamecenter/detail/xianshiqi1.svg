@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon/显示器/小</title>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#EAF7FF" stop-opacity="0.6" offset="0%"></stop>
+            <stop stop-color="#EAF7FF" stop-opacity="0.5" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="硬件详情资源" transform="translate(-717.000000, -242.000000)">
+            <g id="硬件详情首页" transform="translate(319.000000, 242.000000)">
+                <g id="icon/显示器/小" transform="translate(398.000000, 0.000000)">
+                    <rect id="矩形" x="0" y="0" width="26" height="26"></rect>
+                    <path d="M15,19 L15,22 L19,22 L19,24 L7,24 L7,22 L11,22 L11,19 L15,19 Z" id="形状结合" fill="#39404D"></path>
+                    <path d="M25,3 L25,19 L1,19 L1,3 L25,3 Z M23,5 L3,5 L3,17 L23,17 L23,5 Z" id="形状结合" fill="url(#linearGradient-1)" fill-rule="nonzero" opacity="0.7"></path>
+                    <rect id="矩形" fill="#EAF7FF" x="5" y="7" width="10" height="1.5"></rect>
+                    <rect id="矩形备份-65" fill="#EAF7FF" opacity="0.5" x="5" y="10" width="6" height="1.5"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

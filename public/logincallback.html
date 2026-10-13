@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录跳转中...</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #040404;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      text-align: center;
+    }
+    .loading {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+    .tip {
+      font-size: 14px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="loading">正在登录跳转中...</div>
+  </div>
+
+  <script>
+    // 登录回调中转页面
+    // 联想 ID 登录成功后回调到本页面（不带 # 的路径），
+    // 本页面读取 URL 参数后跳转到 Vue Router 的 hash 路由 /#/logincallback
+
+    (function () {
+      // 获取原始 URL 的 query 参数和 hash
+      var search = window.location.search || ''
+      var hash = window.location.hash || ''
+
+      // 目标地址：当前页面路径 + /#/logincallback + 原始参数
+      // 站点可能部署在子目录（如 /frontend/legion-zone/legion-zone-online-mobile/test/），
+      // 不能用硬编码的根路径 /#/logincallback，否则会丢掉子目录段并跳回根域名
+      var basePath = window.location.pathname.replace(/logincallback\.html$/, '')
+      var targetUrl = basePath + 'index.html#/logincallback' + search + hash
+
+      // 用 replace 跳转，避免浏览器后退回到本页面
+      window.location.replace(targetUrl)
+    })()
+
+  </script>
+</body>
+</html>

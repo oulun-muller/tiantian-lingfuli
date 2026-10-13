@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon/有线网卡/小</title>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#EAF7FF" stop-opacity="0.8" offset="0%"></stop>
+            <stop stop-color="#EAF7FF" stop-opacity="0.6" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#EAF7FF" stop-opacity="0.6" offset="0%"></stop>
+            <stop stop-color="#EAF7FF" stop-opacity="0.5" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="硬件详情资源" transform="translate(-915.000000, -242.000000)">
+            <g id="硬件详情首页" transform="translate(319.000000, 242.000000)">
+                <g id="icon/有线网卡/小" transform="translate(596.000000, 0.000000)">
+                    <rect id="矩形" x="0" y="0" width="26" height="26"></rect>
+                    <g id="编组" transform="translate(2.000000, 2.000000)">
+                        <path d="M22.0140766,0.0190090034 L22.0140766,22.019009 L0.0140765878,22.019009 L0.0140765878,0.0190090034 L22.0140766,0.0190090034 Z M20.0140766,2.019009 L2.01407659,2.019009 L2.01407659,20.019009 L20.0140766,20.019009 L20.0140766,2.019009 Z" id="形状结合" fill="#505869"></path>
+                        <g id="编组-3" transform="translate(4.000000, 5.000000)" fill-rule="nonzero">
+                            <path d="M0,5.01410577 L0,13 L14,13 L14,5.00921631 L0,5.01410577 Z M2.50195799,11.9849243 L1.00676397,11.9849243 L1.00676397,6.00426082 L2.50195799,6.00426082 L2.50195799,11.9849243 Z M5.11854753,11.9849243 L3.62335351,11.9849243 L3.62335351,6.00426082 L5.11854753,6.00426082 L5.11854753,11.9849243 Z M7.73513706,11.9849243 L6.23994304,11.9849243 L6.23994304,6.00426082 L7.73513706,6.00426082 L7.73513706,11.9849243 Z M10.3467426,11.9849243 L8.85154859,11.9849243 L8.85154859,6.00426082 L10.3467426,6.00426082 L10.3467426,11.9849243 Z M12.9633321,11.9849243 L11.4681381,11.9849243 L11.4681381,6.00426082 L12.9633321,6.00426082 L12.9633321,11.9849243 Z" id="形状" fill="url(#linearGradient-1)"></path>
+                            <path d="M9.54545455,-1.65201186e-13 L9.54545455,3 L11.4545455,3 L11.4545455,5 L2.54545455,5 L2.54545455,3 L4.45445455,3 L4.45454545,-1.65201186e-13 L9.54545455,-1.65201186e-13 Z" id="形状结合" fill="url(#linearGradient-2)"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

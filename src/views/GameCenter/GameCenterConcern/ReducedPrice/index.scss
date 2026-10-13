@@ -1,0 +1,118 @@
+div.ReducedPrice {
+  width: 100%;
+  height: 100%;
+  > main {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: overlay;
+    max-width: 1920px;
+    margin: 0 auto;
+    > section.nothing {
+      padding-top: 47vh;
+      > img {
+        display: block;
+        margin: 0 auto;
+        width: 88px;
+        height: 88px;
+        margin-top: -200px;
+      }
+      > p {
+        margin-top: 16px;
+        font-size: 14px;
+        color: rgba(234, 247, 255, 0.6);
+        line-height: 14px;
+        height: 14px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media (forced-colors: active) {
+  .PcDevice {
+      .ReducedPrice {
+        background: Canvas;
+        color: CanvasText;
+        forced-color-adjust: auto;
+      }
+
+      .ReducedPrice .card,
+      .ReducedPrice .panel,
+      .ReducedPrice .tile,
+      .ReducedPrice .item,
+      .ReducedPrice li,
+      .ReducedPrice section,
+      .ReducedPrice article,
+      .ReducedPrice .content,
+      .ReducedPrice .wrapper,
+      .ReducedPrice .container {
+        background: Canvas;
+        border-color: ButtonText;
+        color: CanvasText;
+      }
+
+      .ReducedPrice button,
+      .ReducedPrice [role="button"],
+      .ReducedPrice .btn,
+      .ReducedPrice .button,
+      .ReducedPrice .close,
+      .ReducedPrice .back,
+      .ReducedPrice .more,
+      .ReducedPrice .prev,
+      .ReducedPrice .next,
+      .ReducedPrice .arrow,
+      .ReducedPrice .search-icon {
+        background: ButtonFace;
+        border: 1px solid ButtonText;
+        color: ButtonText;
+      }
+
+      .ReducedPrice input,
+      .ReducedPrice textarea,
+      .ReducedPrice select {
+        background: Canvas;
+        border: 1px solid ButtonText;
+        color: CanvasText;
+      }
+
+      .ReducedPrice input::placeholder,
+      .ReducedPrice textarea::placeholder,
+      .ReducedPrice .empty,
+      .ReducedPrice .nothing,
+      .ReducedPrice .placeholder,
+      .ReducedPrice .disabled,
+      .ReducedPrice .is-disabled,
+      .ReducedPrice [disabled],
+      .ReducedPrice [aria-disabled="true"] {
+        color: GrayText;
+        border-color: GrayText;
+      }
+
+      .ReducedPrice .active,
+      .ReducedPrice .selected,
+      .ReducedPrice .is-active,
+      .ReducedPrice .is-selected,
+      .ReducedPrice [aria-selected="true"] {
+        background: Highlight;
+        border-color: Highlight;
+        color: HighlightText;
+      }
+
+      .ReducedPrice a {
+        color: LinkText;
+      }
+
+      .ReducedPrice button:focus-visible,
+      .ReducedPrice a:focus-visible,
+      .ReducedPrice input:focus-visible,
+      .ReducedPrice textarea:focus-visible,
+      .ReducedPrice select:focus-visible,
+      .ReducedPrice [role="button"]:focus-visible,
+      .ReducedPrice [tabindex]:focus-visible {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+  }
+}

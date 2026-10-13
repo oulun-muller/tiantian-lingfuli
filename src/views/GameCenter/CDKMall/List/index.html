@@ -1,0 +1,193 @@
+<div class="List">
+  <header
+    draggable
+    @dragstart.prevent="$startDrag"
+    @dblclick.self="$toggleMaximize">
+    <i class="el-icon-arrow-left back" tabindex="0" role="button" aria-label="返回" @click="back" @keydown.enter.prevent.stop="back" @keydown.space.prevent.stop="back" draggable @dragstart.prevent.stop></i>
+    <PadGameSearch v-if="$isPadDevice" class="search-class" />
+    <div v-else draggable @dragstart.prevent.stop>
+      <input
+        type="text"
+        v-model.trim="keyword"
+        @keydown.enter="toSearch"
+        @click.stop="handleShowSearchUp"
+        @input="searchGameListByKeyword"
+        @mouseenter="handleIsEntered">
+      <i class="iconfont" tabindex="0" role="button" aria-label="搜索" @click="toSearch" @keydown.enter.prevent.stop="toSearch" @keydown.space.prevent.stop="toSearch">&#xe67e;</i>
+      <span
+        class="placeholder"
+        v-if="!isEntered"><i class="title">{{ defaultKeyword }}</i><i class="sub-title">{{ description }}</i></span>
+
+      <UpSearch
+        @click.stop
+        v-if="showSearchUp"
+        :keyword="keyword"
+        :show-search-up="showSearchUp"
+        :search-word="searchWord"
+        :search-game-list="searchGameList"
+        @selectSearchWord="selectSearchWord"
+        searchUpSource="searchPage"
+        :first-local="firstLocal" />
+    </div>
+  </header>  
+  <div ref="stage" class="stage">
+    <main ref="listScroller" @scroll="scrollHandle" class="popover-relative-dom">
+      <section class="filter">
+        <span>{{ rankName }}</span>
+        <div class="selectAnItem" v-if="!$isPhoneDevice">
+          <b></b>
+          <div
+            v-if="column2" 
+            class="arrowhead"
+            @click.stop="filterChange(column2)">
+            <i :class="{'iconfont':true,'isActive':asc}">&#xe67a;</i>
+            <i :class="{'iconfont':true,'isActive':!asc}">&#xe67c;</i>
+          </div>
+          <el-select
+            placeholder="默认排序"
+            v-model="column2"
+            size="mini"
+            popper-class="lgSelectDropdown"
+            class="lgSelect"
+            @change="filterChange">
+            <el-option
+              v-for="item in showSortList"
+              :key="item.id"
+              :label="item.name"
+              :value="item.id">
+              <div class="ub ub-ac ub-pj w100">
+                <div>{{ item.name }}</div>
+              </div>
+            </el-option>
+          </el-select>
+        </div>
+      </section>
+      <section v-if="!fetching && cdkList.length <= 0" class="nothing">
+        <img src="./nothing.png" alt="">
+        <p>没有找到您要的游戏</p>
+      </section>
+      <section
+        v-else
+        class="list"
+        role="listbox"
+        :aria-label="rankName"
+        ref="listGrid"
+        @keydown="onGridKeydown">
+        <div
+          v-for="(item, index) of cdkList"
+          :key="item.softId"
+          :tabindex="index === focusedIndex ? 0 : -1"
+          role="option"
+          :aria-selected="index === focusedIndex"
+          :aria-label="item.softName + '，点击查看详情'"
+          @focus="handleCardFocus(item, index)"
+          @click="toDetail(item)"
+          @mouseenter="handleCurrentVideo(item)"
+          @mouseleave="currentVideo = -1"
+          @keydown.enter.prevent.stop="toDetail(item)"
+          @keydown.space.prevent.stop="toDetail(item)">
+          <div class="card">
+            <b aria-hidden="true">
+              <i :style="{ backgroundImage: `url('${ handleCurImg(item) }')` }">
+                <sub class="bor-top"></sub>
+                <sub class="bor-right"></sub>
+                <sub class="bor-bottom"></sub>
+                <sub class="bor-left"></sub>
+                <img
+                  v-if="currentVideo !== item.softId && !item.showInfo.himg && item.showInfo.logoFile"
+                  :src="item.showInfo.logoFile" :alt="item.softName || ''" aria-hidden="true">
+                  <div class="hover_content">
+                    <div
+                      class="concern"
+                      :tabindex="(currentVideo === item.softId || focusedIndex === index) ? 0 : -1"
+                      role="button"
+                      :aria-label="item.softDesc && item.softDesc.isFollower ? '取消关注' : '关注' + item.softName"
+                      @click.stop="toFollowers(item)"
+                      @keydown.enter.prevent.stop="toFollowers(item)"
+                      @keydown.space.prevent.stop="toFollowers(item)"
+                      v-if="![1,2].includes(item.downloadInfo.bizType)" >
+                      <img v-if="isFollower" src="./image/concern-active.png" alt="" aria-hidden="true">
+                      <img v-else src="./image/concern-normal.png" alt="" aria-hidden="true">
+                      <p aria-hidden="true">{{ item.softDesc.followerCount }}</p>
+                    </div>
+                    <ol aria-hidden="true">
+                      <span v-if="item.downloadInfo.tagUrls.length">
+                        <img :src="item.downloadInfo.tagUrls[0]" alt="">
+                      </span>
+                      <template v-if="item.showInfo.softLabels && item.showInfo.softLabels.length && item.downloadInfo.tagUrls.length">
+                           <li
+                        v-for="(tagItem, tagIndex) of item.showInfo.softLabels.slice(0,2)"
+                        :key="tagIndex">{{ tagItem }}</li>
+                      </template>
+                      <template v-if="item.showInfo.softLabels && item.showInfo.softLabels.length && !item.downloadInfo.tagUrls.length">
+                        <li
+                        v-for="(tagItem, tagIndex) of item.showInfo.softLabels.slice(0,3)"
+                        :key="tagIndex">{{ tagItem }}</li>
+                      </template>
+                    </ol>
+                  </div>
+                  <video
+                    v-if="
+                      currentVideo === item.softId &&
+                      item.softDesc &&
+                      item.softDesc.mediaList[0] &&
+                      item.softDesc.mediaList[0].type === 'video'"
+                    :src="item.softDesc.mediaList[0].url"
+                    :poster="item.showInfo.himg || defaultImg"
+                    muted
+                    autoplay
+                    loop>
+                  </video>
+              </i>
+            </b>
+            <div class="bottom">
+              <div class="left">
+                <h1>{{ item.softName }}</h1>
+                <p class="cdk" v-if="item.softPurpose === 1">
+                  <span v-if="item.productInfo.discount" class="discount">{{ item.productInfo.discount }}</span>
+                  <span class="currentPrice">¥{{ item.productInfo.currentPrice }}</span>
+                  <span v-if="item.productInfo.discount && item.productInfo.originalPrice" class="originalPrice">¥{{ item.productInfo.originalPrice }}</span>
+                  <span v-if="item.productInfo.exchangePlatformFont" class="iconfont platform" v-html="item.productInfo.exchangePlatformFont"></span>
+                </p>
+                <p class="download" v-else-if="item.showInfo.playersNum>=100">最近{{ item.showInfo.playersNum }}人玩过</p>
+                <p class="download" v-else>{{ item.downloadInfo.downloadCount }}</p>
+              </div>
+              <div class="right">
+                <div v-if="item.softPurpose === 3 && !item.productInfo.userPurchasedStatus" class="buy-information">
+                  <div class="discount-class">{{ item.productInfo.discount || 0 }}</div>
+                  <div class="current-price-class">¥{{ item.productInfo.currentPrice || 0 }}</div>
+                  <div class="orgin-price-class">¥{{ item.productInfo.originalPrice || 0 }}</div>
+                </div>
+                <div
+                  class="buyButton common-rect-btn"
+                  tabindex="0"
+                  role="button"
+                  aria-label="购买"
+                  @click.stop="showPay(item)"
+                  @keydown.enter.prevent.stop="showPay(item)"
+                  @keydown.space.prevent.stop="showPay(item)"
+                  v-if="item.softPurpose === 1">购买</div>
+                <GameDownloadButton
+                  v-else
+                  class="downloadButton"
+                  theme="rect"
+                  :downloadInfo="item.downloadInfo"
+                  :soft-desc="item.softDesc"
+                  :soft-id="item.softId"
+                  :soft-purpose="item.softPurpose"
+                  :product-info="item.productInfo"
+                  :userPurchasedStatus="item.productInfo.userPurchasedStatus"
+                  :version="item.softDesc.version"
+                  :soft-name="item.softName"
+                  :logo-file="item.showInfo.logoFile"
+                  :fast-install="item.showInfo.isFastInstall"
+                  :drinfo="drinfo(item)"
+                  :sku-id="item.skuId" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>

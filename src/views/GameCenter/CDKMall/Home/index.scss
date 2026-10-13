@@ -1,0 +1,112 @@
+div.Home {
+  width: 100%;
+  height: 100%;
+  // position: relative;
+  background-color: #101010;
+  background-image: url("./bg.png");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: bottom center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  > main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+@media (forced-colors: active) {
+  .PcDevice {
+      .Home {
+        background: Canvas;
+        color: CanvasText;
+        forced-color-adjust: auto;
+      }
+
+      .Home .card,
+      .Home .panel,
+      .Home .tile,
+      .Home .item,
+      .Home li,
+      .Home section,
+      .Home article,
+      .Home .content,
+      .Home .wrapper,
+      .Home .container {
+        background: Canvas;
+        border-color: ButtonText;
+        color: CanvasText;
+      }
+
+      .Home button,
+      .Home [role="button"],
+      .Home .btn,
+      .Home .button,
+      .Home .close,
+      .Home .back,
+      .Home .more,
+      .Home .prev,
+      .Home .next,
+      .Home .arrow,
+      .Home .search-icon {
+        background: ButtonFace;
+        border: 1px solid ButtonText;
+        color: ButtonText;
+      }
+
+      .Home input,
+      .Home textarea,
+      .Home select {
+        background: Canvas;
+        border: 1px solid ButtonText;
+        color: CanvasText;
+      }
+
+      .Home input::placeholder,
+      .Home textarea::placeholder,
+      .Home .empty,
+      .Home .nothing,
+      .Home .placeholder,
+      .Home .disabled,
+      .Home .is-disabled,
+      .Home [disabled],
+      .Home [aria-disabled="true"] {
+        color: GrayText;
+        border-color: GrayText;
+      }
+
+      .Home .active,
+      .Home .selected,
+      .Home .is-active,
+      .Home .is-selected,
+      .Home [aria-selected="true"] {
+        background: Highlight;
+        border-color: Highlight;
+        color: HighlightText;
+      }
+
+      .Home a {
+        color: LinkText;
+      }
+
+      .Home button:focus-visible,
+      .Home a:focus-visible,
+      .Home input:focus-visible,
+      .Home textarea:focus-visible,
+      .Home select:focus-visible,
+      .Home [role="button"]:focus-visible,
+      .Home [tabindex]:focus-visible {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+  }
+}

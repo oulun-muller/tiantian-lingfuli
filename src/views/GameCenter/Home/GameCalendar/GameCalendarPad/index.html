@@ -1,0 +1,148 @@
+<div 
+  class="GameCalendar" 
+  v-if="rankSoftList.data.length">
+  <h3 class="title-wrap">
+    <span class="title-bac gc-text-stroke-around">{{ moduleEname }}</span>
+    <span v-if="!$isPadDevice"  class="gc-title-text"><i class="gc-title-quote-icon"></i>&nbsp;{{ rankSoftList.name }}&nbsp;<i class="gc-title-quote-icon"></i></span>
+    <span v-else  class="gc-title-text">{{ rankSoftList.name }}</span>
+  </h3>
+  <div :class="{
+      'list-wrapper':true,
+      'left-mask':showPrevPageButton,
+      'right-mask':showNextPageButton}" 
+    ref="list-wrapper">
+    <ul 
+    ref="ul-wrapper" 
+    :class="{'ulActive':ulActive}"
+    :style="{
+      '--uWidth': uWidth,
+      transform: `translateX(${transX}px)`
+    }">
+    <li 
+      v-for="(item, index) of rankSoftList.data"
+      :key="item.id"
+      @click="toDetail(item.softInfo)"
+      :class="{ 'isHover': index === curBigCrad2 }"
+      :style="{
+        width: `${item._width}px`
+      }"
+      @mouseenter="!$isPadDevice && curBigCradIn(index)" 
+      @mouseleave="!$isPadDevice && curBigCradOut()">
+      <section class="bigCard" v-if="index===curBigCrad2">
+        <div class="date" >
+          <span>{{ filterEventDate(item) }}</span>
+          <i></i>
+        </div>
+        <b :style="{ backgroundImage: `url('${ item.himg || defaultImg }')` }">
+        <sub class="horn-right"></sub>
+        <sub class="horn-left"></sub>
+        <sub class="bor-top"></sub>
+        <sub class="bor-right"></sub>
+        <sub class="bor-bottom"></sub>
+        <sub class="bor-left"></sub>
+        <sub class="bor-dot0"></sub>
+        <sub class="bor-dot1"></sub>
+        <sub class="bor-dot2"></sub>
+        <img 
+          v-if="!item.himg && item.softInfo.showInfo.logoFile" 
+          :src="item.softInfo.showInfo.logoFile" alt="">
+        <div 
+          :class="{
+            'hover_content':true
+          }">
+          <div class="tagType">
+            <span v-if="item.softInfo.downloadInfo.tagUrls.length">
+              <img 
+                :src="item.softInfo.downloadInfo.tagUrls[0]" 
+                alt="">
+            </span>
+            <p 
+              v-if="item.softInfo.showInfo.mediaScores.length"
+              v-for="(scoresItem, scoresIndex) of item.softInfo.showInfo.mediaScores.slice(0,2)"
+              :key="scoresIndex">
+              <i>{{ scoresItem.score }}</i>{{ scoresItem.mediaName }}
+            </p>
+          </div>
+          <ol>
+            <li
+              v-if="item.softInfo.showInfo.softLabels.length"
+              v-for="(tagItem, tagIndex) of item.softInfo.showInfo.softLabels.slice(0, 4)"
+              :key="tagIndex">{{ tagItem }}</li>
+          </ol>
+          <p v-if="item.softInfo.softDesc.introduction">{{ item.softInfo.softDesc.introduction }}</p>
+        </div>
+        <div 
+          class="concern" 
+          @click.stop="toFollowers" 
+          v-if="getShowFollowers(item)" >
+          <img v-if="isFollower" src="../image/concern-active.png" alt="">
+          <img v-else src="../image/concern-normal.png" alt="">
+          <p>{{ item.softInfo.softDesc.followerCount }}</p>
+        </div>
+        </b>
+        <div class="bottom_big">
+          <div class="left">
+            <h1>{{ item.softInfo.softName }}</h1>
+            <p class="download">{{ filterDescriptiveInformation(item) }}</p>
+          </div>
+          <div class="right">
+            <GameDownloadButton
+              class="downloadButton"
+              buttonStyle="abnormal"
+              :downloadInfo="item.softInfo.downloadInfo"
+              :soft-desc="item.softInfo.softDesc"
+              :soft-id="item.softInfo.softId"
+              :soft-purpose="item.softInfo.softPurpose"
+              :product-info="item.softInfo.productInfo"
+              :user-purchased-status="item.softInfo.productInfo.userPurchasedStatus"
+              :version="item.softInfo.softDesc.version"
+              :soft-name="item.softInfo.softName"
+              :logo-file="item.softInfo.showInfo.logoFile"
+              :fast-install="item.softInfo.showInfo.isFastInstall"
+              :drinfo="drinfo(item.softInfo)"
+              :hideEventDate="item.hideEventDate===1" />
+          </div>
+        </div>
+      </section>
+      <section class="smallCard" v-else>
+        <div class="date">
+          <span>{{ filterEventDate(item) }}</span>
+          <i></i>
+        </div>
+        <!-- himg:横图，vimg:竖图 -->
+        <b :style="{ backgroundImage: `url('${ item.vimg || defaultImg }')` }">
+          <sub class="horn-right"></sub>
+          <sub class="horn-left"></sub>
+          <sub class="bor-top"></sub>
+          <sub class="bor-right"></sub>
+          <sub class="bor-bottom"></sub>
+          <sub class="bor-left"></sub>
+          <sub class="bor-dot0"></sub>
+          <img 
+            v-if="!item.vimg && item.softInfo.showInfo.logoFile" 
+            :src="item.softInfo.showInfo.logoFile" alt="">
+          <footer 
+            :class="{'is-online':item.eventType===0 || 
+            ([1, 2].includes(item.eventType) && item.eventStatus === 2)}">{{ filterEventType(item) }}</footer>
+        </b>
+        <div class="bottom_small">
+          <h1>{{ item.softInfo.softName }}</h1>
+          <p class="download">{{ filterDescriptiveInformation(item) }}</p>
+        </div>
+      </section>
+    </li>
+    </ul>
+    <button v-if="showPrevPageButton && !$isPadDevice" class="prev" @click="prevPage"></button>
+    <button v-if="showNextPageButton && !$isPadDevice" class="next" @click="nextPage"></button>
+  </div>
+  <div 
+    class="bar" 
+    v-if="((cWidth<1400 && rankSoftList.data.length>5) || (cWidth>1400 && rankSoftList.data.length>6))">
+    <span class="left"></span>
+    <Slider
+      class="slider" 
+      v-model="progress" 
+      @input="onInput" />
+    <span class="right"></span>
+  </div>
+</div>

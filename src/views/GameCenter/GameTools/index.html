@@ -1,0 +1,55 @@
+<div class="GameTools">
+  <ol role="tablist">
+    <li
+      v-for="(item,index) in selectTagList"
+      :key="index"
+      role="tab"
+      tabindex="0"
+      :aria-selected="curSelectTag === item.id ? 'true' : 'false'"
+      :class="{isActive:curSelectTag === item.id}"
+      @click.stop="selectTag(item)"
+      @keydown.enter.prevent.stop="selectTag(item)"
+      @keydown.space.prevent.stop="selectTag(item)">{{ item.name }}</li>
+  </ol>
+  <main ref="gameToolsScrollTop" @scroll="scrollHandle">
+    <ul>
+      <li
+        v-for="(item,index) in gameToolsList"
+        :key="item.softId"
+        tabindex="0"
+        role="button"
+        :aria-label="item.softName + '，点击查看详情'"
+        @click.stop="goDetail(item)"
+        class="list"
+        v-if="gameToolsList.length"
+        @keydown.enter.prevent.stop="goDetail(item)"
+        @keydown.space.prevent.stop="goDetail(item)">
+        <img :src="item.showInfo.logoFile || defaultImg" :alt="item.softName" aria-hidden="true">
+        <div class="title">
+          <h1>{{ item.softName }}</h1>
+          <p>{{ item.softDesc.introduction }}</p>
+        </div>
+        <p class="install">{{ item.downloadInfo.downloadCount }}</p>
+        <GameDownloadButton
+          class="downloadButton"
+          theme="rect"
+          :downloadInfo="item.downloadInfo"
+          :soft-desc="item.softDesc"
+          :soft-id="item.softId"
+          :soft-purpose="item.softPurpose"
+          :product-info="item.productInfo"
+          :userPurchasedStatus="item.productInfo.userPurchasedStatus"
+          :version="item.softDesc.version"
+          :soft-name="item.softName"
+          :logo-file="item.showInfo.logoFile"
+          :fast-install="item.showInfo.isFastInstall"
+          :drinfo="drinfo(item,index)"
+          :sku-id="item.skuId" />
+      </li>
+      <li class="normal" v-if="!gameToolsList.length && isLoad">
+        <img src="@/images/gamecenter/nothing.png" alt="">
+        <p>暂无游戏哦 ！</p>
+      </li>
+    </ul>
+  </main>
+</div>

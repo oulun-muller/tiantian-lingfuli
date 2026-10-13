@@ -1,0 +1,552 @@
+.FourColumnList {
+  .pointer {
+    cursor: pointer;
+  }
+
+  .item {
+    width: 100%;
+    height: 80px;
+    margin-bottom: 20px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.20)0%, rgba(0, 0, 0, 0.20)100%), linear-gradient(77deg, rgba(30, 34, 39, 0.20)4.98%, rgba(112, 118, 150, 0.20)100.17%);
+    position: relative;
+    display: flex;
+
+    // &.IsRankList {
+    //   height: 76px;
+    // }
+    >div.img_box {
+      position: relative;
+      width: 143px;
+      height: 100%;
+      overflow: hidden;
+
+      &.IsRankList_img_box {
+        height: 100%;
+      }
+
+      >b {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        transition: transform .4s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        >img {
+          width: 42px;
+          height: 42px;
+          object-fit: cover;
+        }
+      }
+
+      .arrow-up {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 22px;
+        height: 22px;
+        background: transparent url('~@/images/gamecenter/arrow-up.png') no-repeat center center / contain;
+      }
+
+      .arrow-down {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 22px;
+        height: 22px;
+        background: transparent url('~@/images/gamecenter/arrow-down.png') no-repeat center center / contain;
+      }
+    }
+
+    >span {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 3;
+      font-size: 12px;
+      font-style: italic;
+      color: #ffffff;
+      font-weight: bold;
+      line-height: 1;
+      box-sizing: content-box;
+      padding: 4px 7px 6px 5px;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.31);
+      border: 1px solid transparent;
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: linear-gradient(0deg, #0c9b34, #0c9b34),
+        linear-gradient(135deg, #4ad370 7.43%, #0c8e30 94.88%);
+
+      &.hot {
+        background-image: linear-gradient(0deg, #eb2051, #eb2051),
+          linear-gradient(135deg, #ff5981 7.43%, #a9062e 94.88%);
+      }
+
+      &.lowest {
+        background-image: linear-gradient(0deg, #2420eb, #2420eb),
+          linear-gradient(135deg, #6b68ff 7.43%, #13119a 94.88%);
+      }
+
+      &.limit {
+        background-image: linear-gradient(0deg, #7d1bf9, #7d1bf9),
+          linear-gradient(135deg, #b275ff 7.43%, #4c0e9b 94.88%);
+      }
+    }
+
+    >section {
+      width: 47.3%;
+      margin-left: 20px;
+
+      .softName {
+        width: 100%;
+        height: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 16px;
+
+        >b.rankTagB {
+          margin-top: 6px;
+        }
+
+        >b.rankTag0 {
+          display: inline-block;
+          width: 63px;
+          height: 20px;
+
+          &.tab5 {
+            background: url('@/images/gamecenter/nob-red-top1.png') no-repeat;
+            background-size: contain;
+          }
+
+          &.tab7 {
+            background: url('@/images/gamecenter/nob-purple-top1.png') no-repeat;
+            background-size: contain;
+          }
+
+          &.tab8 {
+            background: url('@/images/gamecenter/nob-green-top1.png') no-repeat;
+            background-size: contain;
+          }
+
+          &.tab6 {
+            background: url('@/images/gamecenter/nob-blue-top1.png') no-repeat;
+            background-size: contain;
+          }
+
+          &.tab19 {
+            background: url('@/images/gamecenter/nob-yellow-top1.png') no-repeat;
+            background-size: contain;
+          }
+        }
+
+        >b.rankTag1 {
+          display: inline-block;
+          width: 63px;
+          height: 20px;
+
+          &.tab5 {
+            background: url('@/images/gamecenter/nob-red-top2.png') no-repeat;
+            background-size: contain;
+          }
+
+          &.tab7 {
+            background: url('@/images/gamecenter/nob-purple-top2.png') no-repeat;
+            background-size: contain;
+          }
+
+          &.tab8 {
+            background: url('@/images/gamecenter/nob-green-top2.png') no-repeat;
+            background-size: contain;
+          }
+
+          &.tab6 {
+            background: url('@/images/gamecenter/nob-blue-top2.png') no-repeat;
+            background-size: contain;
+          }
+
+          &.tab19 {
+            background: url('@/images/gamecenter/nob-yellow-top2.png') no-repeat;
+            background-size: contain;
+          }
+        }
+
+        >b.rankTag2 {
+          display: inline-block;
+          width: 63px;
+          height: 20px;
+
+          &.tab5 {
+            background: url('@/images/gamecenter/nob-red-top3.png') no-repeat;
+            background-size: contain;
+          }
+
+          &.tab7 {
+            background: url('@/images/gamecenter/nob-purple-top3.png') no-repeat;
+            background-size: contain;
+          }
+
+          &.tab8 {
+            background: url('@/images/gamecenter/nob-green-top3.png') no-repeat;
+            background-size: contain;
+          }
+
+          &.tab6 {
+            background: url('@/images/gamecenter/nob-blue-top3.png') no-repeat;
+            background-size: contain;
+          }
+
+          &.tab19 {
+            background: url('@/images/gamecenter/nob-yellow-top3.png') no-repeat;
+            background-size: contain;
+          }
+        }
+
+        >b.rankTagOther {
+          display: inline-block;
+          height: 23px;
+          line-height: 23px;
+          background: url('@/images/gamecenter/num-bac.png') no-repeat;
+          background-size: 100% 100%;
+          text-shadow: 0px 1.24px 1.317px rgba(0, 0, 0, 0.54);
+          font-family: Orbitron;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 900;
+          font-variant: small-caps;
+          padding: 0 19px 0 10px;
+          box-sizing: border-box;
+          white-space: nowrap;
+        }
+
+        p {
+          color: #eaf7ff;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 16px;
+          // display: -webkit-box !important;
+          // -webkit-line-clamp: 1;
+          // -webkit-box-orient: vertical;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          overflow: hidden;
+
+          &.IsRankList_p {
+            margin-left: 10px;
+            background: linear-gradient(0, #FFF 1.88%, #929292 98.12%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+        }
+
+        >span.platform {
+          margin-top: 5px;
+          margin-left: 12px;
+          font-size: 12px;
+          color: rgba(234, 247, 255, 0.6);
+
+          >i {
+            display: inline-block;
+            margin-right: 8px;
+            font-size: 16px;
+          }
+        }
+      }
+
+      .play-label {
+        line-height: 12px;
+        padding: 5px 6px 6px 6px;
+        font-size: 12px;
+        background: linear-gradient(143deg, #474F5F 0%, #343B47 44.6%, #232831 89.03%);
+        display: inline-block;
+      }
+
+      >ul {
+        display: inline-block;
+        white-space: nowrap;
+        line-height: 20px;
+
+        .soft-tag {
+          margin-right: 6px;
+        }
+      }
+
+    }
+
+    // > aside {
+    //   height: 100%;
+    //   margin-left: 20px;
+    //   display: flex;
+    //   justify-content: center;
+    //   flex-direction: column;
+    //   > i.discount {
+    //     background-color: #f24a44;
+    //     font-size: 14px;
+    //     color: #eaf7ff;
+    //     font-weight: bold;
+    //     width: 46px;
+    //     height: 22px;
+    //     text-align: center;
+    //     line-height: 22px;
+    //     margin-bottom: 8px;
+    //   }
+    //   > div.price {
+    //     > i.currentPrice {
+    //       font-size: 16px;
+    //       color: #eaf7ff;
+    //       font-weight: bold;
+    //     }
+    //     > i.originalPrice {
+    //       font-size: 12px;
+    //       color: rgba(234, 247, 255, 0.4);
+    //       text-decoration: line-through;
+    //       margin-left: 6px;
+    //     }
+    //   }
+    //   > p {
+    //     color: rgba(234, 247, 255, .6);
+    //     font-style: normal;
+    //     font-weight: 400;
+    //     font-size: 12px;
+    //   }
+    // }
+    .soft-labels {
+      margin-top: 10px;
+
+      .soft-recommend-tag {
+        display: inline-block;
+        height: 22px;
+        box-sizing: border-box;
+        font-size: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.20);
+        padding: 0px 4px;
+        line-height: 22px;
+      }
+
+      .img-icon {
+        height: 13px;
+        width: 13px;
+        margin-top: 4px;
+      }
+    }
+
+    .score-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .people-num {
+      height: 38px;
+      padding: 12px;
+      min-width: 90px;
+      color: #EAF7FF;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      // line-height: 16px;
+      // border: 1px solid rgba(146, 146, 146, 0.1);
+      //  background: linear-gradient(0deg, rgba(146, 146, 146, 0.1) 0%, rgba(146, 146, 146, 0.2) 100%);//rgba(146, 146, 146, 0.1) 
+    }
+
+    .button-area {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: auto;
+      margin-right: 15px;
+
+      .buy-information {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 34px;
+        padding: 6px 12px;
+        background-color: rgba(48, 53, 61);
+        font-size: 12px;
+
+        .orgin-price-class {
+          opacity: 0.3;
+          text-decoration: line-through 1px rgba(234, 247, 255, );
+          /* 删除线：类型 粗细 颜色 */
+          margin-right: 4px
+        }
+
+        .current-price-class {
+          font-weight: 700;
+        }
+      }
+
+      .downloadButton {
+        height: 34px;
+        width: 90px;
+      }
+
+      .empty-btn {
+        height: 100%;
+        width: 90px;
+      }
+    }
+
+    // >div.downloadButton {
+    //   // position: absolute;
+    //   // right: 30px;
+    //   // top: 24px;
+    //   // z-index: 8;
+    //   margin: 23px 30px 0 auto;
+    //   width: 90px;
+    //   height: 34px;
+
+    //   :deep(){
+    //     .DownloadButton {
+    //       height: 34px;
+    //     }
+    //   }
+
+    //   :deep(div span) {
+    //     font-size: 14px;
+    //     width: 100%;
+    //   }
+    // }
+
+    &:hover {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%), linear-gradient(77deg, rgba(30, 34, 39, 0.3) 4.98%, rgba(112, 118, 150, 0.3) 100.17%);
+
+      >div.img_box {
+        >b {
+          transform: scale(1.15);
+        }
+      }
+    }
+  }
+}
+
+.auth-icon {
+  height: 20px;
+  margin-left: 5px;
+}
+
+
+  :deep(.grey-rect-btn) {
+    .text {
+      font-size: 14px;
+    }
+  }
+
+.wrapper:focus-visible {
+  outline: 2px solid #4fc3f7;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (forced-colors: active) {
+  .PcDevice .FourColumnList {
+    background: Canvas;
+    color: CanvasText;
+    forced-color-adjust: auto;
+    outline: 1px solid ButtonText;
+    outline-offset: -1px;
+  }
+
+  .PcDevice .FourColumnList .wrapper,
+  .PcDevice .FourColumnList .item,
+  .PcDevice .FourColumnList .item > section,
+  .PcDevice .FourColumnList .item .score-area,
+  .PcDevice .FourColumnList .item .button-area,
+  .PcDevice .FourColumnList .item .buy-information,
+  .PcDevice .FourColumnList .item > div.img_box,
+  .PcDevice .FourColumnList .item > div.img_box > b {
+    background: Canvas;
+    border-color: ButtonText;
+    color: CanvasText;
+    forced-color-adjust: auto;
+  }
+
+  .PcDevice .FourColumnList .wrapper,
+  .PcDevice .FourColumnList .item,
+  .PcDevice .FourColumnList .item > div.img_box,
+  .PcDevice .FourColumnList .item > div.img_box > b {
+    outline: 1px solid ButtonText;
+    outline-offset: -1px;
+  }
+
+  .PcDevice .FourColumnList .item > span,
+  .PcDevice .FourColumnList .item .play-label,
+  .PcDevice .FourColumnList .item .soft-recommend-tag,
+  .PcDevice .FourColumnList .item .soft-tag,
+  .PcDevice .FourColumnList .item .rankTagB,
+  .PcDevice .FourColumnList .item .rankTag0,
+  .PcDevice .FourColumnList .item .rankTag1,
+  .PcDevice .FourColumnList .item .rankTag2,
+  .PcDevice .FourColumnList .item .rankTagOther {
+    background: ButtonFace;
+    background-image: none;
+    border: 1px solid ButtonText;
+    color: ButtonText;
+    text-shadow: none;
+    -webkit-text-fill-color: ButtonText;
+    forced-color-adjust: auto;
+  }
+
+  .PcDevice .FourColumnList .item .softName p,
+  .PcDevice .FourColumnList .item .people-num,
+  .PcDevice .FourColumnList .item .current-price-class {
+    background: none;
+    color: CanvasText;
+    -webkit-text-fill-color: CanvasText;
+  }
+
+  .PcDevice .FourColumnList .item .platform,
+  .PcDevice .FourColumnList .item .orgin-price-class {
+    color: GrayText;
+    -webkit-text-fill-color: GrayText;
+  }
+
+  .PcDevice .FourColumnList .item .buyButton,
+  .PcDevice .FourColumnList .item .common-rect-btn,
+  .PcDevice .FourColumnList .item .downloadButton,
+  .PcDevice .FourColumnList .item .empty-btn {
+    background: ButtonFace;
+    border: 1px solid ButtonText;
+    color: ButtonText;
+    forced-color-adjust: auto;
+  }
+
+  .PcDevice .FourColumnList .item .active,
+  .PcDevice .FourColumnList .item [aria-selected="true"] {
+    background: Highlight;
+    border-color: Highlight;
+    color: HighlightText;
+    -webkit-text-fill-color: HighlightText;
+  }
+
+  .PcDevice .FourColumnList .item .disabled,
+  .PcDevice .FourColumnList .item .is-disabled,
+  .PcDevice .FourColumnList .item [disabled],
+  .PcDevice .FourColumnList .item [aria-disabled="true"] {
+    color: GrayText;
+    border-color: GrayText;
+    -webkit-text-fill-color: GrayText;
+  }
+
+  .PcDevice .FourColumnList .wrapper:focus-visible,
+  .PcDevice .FourColumnList .buyButton:focus-visible,
+  .PcDevice .FourColumnList [role="button"]:focus-visible,
+  .PcDevice .FourColumnList [tabindex]:focus-visible {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}

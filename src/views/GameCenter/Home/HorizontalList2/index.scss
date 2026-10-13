@@ -1,0 +1,364 @@
+.HorizontalList2 {
+  margin: 0px auto 0px;
+  width: 100%;
+  padding: 28px 40px 0 40px;
+  max-width: 1760px;
+  box-sizing: border-box;
+
+  .title-wrap {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 17px 0 30px 0;
+
+    .title-bac {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+
+    .more {
+      font-weight: 400;
+      font-size: 14px;
+      opacity: 0.6;
+      z-index: 9;
+      cursor: pointer;
+      margin-top: 10px;
+
+      &:hover {
+        color: #386EFE;
+        opacity: 1;
+      }
+    }
+  }
+
+  .list-wrap {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+
+    .card-item {
+      flex: 1;
+      aspect-ratio: 143/179;
+      position: relative;
+      background-repeat: no-repeat;
+      background-size: cover;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      .logo-file {
+        margin: auto;
+        display: block;
+      }
+
+      &:nth-child(4) {
+        display: none;
+      }
+
+      .horn-right {
+        position: absolute;
+        right: -1px;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        background: url('@/images/gamecenter/horn-right.png') no-repeat;
+        background-size: 100% 100%;
+        background-position: center center;
+        z-index: 3;
+      }
+
+      .horn-left {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 15px;
+        height: 15px;
+        background: url('@/images/gamecenter/horn-left.png') no-repeat;
+        background-size: 100% 100%;
+        background-position: center center;
+        z-index: 3;
+      }
+
+      .bor-top {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 99%;
+        z-index: 1;
+        border: 0.5px solid;
+        border-image-source: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1));
+        border-image-slice: 1;
+      }
+
+      .bor-right {
+        position: absolute;
+        right: 0;
+        top: 10;
+        height: 100%;
+        border: 0.5px solid;
+        border-image-source: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, .2));
+        border-image-slice: 1;
+        z-index: 2;
+      }
+
+      .bor-bottom {
+        position: absolute;
+        right: 1px;
+        bottom: 0;
+        width: 100%;
+        border: 0.5px solid;
+        border-image-source: linear-gradient(to left, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+        border-image-slice: 1;
+        z-index: 2;
+      }
+
+      .bor-left {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        z-index: 2;
+        border: 0.5px solid;
+        border-image-source: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, .1));
+        border-image-slice: 1;
+      }
+
+      .bor-dot0 {
+        position: absolute;
+        right: -1px;
+        top: 18px;
+        width: 1px;
+        height: 2px;
+        background: rgb(32 31 31);
+        z-index: 10;
+      }
+
+      .bor-dot1 {
+        position: absolute;
+        left: 13px;
+        bottom: 0;
+        width: 2px;
+        height: 1px;
+        background: rgb(32 31 31);
+        z-index: 10;
+      }
+
+      .bor-dot2 {
+        position: absolute;
+        left: 0;
+        bottom: 14px;
+        width: 1px;
+        height: 1px;
+        background: rgb(32 31 31);
+        z-index: 10;
+      }
+
+      .game-introduction {
+        color: #EAF7FF;
+        font-size: 12px;
+        line-height: 16px;
+        opacity: 0.6;
+        font-weight: 400;
+        font-style: normal;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .bottom-btn {
+        margin-top: auto;
+        display: flex;
+
+        .buy-information {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 34px;
+          padding: 6px 12px;
+          background-color: rgba(48, 53, 61);
+          font-size: 12px;
+
+          .discount-class {
+            height: 18px;
+            padding: 0 4px;
+            border-radius: 1px;
+            line-height: 18px;
+            text-align: center;
+            background: #F24A44;
+            font-weight: 700;
+            color: #fff;
+            margin-right: 6px;
+          }
+
+          .orgin-price-class {
+            opacity: 0.3;
+            text-decoration: line-through 1px rgba(234, 247, 255, );
+            /* 删除线：类型 粗细 颜色 */
+            margin-left: 4px
+          }
+
+          .current-price-class {
+            font-weight: 700;
+          }
+        }
+
+        .people-num {
+          height: 34px;
+          padding: 0 12px;
+          min-width: 90px;
+          color: #EAF7FF;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 34px;
+          border: 1px solid rgba(234, 247, 255, .1);
+          background-color: rgba(153, 153, 153, 0.2);
+        }
+      }
+    }
+
+    .header-title {
+      display: flex;
+      align-items: end;
+
+      .title {
+        font-size: 18px;
+        letter-spacing: 1px;
+        font-weight: 700;
+      }
+
+      .logo-img {
+        margin-left: 4px;
+        height: 20px;
+      }
+    }
+
+    .desc {
+      font-size: 12px;
+      opacity: 0.6;
+    }
+
+    .tag-has-rank {
+      width: calc(100% - 90px);
+      margin-left: 6px;
+    }
+
+    .tags-wrap {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      overflow: hidden;
+
+      .tag-class {
+        display: inline-block;
+        overflow: hidden;
+
+      }
+    }
+
+    .card-content {
+      width: 100%;
+      box-sizing: border-box;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 20px;
+      background: linear-gradient(to bottom,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 1) 50%,
+          rgba(0, 0, 0, 1) 100%);
+
+    }
+
+    .card-content-hover {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      box-sizing: border-box;
+
+      .radio-img-class {
+        height: 50%;
+        width: 100%;
+
+        .img-item {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .hover-content {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        height: 50%;
+        overflow: hidden;
+        width: 100%;
+        padding: 16px 20px 20px;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%), linear-gradient(0deg, rgba(112, 118, 150, 0.4) -49.15%, rgba(30, 34, 39, 0.4) 100%), linear-gradient(0deg, rgba(0, 0, 0, 0) -74.77%, rgba(0, 0, 0, 0.8) -74.77%, rgba(28, 30, 30, 0.9) 80.46%);
+
+        .game-rating {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          font-weight: 700;
+          text-align: center;
+
+          .text {
+            color: #FFF;
+            font-size: 12px;
+            transform: skewX(-12deg);
+          }
+
+          .rating-num {
+            color: #FFF;
+            font-size: 26px;
+            font-family: "D-DIN Exp";
+            transform: skewX(-12deg);
+
+            .symble-100 {
+              font-size: 16px;
+              margin-left: -6px;
+            }
+          }
+        }
+
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1495px) {
+  .HorizontalList2 .list-wrap .card-item:nth-child(4) {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1760px) {
+  .HorizontalList2 {
+    box-sizing: content-box;
+  }
+}
+
+.HorizontalList2 .card-item:focus-visible {
+  outline: 2px solid #4fc3f7;
+  outline-offset: -2px;
+  border-radius: 2px;
+}
+
+.HorizontalList2 .more:focus-visible {
+  outline: 2px solid #4fc3f7;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (forced-colors: active) {
+  .PcDevice {
+      .HorizontalList2 .card-item:focus-visible,
+      .HorizontalList2 .more:focus-visible {
+        outline: 2px solid Highlight;
+      }
+  }
+}

@@ -1,0 +1,16 @@
+<div v-if="rankData.length" class="ThreeLeaderBoard">
+  <div v-for="group of rankData" :key="group._id">
+    <header>
+      <span class="title">{{ group.name }}</span>
+      <span class="more" tabindex="0" role="button" @click="toList(group.id, group.name)" @keydown.enter.prevent.stop="toList(group.id, group.name)" @keydown.space.prevent.stop="toList(group.id, group.name)">更多</span>
+    </header>
+    <LeaderBoard
+      :rank-id="group.id"
+      :rank-name="group.name"
+      :list="group._rankingListSofts"
+      :server-current-time="serverCurrentTime"
+      :first-local="firstLocal"
+      :second-local="secondLocal"
+      :third-local="thirdLocal" />
+  </div>
+</div>

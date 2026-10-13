@@ -1,0 +1,35 @@
+.slider {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  background-color: #dddddd;
+  cursor: pointer;
+  user-select: none;
+  .slider-bar {
+    position: absolute;
+    top: -2px;
+    left: 0;
+    z-index: 10;
+    height: 8px;
+    border-radius: 50px;
+    background-color: #555555;
+    cursor: pointer;
+    touch-action: none;
+  }
+  &.move {
+    .slider-bar {
+        transition: all 0.2s linear;
+    }
+  }
+  &:focus-visible {
+    outline: 2px solid #4fc3f7;
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+}
+
+@media (forced-colors: active) {
+  .slider:focus-visible {
+    outline: 2px solid Highlight;
+  }
+}

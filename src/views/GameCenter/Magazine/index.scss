@@ -1,0 +1,726 @@
+.magazine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding-bottom: 70px;
+  &.scroll-smooth {
+    scroll-behavior: smooth;
+  }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.bottom-price {
+  position: relative;
+  z-index: 2;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  color: #EAF7FF;
+  font-size: 16px;
+  font-weight: 700;
+  border-top: 1px solid #191919;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding-right: 40px;
+  backdrop-filter: blur(34px);
+  .to-top {
+    position: absolute;
+    right: 40px;
+    bottom: 80px;
+    z-index: 8;
+    width: 44px;
+    height: 44px;
+    background: transparent url('~@/images/gamecenter/magazine/top.png') no-repeat center center/ cover;
+    cursor: pointer;
+    border-radius: 44px;
+    box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.9);
+    opacity: 0.7;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 382px;
+    height: 70px;
+    background: transparent url('~@/images/gamecenter/magazine/bottom-red-bac.png') no-repeat center center/ cover;
+    z-index: -1;
+  }
+  .price-text {
+    margin-top: 14px;
+  }
+  .delete-price {
+    text-decoration: line-through;
+  }
+  .signal {
+    margin-left: 8px;
+    font-size: 22px;
+  }
+  .cur-price {
+    margin-top: 8px;
+    margin-right: 20px;
+    font-family: Quantico;
+    font-size: 34px;
+    font-weight: 700;
+    background: linear-gradient(57deg, #E70037 18.52%, #FFC42C 82.03%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+.top-bac {
+  width: 100%;
+  height: 144px;
+  background: #000 url('~@/images/gamecenter/magazine/top-img-bac.png') no-repeat center center/ cover;
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  text-align: right;
+  backdrop-filter: blur(34px);
+  &.invisible {
+    opacity: 0;
+  }
+  .games-icon {
+    position: absolute;
+    display: inline-block;
+    width: 211px;
+    height: 45px;
+    background: transparent url('~@/images/gamecenter/magazine/bac-games.png') no-repeat center center/ contain;
+    bottom: 0px;
+    right: 57px;
+    opacity: 0.8;
+    z-index: 1;
+  }
+}
+
+.mag-list {
+  .s-game {
+    position: relative;
+    padding-left: 2px;
+    .bac-img {
+      position: relative;
+      margin: 47px auto 167px auto;
+      width: 71.98vw;
+      height: 33.02vw;
+      max-width: 992px;
+      max-height: 460px;
+      .content-area {
+        cursor: pointer;
+        width: calc(100% - 1px);
+        height: 100%;
+        object-fit: cover;
+      }
+      img.content-area{
+        object-position: top;
+      }
+      &::after {
+        pointer-events: none;
+        content: "";
+        position: absolute;
+        background: transparent url('~@/images/gamecenter/magazine/s-game-bac.png') no-repeat center center/ contain;
+        width: 91.88vw;
+        height: 47.07vw;
+        max-width: 1267px;
+        max-height: 629px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -46.5%);
+      }
+    }
+    .detail-info {
+      cursor: pointer;
+      z-index: 1;
+      position: absolute;
+      bottom: -98px;
+      right: -4.82vw;
+      width: 654px;
+      height: 142px;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(34px);
+      &::before {
+        pointer-events: none;
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 661px;
+        height: 143px;
+        background: transparent url('~@/images/gamecenter/magazine/s-game-text-bac.png') no-repeat center center/ contain;
+      }
+      .title {
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 40px;
+        letter-spacing: 2px;
+        background: linear-gradient(177.77deg, #929292 1.88%, #EAF7FF 98.12%);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-right: 10px;
+      }
+
+      .desc-info {
+        display: flex;
+        margin-top: 14px;
+        align-items: center;
+        justify-content: space-between;
+        .desc {
+          color: rgba(234, 247, 255, 0.6);
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 22px;
+          flex: 1;
+          margin-left: 13px;
+          max-width: 394px;
+
+          overflow: hidden;
+          text-overflow: ellipsis;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          display: -webkit-box;
+        }
+      }
+    }
+  }
+  .game-right, .game-left {
+    position: relative;
+    padding: 0 7.1vw 80px 5.37vw;
+    margin-bottom: 70px;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 4.57vw;
+      width: 10px;
+      height: 60px;
+      background: transparent url('~@/images/gamecenter/magazine/arrow-icon.png') no-repeat center center/ contain;
+    }
+    .content-wrap {
+      cursor: pointer;
+      display: flex;
+      .info {
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        padding-bottom: 136px;
+
+        .title {
+          text-align: left;
+          font-size: 28px;
+          font-weight: 700;
+          line-height: 40px;
+          letter-spacing: 2px;
+          background: linear-gradient(177.77deg, #929292 1.88%, #EAF7FF 98.12%);
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          width: 24vw; 
+          max-width: 326px; 
+          word-break: break-word;
+
+          overflow: hidden;
+          text-overflow: ellipsis;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          display: -webkit-box;
+
+          padding-right: 40px;
+          padding-left: 34px;
+        }
+        .downloadButton {
+          margin-top: 20px;
+          margin-left: 34px;
+        }
+      }
+      .img-wrap {
+        width: 54.2vw;
+        height: 30.26vw;
+        max-width: 746px;
+        max-height: 418px;
+        position: relative;
+        .content-area {
+          cursor: pointer;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        img.content-area{
+          object-position: top;
+        }
+        .img-bac {
+          position: absolute;
+          top: 40px;
+          left: 80px;
+          width: 90%;
+          height: 87%;
+          filter: blur(60px);
+        }
+        &::after {
+          pointer-events: none;
+          content: "";
+          position: absolute;
+          top: -2px;
+          left: 0;
+          width: 56.79vw;
+          height: 33.1vw;
+          max-width: 781px;
+          max-height: 457px;
+          background: transparent url('~@/images/gamecenter/magazine/right-img-bac.png') no-repeat center center/ 100% 100%;
+        }
+      }
+    }
+    .desc-wrap {
+      cursor: pointer;
+      position: absolute;
+      bottom: 6px;
+      left: 4.57vw;
+      width: 424px;
+      height: 138px;
+      padding: 27px 48px 31px 48px;
+      backdrop-filter: blur(34px);
+      background-color: rgb(0 0 0 / 60%);
+      &::before {
+        pointer-events: none;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 425px;
+        height: 149px;
+        background: transparent url('~@/images/gamecenter/magazine/right-text-bac.png') no-repeat center center/ contain;
+      }
+      .desc {
+        margin-top: 8px;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 22px;
+        color: rgb(234 247 255 / 60%);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+      }
+    }
+  }
+  .game-left {
+    padding: 0 5vw 80px 6.9vw;
+    &::before {
+      right: 4.22vw;
+      left: auto;
+    }
+    .content-wrap {
+      .img-wrap {
+        height: 30.57vw;
+        &::after {
+          max-width: 781px;
+          max-height: 453px;
+          left: auto;
+          right: 0;
+          background: transparent url('~@/images/gamecenter/magazine/left-img-bac.png') no-repeat center center/ 100% 100%;
+        }
+        .img-bac {
+          top: 50px;
+          left: -10px;
+        }
+      }
+      .info {
+        flex: 1;
+        align-items: end;
+        .title {
+          padding-right: 34px;
+          padding-left: 40px;
+          text-align: right;
+        }
+        .downloadButton {
+          margin-top: 20px;
+          margin-left: 0;
+          margin-right: 34px;
+        }
+      }
+    }
+    .desc-wrap {
+      right: 4.3vw;
+      left: auto;
+      &::before {
+        left: -1px;
+        background: transparent url('~@/images/gamecenter/magazine/left-text-bac.png') no-repeat center center/ contain;
+      }
+    }
+  }
+}
+.price {
+  display: inline-block;
+  margin-top: 20px;
+  width: 152px;
+  height: 40px;
+  background: transparent url('~@/images/gamecenter/magazine/price-bac.png') no-repeat center center/ contain;
+  color: rgba(255, 255, 255, 0.80);
+  text-shadow: 0px 118.101px 94.481px rgba(255, 255, 255, 0.00), 0px 26.379px 21.104px rgba(255, 255, 255, 0.00), 0px 7.854px 6.283px rgba(255, 255, 255, 0.00);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 40px;
+  text-align: center;
+}
+.s-game .price {
+  margin-top: 0;
+}
+h3.sgame-title {
+  max-height: 37px;
+  overflow: hidden;
+}
+.tag {
+    vertical-align: -5px;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(234, 247, 255, 0.80);
+    border: 1px solid rgba(234, 247, 255, 0.2);
+    background: #000;
+    line-height: 1;
+    box-sizing: border-box;
+    padding: 5.5px 6px;
+    text-align: center;
+    overflow: hidden;
+    margin-right: 6px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+.mag-banner {
+  position: relative;
+  padding: 0 40px;
+  width: calc(100% - 80px);  
+  height: 380px;
+  
+  .img {
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  .info-content {
+    position: absolute;
+    bottom: 46px;
+    left: calc(50% - 392px);
+  }
+}
+.mag-catalog {
+  position: relative;
+  padding: 50px 40px 40px 40px;
+  background: transparent url('~@/images/gamecenter/magazine/catalog-bac.png') no-repeat center 44px/ cover;
+  &::before { 
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 100%;
+    backdrop-filter: blur(2px);
+    background: linear-gradient(90deg, rgba(0,0,0) 0%, rgba(0,0,0,0) 100%);
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 100%;
+    backdrop-filter: blur(2px);
+    background: linear-gradient(-90deg, rgba(0,0,0) 0%, rgba(0,0,0,0) 100%);
+  }
+  
+  .catalog-title {
+    display: flex;
+    justify-content: space-between;
+    background: transparent url('~@/images/gamecenter/magazine/catalog-name.png') no-repeat left top/ 351px 46px;
+    padding-top: 30px;
+    
+    .exchange-code {
+      cursor: pointer;
+      width: 130px;
+      height: 30px;
+      color: #000;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 30px;
+      text-align: center;
+      background: transparent url('~@/images/gamecenter/magazine/exchange-normal.png') no-repeat center center/ contain;
+      margin-top: -9px;
+      padding-right: 4px;
+      &:hover {
+        color: #fff;
+        background: transparent url('~@/images/gamecenter/magazine/exchange-hover.png') no-repeat center center/ contain;
+      }
+    }
+  }
+  .game-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    max-width: 1200px;
+    margin: 40px auto 0px auto;
+    .game-item {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      width: 168px;
+      padding: 11px 12px;
+      margin-bottom: 5px;
+      border: 0.5px solid;
+      backdrop-filter: blur(1px);
+      border-image: linear-gradient(180deg, #fefefe, #616161) 1;
+      background: linear-gradient(0, rgb(146 146 146 / 40%) 0%, rgb(0 0 0 / 80%) 70%);
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: radial-gradient(circle, rgb(255 0 0 / 26%) 0%, rgba(255, 0, 0, 0) 60%);
+        z-index: -1;
+        top: 2px;
+        left: -2px;
+      }
+      .img {
+        width: 20px;
+        height: 20px;
+        margin-right: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 1.5px;
+      }
+      .name {
+        color: #EAF7FF;
+        font-size: 13px;
+        font-weight: 400;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+.catalog-title .title, .product-title .title, .faq-title .title {
+  background: linear-gradient(178deg, #929292 1.88%, #EAF7FF 98.12%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 22px;  
+  letter-spacing: 0.6px;
+}
+
+.product-wrap .product-title {
+  background: transparent url('~@/images/gamecenter/magazine/product-title.png') no-repeat left top/ 566px 55px;
+  padding-top: 40px;
+}
+.faq-wrap .faq-title {
+  background: transparent url('~@/images/gamecenter/magazine/faq-title.png') no-repeat left top/ 460px 50px;
+  padding-top: 34px;
+}
+
+.product-wrap {
+  padding: 4px 40px 0 40px;
+  .product-info {
+    display: flex;
+    gap: 20px;
+    max-width: 1130px;
+    margin: 37px auto 0 auto;
+    li.product-info-item {
+      flex: 1;
+      padding: 27px 20px 30px 20px;
+      background: transparent url('~@/images/gamecenter/magazine/product-bac.png') no-repeat center center/ 100% 100%;
+      .icon {
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+        margin-left: -8px;
+        margin-top: 3px;
+        &.fire {
+          background: transparent url('~@/images/gamecenter/magazine/product-fire.png') no-repeat center center / contain;
+        }
+        &.pocket {
+          background: transparent url('~@/images/gamecenter/magazine/product-pocket.png') no-repeat center center / contain;
+        }
+        &.lz {
+          background: transparent url('~@/images/gamecenter/magazine/product-lz.png') no-repeat center center / contain;
+        }
+        &.pc {
+          background: transparent url('~@/images/gamecenter/magazine/product-pc.png') no-repeat center center / contain;
+        }
+      }
+      h4 {
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 18px; 
+        letter-spacing: 1px;
+        margin: 24px 0 16px 0;
+      }
+      p {
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 22px;
+      }
+    }
+  }
+}
+
+.faq-wrap {
+  padding: 40px;
+  .faq-list {
+    max-width: 1130px;
+    margin: 40px auto;
+    li {
+      margin-top: 20px;
+      .question {
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        padding-left: 20px;
+        background: transparent url('~@/images/gamecenter/magazine/faq-bac.png') no-repeat center center/ 100% 100%;
+      }
+      .answer {
+        margin-top: 13px;
+        padding: 20px;
+        border: 1px solid rgba(234, 247, 255, 0.3);
+      }
+      .answer, p {
+        color: #EAF7FF;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 22px; 
+      }
+      .link {
+        color: rgb(56, 110, 254);
+      }
+    }
+  }
+}
+
+.ab-red-button {
+  cursor: pointer;
+  width: 159px;
+  height: 41px;
+  background: transparent url('~@/images/gamecenter/magazine/ab-red-normal.png') no-repeat center center/ contain;
+  .text {
+    display: inline-block;
+    width: 141px;
+    text-align: center;
+    color: #FFF;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 43px;
+    padding-left: 1px;
+  }
+  &:hover {
+    background: transparent url('~@/images/gamecenter/magazine/ab-red-hover.png') no-repeat center center/ contain;
+  }
+  &.disable {
+    pointer-events: none;
+    background: transparent url('~@/images/gamecenter/magazine/ab-red-disable.png') no-repeat center center/ contain;
+  }
+}
+
+.bac-img {
+  transform-origin: top;
+}
+
+.game-wrapper{
+  display: flex;
+  justify-content: center;
+}
+
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 42px;
+  height: 42px;
+  background: transparent url('~@/images/gamecenter/magazine/play-icon.png') no-repeat center center/ contain;
+}
+
+.empty-game {
+  margin: 220px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .img {
+    width: 70px;
+    height: 70px;
+  }
+  .text {
+    color: #EAF7FF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    margin-top: 10px;
+    opacity: 0.6;
+    margin-left: 12px;
+    transform: scale(0.91);
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .mag-list .game-left{
+    padding: 0 5vw 80px 6vw;
+  }
+  .mag-list .s-game .bac-img{
+    margin-bottom: 187px;
+  }
+  .mag-list .game-right, .mag-list .game-left {
+    margin-bottom: 90px;
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  .mag-banner .info-content{
+    left: calc(50% - 20.8vw);
+  }
+}
+@media screen and (min-width: 2200px) {
+  .mag-banner .info-content{
+    bottom: 20px;
+  }
+}
+
+.mag-banner .info-content:focus-visible,
+.mag-catalog .exchange-code:focus-visible,
+.mag-catalog .game-item:focus-visible,
+.mag-list .detail-info:focus-visible,
+.mag-list .content-wrap:focus-visible,
+.bottom-price .to-top:focus-visible,
+.bottom-price .ab-red-button:focus-visible {
+  outline: 2px solid #4fc3f7;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (forced-colors: active) {
+  .mag-banner .info-content:focus-visible,
+  .mag-catalog .exchange-code:focus-visible,
+  .mag-catalog .game-item:focus-visible,
+  .mag-list .detail-info:focus-visible,
+  .mag-list .content-wrap:focus-visible,
+  .bottom-price .to-top:focus-visible,
+  .bottom-price .ab-red-button:focus-visible {
+    outline: 2px solid Highlight;
+  }
+}

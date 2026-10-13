@@ -1,0 +1,91 @@
+<div class="FourColumnList">
+  <div
+    v-for="(item,index) of dataList"
+    :key="index"
+    tabindex="0"
+    role="button"
+    :aria-label="(getGameName(item) || '') + '，点击查看详情'"
+    @click="toDetail(item.softInfo)"
+    :class="[item.softInfo ? 'pointer' : '', 'wrapper']"
+    @keydown.enter.prevent.stop="toDetail(item.softInfo)"
+    @keydown.space.prevent.stop="toDetail(item.softInfo)">
+    <div class="item IsRankList">
+      <div class="img_box IsRankList_img_box">
+        <b
+          aria-hidden="true"
+          :style="{backgroundImage: !$isPadDevice ? `url('${getImgUrl(item) || defaultImg}')` : `url('${item.softInfo.showInfo.logoFile}')`}">
+          <img
+            v-if="!getImgUrl(item) && item.softInfo && item.softInfo.showInfo.logoFile && !$isPadDevice"
+            :src="item.softInfo.showInfo.logoFile"
+            alt="">
+        </b>
+        <i v-if="item.changeNum > 0" class="arrow-up"></i>
+        <i v-else-if="item.changeNum < 0" class="arrow-down"></i>
+      </div>
+      <span
+        v-if="item.softInfo && item.softInfo.showInfo && item.softInfo.showInfo.ruleLabelName"
+        :class="item.softInfo.showInfo.ruleLabelClassName">{{ item.softInfo.showInfo.ruleLabelName }}
+      </span>
+      <section>
+        <div class="softName">
+          <template v-if="rankType>=0">
+            <b v-if="index<3" :class="['rankTagB', 'rankTag'+index, 'tab'+rankType]"></b>
+            <b v-else class="rankTagOther">TOP {{index+1}}</b>
+          </template>
+
+          <p class="IsRankList_p">{{ getGameName(item) }}</p>
+          <span
+            v-if="item.softInfo && item.softInfo.softPurpose===1 && item.softInfo.productInfo.exchangePlatform"
+            class="platform">
+            <i
+              v-if="item.softInfo.productInfo.exchangePlatformFont"
+              class="iconfont"
+              v-html="item.softInfo.productInfo.exchangePlatformFont"></i>
+          </span>
+        </div>
+        <span v-if="item.playedBefore" class="play-label">{{ item.playedBefore }}</span>
+        <img
+            v-if="item.softInfo && item.softInfo.downloadInfo && item.softInfo.downloadInfo.tagUrls && item.softInfo.downloadInfo.tagUrls[0]"
+            class="auth-icon"
+            aria-hidden="true"
+            :src="item.softInfo.downloadInfo.tagUrls[0]" />
+        <ul v-if="item.softInfo && item.softInfo.showInfo && item.softInfo.showInfo.softLabels" class="soft-labels">
+          <li
+            v-for="(tagItem, tagIndex) of item.softInfo.showInfo.softLabels.slice(0, softLabelsLenght)"
+            :key="tagIndex"
+            :class="{active:tagItem === 'DLC'}">{{ tagItem }}</li>
+        </ul>
+      </section>
+      <aside>
+        <p>{{ getPlayNumHtml(item) }}</p>
+      </aside>
+      <template v-if="item.softInfo">
+        <div
+          class="buyButton common-rect-btn"
+          v-if="item.softInfo.softPurpose===1"
+          tabindex="0"
+          role="button"
+          aria-label="购买"
+          @click.stop="showPay(item.softInfo)"
+          @keydown.enter.prevent.stop="showPay(item.softInfo)"
+          @keydown.space.prevent.stop="showPay(item.softInfo)">购买</div>
+        <GameDownloadButton
+          v-else
+          class="downloadButton"
+          theme="rect"
+          :downloadInfo="item.softInfo.downloadInfo"
+          :soft-desc="item.softInfo.softDesc"
+          :soft-id="item.softInfo.softId"
+          :soft-purpose="item.softInfo.softPurpose"
+          :product-info="item.softInfo.productInfo"
+          :user-purchased-status="item.softInfo.productInfo.userPurchasedStatus"
+          :version="item.softInfo.softDesc.version"
+          :soft-name="item.softInfo.softName"
+          :logo-file="item.softInfo.showInfo.logoFile"
+          :fast-install="item.softInfo.showInfo.isFastInstall"
+          :drinfo="drinfo(item.softInfo)"
+          :sku-id="item.softInfo.skuId" />
+      </template>
+    </div>
+  </div>
+</div>

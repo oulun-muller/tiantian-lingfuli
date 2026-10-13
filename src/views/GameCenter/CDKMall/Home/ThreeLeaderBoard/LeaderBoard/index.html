@@ -1,0 +1,55 @@
+<ul class="LeaderBoard">
+  <li
+    v-for="(item, index) of list"
+    :key="item.softId"
+    tabindex="0"
+    role="button"
+    :aria-label="item.softName + '，点击查看详情'"
+    :class="{ active: index === activeIndex }"
+    @pointerenter="setActiveIndex(index)"
+    @click="toDetail(item)"
+    @keydown.enter.prevent.stop="toDetail(item)"
+    @keydown.space.prevent.stop="toDetail(item)">
+    <span v-if="item.currentTimeActivity" class="limit" aria-hidden="true">{{ item.currentTimeActivity.endTime | timeLeft(serverCurrentTime) }}</span>
+    <span v-else-if="item.showInfo.ruleLabelName" :class="item.showInfo.ruleLabelClassName" aria-hidden="true">{{ item.showInfo.ruleLabelName }}</span>
+    <section>
+      <b aria-hidden="true">
+        <i :style="{ backgroundImage: `url('${item.showInfo.himg || defaultImg}')` }">
+          <img
+            v-if="!item.showInfo.himg && item.showInfo.logoFile"
+            :src="item.showInfo.logoFile" alt="">
+        </i>
+      </b>
+      <div>
+        <h1>{{ item.softName }}</h1>
+        <p class="cdk" v-if="item.softPurpose === 1">
+          <span v-if="item.productInfo.discount" class="discount">{{ item.productInfo.discount }}</span>
+          <span class="currentPrice">¥{{ item.productInfo.currentPrice }}</span>
+          <span v-if="item.productInfo.discount && item.productInfo.originalPrice" class="originalPrice">¥{{ item.productInfo.originalPrice }}</span>
+        </p>
+        <p class="download" v-else>免费开玩<i>|</i>{{ item.downloadInfo.downloadCount }}</p>
+      </div>
+    </section>
+    <section>
+      <b aria-hidden="true">
+        <i :style="{ backgroundImage: `url('${item.showInfo.himg || defaultImg}')` }">
+          <img
+            v-if="!item.showInfo.himg && item.showInfo.logoFile"
+            :src="item.showInfo.logoFile" alt="">
+        </i>
+      </b>
+      <h1>{{ item.softName }}</h1>
+      <p class="cdk" v-if="item.softPurpose === 1">
+        <span v-if="item.productInfo.discount" class="discount">{{ item.productInfo.discount }}</span>
+        <span class="currentPrice">¥{{ item.productInfo.currentPrice }}</span>
+        <span v-if="item.productInfo.discount && item.productInfo.originalPrice" class="originalPrice">¥{{ item.productInfo.originalPrice }}</span>
+        <span v-if="item.productInfo.exchangePlatformFont" class="iconfont platform" v-html="item.productInfo.exchangePlatformFont"></span>
+      </p>
+      <p class="download" v-else>免费开玩<i>|</i>{{ item.downloadInfo.downloadCount }}</p>
+      <ul>
+        <li v-for="(tagItem, tagIndex) of item.showInfo.softLabels.slice(0, 3)" :key="tagIndex"
+        :class="{ active: tagItem === 'DLC' }">{{ tagItem }}</li>
+      </ul>
+    </section>
+  </li>
+</ul>

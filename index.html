@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html
+  lang="zh-CN"
+  style="background: linear-gradient(180deg, #151A22 0%, #1A1E24 38%, #131519 75%, #121419 100%);">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>天天领好礼 · 预览</title>
+  <link rel="icon" href="https://smartdl.lenovo.com.cn/frontend/legion-zone-mobile/legion-zone-online-mobile/common/favicon.ico" />
+  <script src="https://smartdl.lenovo.com.cn/frontend/legion-zone/legion-zone-mobile-new/static/js/jssdk.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    // 检查 URL 参数，动态注入 jssdk
+    (function() {
+      var url = window.location.href;
+      if (/[?&]injectActivityJsdk=1(&|$)/.test(url)) {
+        document.write('<script src="https://smartdl.lenovo.com.cn/frontend/legion-zone-mobile/legion-zone-online-mobile/common/js/activity-jssdk.js"><\/script>');
+      }
+    })();
+  </script>
+  <script>
+if (!location.hash) location.replace(location.pathname + '?lzDevice=phone&welfarePreview=1#/gameCenter/welfareCenter');
+</script>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

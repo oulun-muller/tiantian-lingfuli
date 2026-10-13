@@ -1,0 +1,872 @@
+h3.title-wrap {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px 0 40px;
+  .title-bac {
+    position: absolute;
+    top: 0px;
+    left: 40px;
+  }
+  .more {
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 14px;
+    opacity: 0.6;
+    margin-top: 10px;
+  }
+}
+.tab-wrap {
+  max-width: 500px;
+  display: flex;
+  margin: 60px auto 22px auto;
+  align-items: baseline;
+  justify-content: space-around;
+  transform: skew(-20deg);
+  li {
+    cursor: pointer;
+    width: 85px;
+    text-align: center;
+    text-shadow: 0px 88.826px 71.061px rgba(255, 255, 255, 0.00), 0px 19.84px 15.872px rgba(255, 255, 255, 0.00), 0px 5.907px 4.726px rgba(255, 255, 255, 0.00);
+    font-size: 18px;
+    opacity: 0.6;
+    &:hover {
+      opacity: 0.4;
+    }
+    &.selected {
+      cursor: pointer;
+      font-size: 26px;
+      font-weight: 700;
+      background: linear-gradient(178deg, #929292 0%, #EAF7FF 100%);
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 1;
+    }
+  }
+  .more-btn {
+    cursor: pointer;
+    text-shadow: 0px 88.826px 71.061px rgba(255, 255, 255, 0.00), 0px 19.84px 15.872px rgba(255, 255, 255, 0.00), 0px 5.907px 4.726px rgba(255, 255, 255, 0.00);
+    font-size: 18px;
+    opacity: 0.6;
+    margin-left: 10px;
+  }
+}
+// .pic-wrap {
+//   position: relative;
+//   display: flex;
+//   justify-content: center;
+//   perspective: 700px;
+//   // transform-style: preserve-3d;
+//   height: 440px;
+//   margin: 0 auto;
+//   // perspective-origin: 50% 50%;
+//   .item {
+//     will-change: transform;
+//     position: absolute;
+//     transition: transform 0.3s ease-in-out;
+//     &.pointer, &.left, &.right {
+//       cursor: pointer;
+//     }
+//     .label {
+//       position: absolute;
+//       right: 0;
+//       top: 0;
+//       padding: 8px;
+//       color: #000;
+//       font-size: 10px;
+//       font-weight: bold;
+//       background: linear-gradient(to left,rgba(202, 202, 202, 1), rgba(237, 248, 255, 1));
+//     }
+//     &:nth-child(2) {
+//       z-index: 1;
+//     }
+//     // .detail-wrap {
+//     //   display: none;
+//     // }
+//     .image {
+//       object-fit: cover;
+//       width: 390px;
+//       height: 440px;
+//     }
+//     &.center {
+//       .image {
+//         clip-path: url(#clipRankImg);
+//       }
+//       .front-border {
+//         transition: background-image 0.3s ease;
+//         position: absolute;
+//         top: -40px;
+//     left: -59px;
+//     width: 481px;
+//     height: 443px;
+//         background: url('~@/images/gamecenter/rank-center-bac.png');
+//         background-size: 100% 100%;
+//         pointer-events: none;
+//       }
+//       .detail-wrap {
+//         animation: detailHeightBack 0.3s forwards;
+//         display: block;
+//         position: absolute;
+//         bottom: -1px;
+//         display: flex;
+//         flex-direction: column;
+//         align-items: start;
+//         padding: 30px 30px 0 30px;
+//         background: transparent url('~@/images/gamecenter/rank-center-black.png') no-repeat center center / cover;
+//         width: 100%;
+//         left: 0px;
+//         background-position: bottom;
+//         background-size: 104% 104%;
+//         .auth-icon {
+//           height: 24px;
+//           margin-right: 8px;
+//           margin-bottom: 6px;
+//         }
+//         .btn-wrap {
+//           padding-bottom: 30px;
+//         }
+//         h3.title {
+//           margin: 36px 0 20px 0;
+//           font-size: 24px;
+//           line-height: 26px;
+//           background: linear-gradient(0, #FFF 1.88%, #929292 98.12%);
+//           -webkit-background-clip: text;
+//           background-clip: text;
+//           -webkit-text-fill-color: transparent;
+//         }
+//         .marks-wrap {
+//           margin: 0 0 12px 0;
+//           font-size: 0;
+//           span {
+//             display: inline-block;
+//             padding: 0 6px;
+//             height: 24px;
+//             font-size: 12px;
+//             background: linear-gradient(178deg, rgb(146 146 146 / 70%) 1.87%, rgb(234 247 255 / 70%) 97.88%);
+//             color: #000;
+//             line-height: 24px;
+//             margin-right: 8px;
+//             text-overflow: ellipsis;
+//             overflow: hidden;
+//             white-space: nowrap;
+//             max-width: 200px;
+            
+//             i.num {
+//               font-family: "Microsoft YaHei";
+//               font-size: 14px;
+//               margin-right: 3px;
+//               vertical-align: -1px;
+//               font-weight: 700;
+//             }
+//           }
+//         }
+//         .tags-line {
+//           display: flex;
+//           gap: 8px;
+//           flex-wrap: wrap;
+//           margin-bottom: 16px;
+//           .tag {
+//             display: inline-block;
+//             width: 74px;
+//             height: 24px;
+//             line-height: 24px;
+//             border: 1px solid rgb(234 247 255 / 60%);
+//             font-size: 12px;
+//             text-align: center;
+//             color: rgba(234, 247, 255);
+//             opacity: 0.5;
+//           }
+//         }
+//         .info {
+//           width: 100%;
+//           white-space: nowrap;
+//           overflow: hidden;
+//           text-overflow: ellipsis;
+//           margin: 0 0 20px 0;
+//           background-clip: text;
+//           font-size: 12px;
+//           color: rgb(234 247 255);
+//           opacity: 0.5;
+//         }
+//       }
+//       &.is-focus-center {
+//         .detail-wrap {
+//           animation: detailHeight 0.3s forwards;
+//         }
+//       }
+//     }
+//     &.left, &.right {
+//       animation: scaleNoHover 0.3s forwards;
+//       .image {
+//         border: 2px solid;
+//         border-image: linear-gradient(to bottom, #fff 0%, rgba(252,252,252,20%) 80%) 1;
+//       }
+//       .front-border {
+//         transition: opacity 0.3s ease;
+//         opacity: 1;
+//         position: absolute;
+//         width: 100%;
+//         height: 100%;
+//         top: 0;
+//         left: 0;
+//       }
+//     }
+//     &.left:hover, &.right:hover {
+//       animation: scaleHover 0.3s forwards;
+//       .image {
+//         border-width: 4px;
+//         width: 394px;
+//       }
+//       .front-border {
+//         opacity: 0;
+//       }
+//     }
+//     &.left {
+//       .front-border {
+//         background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 75%, rgb(0, 0, 0) 100%);
+//       }
+//       &::before, &::after {
+//         pointer-events: none;
+//         opacity: 0.6;
+//         content: '';
+//         position: absolute;
+//         left: -80px;
+//         display: inline-block;
+//         width: 80px;
+//         height: 1px;
+//         background: linear-gradient(to left, rgba(234, 247, 255, 1), rgba(252, 252, 252, 0.05));
+//       }
+//       &::before {
+//         top: 0;
+//       }
+//       &::after {
+//         bottom: 1px;
+//         transform: scaleY(0.7);
+//       }
+//     }
+//     &.right {
+//       .front-border {
+//         background: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 75%, rgb(0, 0, 0) 100%);
+//       }
+//       &::before, &::after {
+//         pointer-events: none;
+//         opacity: 0.6;
+//         content: '';
+//         position: absolute;
+//         right: -80px;
+//         display: inline-block;
+//         width: 80px;
+//         height: 1px;
+//         background: linear-gradient(to right, rgba(234, 247, 255, 1), rgba(252, 252, 252, 0.05));
+//       }
+//       &::before {
+//         top: 0;
+//       }
+//       &::after {
+//         bottom: 1px;
+//         transform: scaleY(0.7);
+//       }
+//     }
+//     .logo-img {
+//       width: 42px;
+//       height: 42px;
+//       object-fit: cover;
+//       position: absolute;
+//       top: 50%;
+//       left: 50%;
+//       transform: translate(-50%, -50%);
+//     }
+//   }
+// }
+.pic-info-wrap {
+  display: flex;
+  justify-content: space-between;
+  width: 772px;
+  margin: 0 auto;
+  .info-wrap {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    .rank {
+      display: inline-block;
+      width: 100px;
+      height: 35px;
+    }
+
+    &.left, &.right {
+      margin-top: -35px;
+      opacity: 0.6;
+      width: 143px;
+      .rank-title-line {
+        transform: scale(0.6);
+        margin-bottom: -5px;
+      }
+      .name {
+        margin-bottom: 5px;
+        overflow: hidden;
+        white-space: nowrap;
+        .content {
+          display: inline-block;
+          font-size: 16px;
+          background: linear-gradient(178deg, #FFF 1.88%, #929292 98.12%);
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          width: 100%;
+          &.animation {
+            margin-right: 30px;
+            animation: scrollText 5s linear infinite;
+          }
+          &.show {
+            display: inline-block;
+          }
+          &.no-show {
+            display: none;
+          }
+        }
+      }
+      .play-num, .play-num :deep(i) {
+        font-size: 12px;
+      }
+      .name, .play-num {
+        font-family: "Microsoft YaHei";
+        background: linear-gradient(178deg, #FFF 1.88%, #929292 98.12%);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+        padding-right: 6px;
+        font-weight: bold;
+        transform: skew(-20deg);
+      }
+      .play-num :deep(i) {
+        font-size: 14px;
+        vertical-align: -1px;
+      }
+    }
+    &.left {
+      .rank-title-line {
+        transform-origin: left;
+      }
+      .name {
+        max-width: 100px;
+      }
+      .play-num {
+        margin-left: -3px;
+      }
+    }
+    &.right {
+      .rank-title-line {
+        transform-origin: right;
+      }
+      .name {
+        max-width: 100px;
+        text-align: right;
+      }
+      align-items: end;
+    }
+    &.center {
+      width: 282px;
+      text-align: center;
+      .rank-line {
+        margin-top: 24px;
+        .name {
+          display: inline-block;
+          max-width: 132px;
+          overflow: hidden;
+          transform: skew(-20deg);
+          white-space: nowrap;
+          vertical-align: 3px;
+          .content {
+            display: inline-block;
+            padding: 0 6px;
+            font-weight: 900;
+            font-size: 28px;
+            background: linear-gradient(178deg, #FFF 1.88%, #929292 98.12%);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            white-space: nowrap;
+            &.animation {
+              margin-right: 30px;
+              animation: scrollText 5s linear infinite;
+            }
+            &.show {
+              display: inline-block;
+            }
+            &.no-show {
+              display: none;
+            }
+          }
+        }
+      }
+      .play-num {
+        font-family: 'Orbitron';
+        margin-top: 14px;
+        text-align: center;
+        font-size: 16px;
+        line-height: normal;
+        font-weight: bold;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transform: skew(-20deg);
+        :deep(i) {
+          font-size: 25px;
+          font-weight: 900;
+          margin-right: 3px;
+          margin-left: 3px;
+          vertical-align: -3px;
+        }
+      }
+      .left-line {
+        position: absolute;
+        top: -3px;
+        left: -122px;
+        width: 115px;
+        height: 38px;
+        background: transparent url('~@/images/gamecenter/rank-top1-line-left.png') no-repeat center center / contain;
+      }
+      .right-line {
+        position: absolute;
+        top: -3px;
+        right: -122px;
+        width: 115px;
+        height: 38px;
+        background: transparent url('~@/images/gamecenter/rank-top1-line-right.png') no-repeat center center / contain;
+      }
+    }
+    .play-num :deep(i) {
+      font-family: 'Orbitron';
+      font-weight: 900;
+    }
+    .rank-title-line {
+      .arrow-up {
+        display: inline-block;
+        width: 38px;
+        height: 38px;
+        background: transparent url('~@/images/gamecenter/arrow-up-transparent.png') no-repeat center center / contain;
+      }
+      .arrow-down {
+        display: inline-block;
+        width: 38px;
+        height: 38px;
+        background: transparent url('~@/images/gamecenter/arrow-down-transparent.png') no-repeat center center / contain;
+      }
+    }
+    
+  }
+}
+.center.is-focus-center .front-border {
+  transition: background-image 0.3s ease;
+}
+.tab5 {
+  .rank0 {
+    background: transparent url('~@/images/gamecenter/red-top1.png') no-repeat center center / contain;
+  }
+  .rank1 {
+    background: transparent url('~@/images/gamecenter/red-top2.png') no-repeat center center / contain;
+  }
+  .rank2 {
+    background: transparent url('~@/images/gamecenter/red-top3.png') no-repeat center center / contain;
+  }
+  .bac-blur {
+    background: transparent url('~@/images/gamecenter/bac-blur-red.png') no-repeat center center / 100% 100%;
+  }
+  .play-num {
+    background: linear-gradient(to right, rgb(231, 0, 55), rgb(255, 196, 44));
+  }
+  .center.is-focus-center .front-border {
+    background-image: url('~@/images/gamecenter/rank-center-bac-hover-red.png');
+  }
+}
+.tab7 {
+  .rank0 {
+    background: transparent url('~@/images/gamecenter/purple-top1.png') no-repeat center center / contain;
+  }
+  .rank1 {
+    background: transparent url('~@/images/gamecenter/purple-top2.png') no-repeat center center / contain;
+  }
+  .rank2 {
+    background: transparent url('~@/images/gamecenter/purple-top3.png') no-repeat center center / contain;
+  }
+  .bac-blur {
+    background: transparent url('~@/images/gamecenter/bac-blur-purple.png') no-repeat center center / 100% 100%;
+  }
+  .play-num {
+    background: linear-gradient(to right, rgba(125, 73, 237, 1), rgba(255, 169, 68, 1));
+  }
+  .center.is-focus-center .front-border {
+    background-image: url('~@/images/gamecenter/rank-center-bac-hover-purple.png');
+  }
+}
+.tab8 {
+  .rank0 {
+    background: transparent url('~@/images/gamecenter/green-top1.png') no-repeat center center / contain;
+  }
+  .rank1 {
+    background: transparent url('~@/images/gamecenter/green-top2.png') no-repeat center center / contain;
+  }
+  .rank2 {
+    background: transparent url('~@/images/gamecenter/green-top3.png') no-repeat center center / contain;
+  }
+  .bac-blur {
+    background: transparent url('~@/images/gamecenter/bac-blur-green.png') no-repeat center center / 100% 100%;
+  }
+  .play-num {
+    background: linear-gradient(to right, rgba(69, 224, 100, 1), rgba(255, 176, 83, 1));
+  }
+  .center.is-focus-center .front-border {
+    background-image: url('~@/images/gamecenter/rank-center-bac-hover-green.png');
+  }
+}
+.tab6 {
+  .rank0 {
+    background: transparent url('~@/images/gamecenter/blue-top1.png') no-repeat center center / contain;
+  }
+  .rank1 {
+    background: transparent url('~@/images/gamecenter/blue-top2.png') no-repeat center center / contain;
+  }
+  .rank2 {
+    background: transparent url('~@/images/gamecenter/blue-top3.png') no-repeat center center / contain;
+  }
+  .bac-blur {
+    background: transparent url('~@/images/gamecenter/bac-blur-blue.png') no-repeat center center / 100% 100%;
+  }
+  .play-num {
+    background: linear-gradient(to right, rgba(17, 116, 255, 1), rgba(31, 239, 229, 1));
+  }
+  .center.is-focus-center .front-border {
+    background-image: url('~@/images/gamecenter/rank-center-bac-hover-blue.png');
+  }
+}
+.tab19 {
+  .rank0 {
+    background: transparent url('~@/images/gamecenter/nob-yellow-top1.png') no-repeat center center / contain;
+  }
+  .rank1 {
+    background: transparent url('~@/images/gamecenter/nob-yellow-top2.png') no-repeat center center / contain;
+  }
+  .rank2 {
+    background: transparent url('~@/images/gamecenter/nob-yellow-top3.png') no-repeat center center / contain;
+  }
+  .bac-blur {
+    background: transparent url('~@/images/gamecenter/bac-blur-yellow.png') no-repeat center center / 100% 100%;
+  }
+  .play-num {
+      background: linear-gradient(to left, #FE5703, #FE9903);
+  }
+  .center.is-focus-center .front-border {
+    background-image: url('~@/images/gamecenter/rank-center-bac-hover-yellow.png');
+  }
+}
+.mesh-top {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: url('~@/images/gamecenter/mesh-top.png');
+  height: 220px;
+  background-size: cover;
+}
+.mesh-bottom {
+  pointer-events: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: url('~@/images/gamecenter/mesh-bottom.png');
+  height: 220px;
+  background-size: cover;
+}
+.RankList {
+  position: relative;
+  height: 750px;
+  max-width: 1760px;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+.bac-blur {
+  pointer-events: none;
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  width: 60%;
+  height: 139%;
+  transform: translateX(-50%);
+}
+.fenge-line {
+  margin-top: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  .line {
+    display: inline-block;
+    width: 13px;
+    height: 1px;
+    background-color: #EAF7FF;
+    transform: scaleY(0.2);
+  }
+  .text {
+    opacity: 0.6;
+    font-size: 12px;
+    line-height: 12px;
+    color: #EAF7FF;
+    font-weight: 290;
+    letter-spacing: 1.4px;
+  }
+}
+.content-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+@keyframes scrollText {
+  0% { transform: translate(0%); }
+  100% { transform: translate(calc(-100% - 30px)); }
+}
+.pic-wrap {
+  transform: scale(var(--scale, 1));
+}
+@media screen and (min-width: 1500px) and (max-width: 1900px){
+  .pic-wrap {
+    margin: 70px 0;
+    transform: scale(1.2);
+  }
+  .pic-info-wrap {
+    width: 922px;
+    .left, .right {
+      margin-top: -63px;
+    }
+  }
+  .RankList {
+    height: 865px;
+  }
+}
+@media screen and (min-width: 1900px) {
+  .pic-wrap {
+    margin: 160px 0;
+    transform: scale(1.5);
+  }
+  .pic-info-wrap {
+    width: 1161px;
+    .left, .right {
+      margin-top: -87px;
+    }
+  }
+  .RankList {
+    height: 1045px;
+  }
+}
+
+@keyframes scaleHover {
+  from {
+    scale: 1;
+  }
+  to {
+    scale: 1.06;
+  }
+}
+
+@keyframes scaleNoHover {
+  from {
+    scale: 1.06;
+  }
+  to {
+    scale: 1;
+  }
+}
+
+@keyframes detailHeight {
+  0% {
+    transform: translateY(10%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes detailHeightBack {
+  0% {
+    transform: translateY(-5%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.example-3d {
+    width: 100%;
+    height: 400px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .swiper {
+    height: 100%;
+    width: 100%;
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 353px;
+      height: 398px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 14px;
+      // background-color: #2C8DFB;
+      background-position: center;
+      background-size: cover;
+      color: #fff;
+      .image {
+        object-fit: cover;
+        width: 353px;
+        height: 398px;
+      }
+
+      .logo-img {
+        width: 42px;
+        height: 42px;
+        object-fit: cover;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      &.center {
+        .image {
+          clip-path: url(#clipRankImg);
+        }
+        .front-border {
+          transition: background-image 0.3s ease;
+          position: absolute;
+          top: -34px;
+          left: -56px;
+          width: 477px;
+          height: 438px;
+          background: url('~@/images/gamecenter/rank-center-bac.png');
+          background-size: 100% 100%;
+          pointer-events: none;
+        }
+        .detail-wrap {
+          // animation: detailHeightBack 0.3s forwards;
+          display: block;
+          position: absolute;
+          bottom: -1px;
+          display: flex;
+          flex-direction: column;
+          align-items: start;
+          padding: 30px 30px 0 30px;
+          background: transparent url('~@/images/gamecenter/rank-center-black.png') no-repeat center center / cover;
+          width: 100%;
+          left: 0px;
+          background-position: bottom;
+          background-size: 104% 104%;
+          .auth-icon {
+            height: 24px;
+            margin-right: 8px;
+            margin-bottom: 6px;
+          }
+          .btn-wrap {
+            padding-bottom: 30px;
+          }
+          h3.title {
+            margin: 36px 0 20px 0;
+            font-size: 24px;
+            line-height: 26px;
+            background: linear-gradient(0, #FFF 1.88%, #929292 98.12%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+          .marks-wrap {
+            margin: 0 0 12px 0;
+            font-size: 0;
+            span {
+              display: inline-block;
+              padding: 0 6px;
+              height: 24px;
+              font-size: 12px;
+              background: linear-gradient(178deg, rgb(146 146 146 / 70%) 1.87%, rgb(234 247 255 / 70%) 97.88%);
+              color: #000;
+              line-height: 24px;
+              margin-right: 8px;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              white-space: nowrap;
+              max-width: 200px;
+              
+              i.num {
+                font-family: "Microsoft YaHei";
+                font-size: 14px;
+                margin-right: 3px;
+                vertical-align: -1px;
+                font-weight: 700;
+              }
+            }
+          }
+          .tags-line {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+            .tag {
+              display: inline-block;
+              width: 74px;
+              height: 24px;
+              line-height: 24px;
+              border: 1px solid rgb(234 247 255 / 60%);
+              font-size: 12px;
+              text-align: center;
+              color: rgba(234, 247, 255);
+              opacity: 0.5;
+            }
+          }
+          .info {
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin: 0 0 20px 0;
+            background-clip: text;
+            font-size: 12px;
+            color: rgb(234 247 255);
+            opacity: 0.5;
+          }
+        }
+        &.is-focus-center {
+          .detail-wrap {
+            animation: detailHeight 0.3s forwards;
+          }
+        }
+      }
+      &.left, &.right {
+        // animation: scaleNoHover 0.3s forwards;
+        .image {
+          border: 2px solid;
+          border-image: linear-gradient(to bottom, #fff 0%, rgba(252,252,252,20%) 80%) 1;
+        }
+        .front-border {
+          transition: opacity 0.3s ease;
+          opacity: 1;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+        }
+      }
+    }
+
+    .swiper-pagination {
+      :deep(.swiper-pagination-bullet.swiper-pagination-bullet-active) {
+        background-color: #fff;
+      }
+    }
+  }

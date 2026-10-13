@@ -1,0 +1,239 @@
+// 帮助与反馈模块公共样式（设计 Token + 页面骨架），全部嵌套在 .lz-help 下避免污染宿主
+
+.lz-help {
+  --bg-page: #121212;
+  --bg-elevated: #1c1c1e;
+  --surface-deep: #222224;
+  --surface-default: #2a2a2c;
+  --surface-hover: #3a3a3c;
+  --sidebar-width: 200px;
+  --brand-mid: #507ffe;
+  --brand-link: #2e79ff;
+  --action-primary: #386efe;
+  --brand-accent-muted: rgba(146, 175, 254, 0.16);
+  --text-primary: #f5f5f7;
+  --text-secondary: rgba(245, 245, 247, 0.72);
+  --text-tertiary: rgba(245, 245, 247, 0.48);
+  --text-disabled: rgba(245, 245, 247, 0.28);
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.24);
+  --danger: #f05359;
+  --warning-default: #f0c04a;
+  --badge: #ff2341;
+  --nav-height: 56px;
+  --content-max: 800px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+
+  display: flex;
+  flex-direction: column;
+  // 宿主中间层无显式高度，用 100vh 保证撑满（与 .gamecenter 一致）
+  height: 100vh;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  font-family: 'PingFang SC', 'Source Han Sans CN', 'Noto Sans SC', 'Microsoft YaHei', system-ui, -apple-system, sans-serif !important;
+  font-size: 16px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+  padding-top: var(--safe-top);
+  padding-bottom: var(--safe-bottom);
+
+  // 覆盖宿主 reset.scss 的 !important 字体
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    font-family: inherit !important;
+  }
+
+  button,
+  input,
+  textarea {
+    font: inherit;
+    font-family: inherit !important;
+    color: inherit;
+  }
+
+  button {
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  // 覆盖宿主全局 ::placeholder 颜色
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--text-disabled);
+  }
+
+  // 覆盖宿主全局滚动条样式，帮助模块内隐藏原生滚动条
+  *::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  // 覆盖宿主 textarea { overflow: auto }，保证自增高逻辑正常
+  textarea {
+    overflow: hidden;
+  }
+
+  .page {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    background: var(--bg-page);
+  }
+
+  .page__body {
+    width: 100%;
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: 16px;
+  }
+
+  // 全宽滚动热区：左右留白也能拖动页面
+  .page__body--scroll {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .page__body--scroll::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  .surface-card {
+    background: var(--surface-deep);
+    border: 0.5px solid var(--border-subtle);
+    border-radius: 4px;
+  }
+
+  .divider {
+    height: 0.5px;
+    background: var(--border-subtle);
+    margin: 0 16px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 6px;
+    border-radius: 26.667px;
+    background: var(--badge);
+    color: #fff;
+    font-size: 10.667px;
+    font-weight: 700;
+    line-height: 13.333px;
+  }
+
+  .help-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;
+    font-size: 14px;
+    color: var(--text-disabled);
+  }
+}
+
+// Toast 由 HelpToast 渲染
+.help-toast-root {
+  position: fixed;
+  top: 20px;
+  right: 0;
+  left: 0;
+  z-index: 999999;
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  pointer-events: none;
+}
+
+.help-toast {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  max-width: min(100%, 360px);
+  padding: 7px 16px;
+  background: #1e242b;
+  border: 1px solid rgba(234, 247, 255, 0.1);
+  box-shadow: 0 2px 3px rgba(13, 13, 13, 1), 0 4px 8px rgba(13, 13, 13, 0.32), 0 6px 16px rgba(13, 13, 13, 0.2);
+
+  &__icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+  }
+
+  &__text-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    padding: 0 8px;
+  }
+
+  &__text {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 14px;
+    line-height: normal;
+    text-align: center;
+    word-break: break-word;
+  }
+}
+
+.help-image-preview {
+  position: fixed;
+  inset: 0;
+  z-index: 1000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.88);
+}
+
+.help-image-preview__image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.help-image-preview__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  min-width: 56px;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 4px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.36);
+  font-size: 14px;
+}

@@ -1,0 +1,139 @@
+<template>
+  <header class="nav">
+    <button
+      v-if="showBack"
+      type="button"
+      class="nav__side nav__back"
+      aria-label="返回"
+      @click="onBack">
+      <span class="nav__icon-wrap">
+        <img class="nav__back-icon" :src="iconBack" width="9" height="18" alt="">
+      </span>
+    </button>
+    <div v-else class="nav__side" />
+
+    <div class="nav__center">
+      <slot name="center">
+        <h1 v-if="title" class="nav__title">{{ title }}</h1>
+      </slot>
+    </div>
+
+    <div class="nav__side nav__right">
+      <slot name="right" />
+    </div>
+  </header>
+</template>
+
+<script>
+import iconBack from '../images/icon-back.svg'
+
+export default {
+  name: 'HelpNavBar',
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    showBack: {
+      type: Boolean,
+      default: true
+    },
+    backTo: {
+      type: Object,
+      default: null
+    },
+    // 为 true 时仅触发 back 事件，不执行默认路由返回
+    manualBack: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data() {
+    return {
+      iconBack
+    }
+  },
+  methods: {
+    onBack() {
+      this.$emit('back')
+      if (this.manualBack) return
+      const native = window.LegionZoneMobile
+      if (native && typeof native.nativeCall === 'function') {
+        native.nativeCall('LegionZone', 'goBack')
+        return
+      }
+      if (this.backTo) {
+        this.$router.push(this.backTo)
+        return
+      }
+      if (window.history.length > 1) {
+        this.$router.back()
+      } else {
+        this.$router.push({ name: 'HelpCenter' })
+      }
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.nav {
+  display: flex;
+  align-items: center;
+  height: var(--nav-height);
+  flex-shrink: 0;
+  background: var(--bg-page);
+  border-bottom: 0.5px solid var(--border-subtle);
+}
+
+.nav__side {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav__right {
+  width: auto;
+  min-width: 56px;
+  padding: 0 16px;
+  justify-content: flex-end;
+}
+
+.nav__center {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.nav__title {
+  margin: 0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 29px;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.nav__icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.nav__back-icon {
+  width: 9px;
+  height: 18px;
+}
+</style>

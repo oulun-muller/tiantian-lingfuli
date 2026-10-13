@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon/电池/小</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="26" height="26"></rect>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#EAF7FF" stop-opacity="0.6" offset="0%"></stop>
+            <stop stop-color="#EAF7FF" stop-opacity="0.5" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="硬件详情资源" transform="translate(-650.000000, -242.000000)">
+            <g id="硬件详情首页" transform="translate(319.000000, 242.000000)">
+                <g id="icon/电池/小" transform="translate(331.000000, 0.000000)">
+                    <g id="编组">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="蒙版"></g>
+                        <g mask="url(#mask-2)" fill="#505869" id="形状结合">
+                            <g transform="translate(13.000000, 12.500000) rotate(90.000000) translate(-13.000000, -12.500000) translate(4.000000, -1.000000)">
+                                <path d="M12.001709,0.577131348 L12.4781699,2.48613135 L17.4782715,2.48681641 L17.4782715,26.5 L0.524169922,26.5 L0.524169922,2.48681641 L5.49116992,2.48613135 L5.96844482,0.577131348 L12.001709,0.577131348 Z M15.5,4.5 L2.5,4.5 L2.5,24.5 L15.5,24.5 L15.5,4.5 Z"></path>
+                            </g>
+                        </g>
+                    </g>
+                    <rect id="矩形" fill="#EAF7FF" fill-rule="nonzero" x="4" y="8" width="3" height="9"></rect>
+                    <rect id="矩形备份-45" fill="url(#linearGradient-3)" fill-rule="nonzero" x="8" y="8" width="3" height="9"></rect>
+                    <rect id="矩形备份-46" fill="url(#linearGradient-3)" fill-rule="nonzero" x="12" y="8" width="3" height="9"></rect>
+                    <rect id="矩形备份-47" fill="url(#linearGradient-3)" fill-rule="nonzero" x="16" y="8" width="3" height="9"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

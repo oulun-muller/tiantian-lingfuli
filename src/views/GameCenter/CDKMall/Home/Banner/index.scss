@@ -1,0 +1,162 @@
+div.Banner {
+  width: 100%;
+  height: 28.3vw;
+  max-height: 360px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  margin-bottom: 10px;
+  cursor: pointer;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 6;
+    width: 100%;
+    height: 86px;
+    background: linear-gradient(00deg, #101010 0%, rgba(16, 16, 16, 0.72) 58.33%, rgba(16, 16, 16, 0) 100%);
+  }
+  > h1 {
+    position: absolute;
+    left: 40px;
+    right: 40px;
+    bottom: 112px;
+    z-index: 7;
+    font-size: 28px;
+    color: #EAF7FF;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  > p.cdk {
+    position: absolute;
+    left: 40px;
+    bottom: 70px;
+    z-index: 7;
+    display: flex;
+    align-items: center;
+    > span.discount {
+      background-color: #F24A44;
+      border-radius: 4px;
+      font-size: 16px;
+      color: #EAF7FF;
+      font-weight: bold;
+      line-height: 1;
+      box-sizing: content-box;
+      padding: 3px 6px 5px;
+      margin-right: 8px;
+    }
+    > span.currentPrice {
+      font-size: 16px;
+      color: #EAF7FF;
+      font-weight: bold;
+      margin-right: 6px;
+      padding-bottom: 1px;
+    }
+    > span.originalPrice {
+      font-size: 14px;
+      color: rgba(234, 247, 255, 0.6);
+      text-decoration: line-through;
+      margin-right: 16px;
+    }
+    > span.platform {
+      width: 16px;
+      height: 16px;
+      font-size: 16px;
+      color: rgba(234, 247, 255, 0.4);
+    }
+  }
+  > p.download {
+    position: absolute;
+    left: 40px;
+    bottom: 74px;
+    z-index: 7;
+    color: rgba(234, 247, 255, .6);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    i {
+      color: rgba(234, 247, 255, .4);
+      padding: 0 5px;
+      box-sizing: border-box;
+    }
+  }
+  > div.dotIndicator {
+    position: absolute;
+    left: 40px;
+    bottom: 40px;
+    z-index: 7;
+    display: flex;
+    align-items: center;
+    > i {
+      width: 6px;
+      height: 6px;
+      border-radius: 2px;
+      background-color: rgba(217, 217, 217, 0.2);
+      margin-right: 16px;
+      cursor: pointer;
+      &.active {
+        background-color: rgba(234, 247, 255, 1);
+      }
+    }
+  }
+  > div.imgIndicator {
+    position: absolute;
+    right: 40px;
+    bottom: 48px;
+    z-index: 8;
+    display: flex;
+    align-items: center;
+    > i {
+      width: 56px;
+      height: 56px;
+      border-radius: 4px;
+      box-sizing: border-box;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      margin-left: 18px;
+      cursor: pointer;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0px 14px 8px 0px rgba(0, 0, 0, 0.95);
+      opacity: 0.6;
+      transition: transform 0.3s ease;
+      &:hover {
+        transform: scale(1.28, 1.28);
+        box-shadow: 0px 14px 8px 0px rgba(0, 0, 0, 1);
+        border: 1.5px solid rgba(255, 255, 255, 0.8);
+        opacity: 1;
+      }
+      &.active {
+        transform: scale(1.28, 1.28);
+        box-shadow: 0px 14px 8px 0px rgba(0, 0, 0, 1);
+        border: 1.5px solid rgba(255, 255, 255, 0.8);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+div.Banner:focus-visible {
+  outline: 2px solid #4fc3f7;
+  outline-offset: -2px;
+}
+
+div.Banner .dotIndicator > i:focus-visible,
+div.Banner .imgIndicator > i:focus-visible {
+  outline: 2px solid #4fc3f7;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (forced-colors: active) {
+  div.Banner:focus-visible,
+  div.Banner .dotIndicator > i:focus-visible,
+  div.Banner .imgIndicator > i:focus-visible {
+    outline: 2px solid Highlight;
+  }
+}

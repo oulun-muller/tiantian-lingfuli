@@ -1,0 +1,381 @@
+div .BetaTestGame {
+  margin: 0 auto;
+  box-sizing: content-box;
+  padding: 80px 32px 20px 48px;
+  max-width: 1760px;
+  > div.title {
+    width: 100%;
+    position: relative;
+    > h1 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      > span.title-english {
+        display: block;
+        font-family: Orbitron;
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 700;
+        opacity: 0.3;
+        color: #000;
+        -webkit-text-stroke: 2px rgba(0, 0, 0, 0);
+        background: -webkit-linear-gradient(-90deg, rgba(234, 247, 255, 0.8) 9%, rgba(140, 148, 153, 0.15) 88%);
+        -webkit-background-clip: text;
+        letter-spacing: 1px;
+      }
+      > sub.text {
+        display: block;
+        text-shadow: 0px 148.585px 118.868px rgba(255, 255, 255, 0.00), 0px 33.189px 26.551px rgba(255, 255, 255, 0.00), 0px 9.881px 7.905px rgba(255, 255, 255, 0.00);
+        font-family: "Microsoft YaHei";
+        font-size: 30px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 36.532px;
+        letter-spacing: 1.057px;
+        text-transform: capitalize;
+        background: linear-gradient(178deg, #929292 1.88%, #EAF7FF 98.12%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-top:-15px;
+        > i.left-icon,> i.right-icon {
+          display: inline-block;
+          width: 28px;
+          height:10px;
+          background: transparent url('~@/images/gamecenter/title-quote.png') no-repeat center center / contain;
+        }
+        > i.left-icon {
+          margin-right: 15px;
+        }
+        > i.right-icon {
+          margin-left: 15px;
+        }
+      }
+    }
+    > span.more {
+      position: absolute;
+      bottom: 2px;
+      right: 0;
+      font-weight: 400;
+      font-size: 14px;
+      opacity: 0.6;
+      cursor: pointer;
+      margin-right: 3px;
+      &:hover {
+        color: #386EFE;
+        opacity: 1;
+      }
+    }
+  }
+  > section {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    > b {
+      display: block;
+      width: 100%;
+      height: 50vw;
+      max-height: 830px;
+      max-width: 1350px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+      position: relative;
+      &::before {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        content: '';
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%);
+        backdrop-filter: blur(4px);
+      }
+      &::after {
+        width: 100.2%;
+        height: 100.2%;
+        position: absolute;
+        right: 0;
+        top: -0.1%;
+        content: '';
+        background: transparent url('~@/images/gamecenter/bate-b.png') no-repeat;
+        background-size: 100% 100%;
+        background-position: center center;
+        z-index: 1;
+      }
+      > sub.bor-left-top {
+        display: block;
+        position: absolute;
+        left: -39px;
+        top: -82px;
+        width: 0;
+        height: 100px;
+        transform: rotate(130deg);
+        border: 0.1px solid;
+        border-image-source: linear-gradient(to bottom, rgba(255, 255, 255, .3), rgba(255, 255, 255, .1));
+        border-image-slice: 1;
+      }
+      > sub.bor-left-bottom {
+        display: block;
+        position: absolute;
+        left: -28px;
+        bottom: 29px;
+        width: 0px;
+        height: 6.4vw;
+        transform: rotate(128deg);
+        border: 0.1px solid;
+        border-image-source: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+        border-image-slice: 1;
+      }
+      > sub.bor-right-bottom {
+        display: block;
+        position: absolute;
+        right: -32px;
+        bottom: -66px;
+        width: 0;
+        height: 85px;
+        transform: rotate(125deg);
+        border: 0.1px solid;
+        border-image-source: linear-gradient(to top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+        border-image-slice: 1;
+      }
+      > div.content {
+        width: 52.8302vw;
+        max-width: 900px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 68px;
+        z-index: 2;
+        > div.top {
+          width: 100%;
+          height: 28.302vw;
+          max-height: 506px;
+          border: 1px solid;
+          border-image-source: linear-gradient(to bottom, rgba(255, 255, 255, .4), rgba(255, 255, 255, 0));
+          border-image-slice: 1;
+          > div.url {
+            width: 100%;
+            height: 100%;
+            > video {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+            > img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+        > div.bottom {
+          display: flex;
+          margin-top: -4px;
+          > div.left {
+            flex: 1;
+            overflow: hidden;
+            > h1 {
+              margin-top: 15.5px;
+              color: #EAF7FF;
+              font-size: 20px;
+              font-style: normal;
+              font-weight: 700;
+              line-height: 20px;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+            > ul {
+              margin-top: 14px;
+              display: flex;
+              > li {
+                margin-right: 6px;
+                color: rgba(234, 247, 255, 0.80);
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 13px;
+                text-transform: capitalize;
+                border: 0.5px solid rgba(234, 247, 255, 0.20);
+                background: #000;
+                padding: 6px;
+                &:last-child {
+                  margin-right: 0;
+                }
+              }
+            }
+            > p {
+              margin-top: 14px;
+              font-family: Orbitron;
+              font-size: 18px;
+              font-style: normal;
+              font-weight: 900;
+              line-height: normal;
+              background: linear-gradient(178deg, #929292 -5.32%, #EAF7FF 92.8%);
+              background-clip: text;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+          > div.right {
+            width: 200px;
+            > div.buyButton, :deep(.buyButton) {
+              margin-top: 40px;
+              width: 200px;
+              height: 50px;
+              line-height: 50px;
+              font-size: 18px;
+              :deep(i.text){
+                width: 184px;
+              }
+            }
+            > div.downloadButton {
+              margin-top: 40px;
+              :deep(span) {
+                width: 200px;
+                height: 50px;
+                line-height: 50px;
+                font-size: 18px;
+                > i.text {
+                  width: 180px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+  :deep(.common-abnomal-btn) {
+    width: 200px;
+    height: 50px;
+    background-size: 100% 100%;
+    .text {
+      width: 177px;
+      line-height: 50px;
+      font-size: 16px;
+    }
+  }
+
+
+@media screen and (min-width: 1061px) {
+  div .BetaTestGame > section > b > sub.bor-left-bottom {
+    display: none;
+  }
+  div .BetaTestGame > section > b > div.content {
+    top: 13%;
+  }
+  div .BetaTestGame > section > b > div.content > div.bottom > div.left > h1 {
+    margin-top: 5%;
+  }
+  div .BetaTestGame > section > b > div.content > div.bottom > div.right > div.buyButton, :deep(.buyButton) {
+    margin-top: 20%;
+  }
+  div .BetaTestGame > section > b > div.content > div.bottom > div.right > div.downloadButton {
+    margin-top: 20%;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  div .BetaTestGame > section > b > div.content > div.bottom > div.right > div.downloadButton {
+    margin-top: 25%;
+  }
+}
+
+@media (forced-colors: active) {
+  .PcDevice {
+      .BetaTestGame {
+        background: Canvas;
+        color: CanvasText;
+        forced-color-adjust: auto;
+      }
+
+      .BetaTestGame .card,
+      .BetaTestGame .panel,
+      .BetaTestGame .tile,
+      .BetaTestGame .item,
+      .BetaTestGame li,
+      .BetaTestGame section,
+      .BetaTestGame article,
+      .BetaTestGame .content,
+      .BetaTestGame .wrapper,
+      .BetaTestGame .container {
+        background: Canvas;
+        border-color: ButtonText;
+        color: CanvasText;
+      }
+
+      .BetaTestGame button,
+      .BetaTestGame [role="button"],
+      .BetaTestGame .btn,
+      .BetaTestGame .button,
+      .BetaTestGame .close,
+      .BetaTestGame .back,
+      .BetaTestGame .more,
+      .BetaTestGame .prev,
+      .BetaTestGame .next,
+      .BetaTestGame .arrow,
+      .BetaTestGame .search-icon {
+        background: ButtonFace;
+        border: 1px solid ButtonText;
+        color: ButtonText;
+      }
+
+      .BetaTestGame input,
+      .BetaTestGame textarea,
+      .BetaTestGame select {
+        background: Canvas;
+        border: 1px solid ButtonText;
+        color: CanvasText;
+      }
+
+      .BetaTestGame input::placeholder,
+      .BetaTestGame textarea::placeholder,
+      .BetaTestGame .empty,
+      .BetaTestGame .nothing,
+      .BetaTestGame .placeholder,
+      .BetaTestGame .disabled,
+      .BetaTestGame .is-disabled,
+      .BetaTestGame [disabled],
+      .BetaTestGame [aria-disabled="true"] {
+        color: GrayText;
+        border-color: GrayText;
+      }
+
+      .BetaTestGame .active,
+      .BetaTestGame .selected,
+      .BetaTestGame .is-active,
+      .BetaTestGame .is-selected,
+      .BetaTestGame [aria-selected="true"] {
+        background: Highlight;
+        border-color: Highlight;
+        color: HighlightText;
+      }
+
+      .BetaTestGame a {
+        color: LinkText;
+      }
+
+      .BetaTestGame button:focus-visible,
+      .BetaTestGame a:focus-visible,
+      .BetaTestGame input:focus-visible,
+      .BetaTestGame textarea:focus-visible,
+      .BetaTestGame select:focus-visible,
+      .BetaTestGame [role="button"]:focus-visible,
+      .BetaTestGame [tabindex]:focus-visible {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+  }
+}

@@ -1,0 +1,350 @@
+.FourColumnList {
+  .pointer {
+    cursor: pointer;
+  }
+
+  .item {
+    width: 100%;
+    height: 72px;
+    margin-bottom: 20px;
+    position: relative;
+    display: flex;
+
+
+
+    .img_box {
+      position: relative;
+      width: 72px;
+      height: 72px;
+      overflow: hidden;
+      border-radius: 12px;
+      display: block;
+
+      &::before {
+        content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 12px;
+    padding: 0.5px;
+    background: linear-gradient(to bottom, rgb(255, 255, 255), rgba(255, 255, 255, 0.2));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+      }
+
+      .img-class {
+          width: 72px;
+      height: 72px;
+          object-fit: cover;
+      }
+
+      .arrow-up {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 22px;
+        height: 22px;
+        background: transparent url('~@/images/gamecenter/arrow-up.png') no-repeat center center / contain;
+      }
+
+      .arrow-down {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 22px;
+        height: 22px;
+        background: transparent url('~@/images/gamecenter/arrow-down.png') no-repeat center center / contain;
+      }
+    }
+
+    >span {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 3;
+      font-size: 12px;
+      font-style: italic;
+      color: #ffffff;
+      font-weight: bold;
+      line-height: 1;
+      box-sizing: content-box;
+      padding: 4px 7px 6px 5px;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.31);
+      border: 1px solid transparent;
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: linear-gradient(0deg, #0c9b34, #0c9b34),
+        linear-gradient(135deg, #4ad370 7.43%, #0c8e30 94.88%);
+
+      &.hot {
+        background-image: linear-gradient(0deg, #eb2051, #eb2051),
+          linear-gradient(135deg, #ff5981 7.43%, #a9062e 94.88%);
+      }
+
+      &.lowest {
+        background-image: linear-gradient(0deg, #2420eb, #2420eb),
+          linear-gradient(135deg, #6b68ff 7.43%, #13119a 94.88%);
+      }
+
+      &.limit {
+        background-image: linear-gradient(0deg, #7d1bf9, #7d1bf9),
+          linear-gradient(135deg, #b275ff 7.43%, #4c0e9b 94.88%);
+      }
+    }
+
+    .content-container {
+      flex: 1;
+      margin-left: 16px;
+      min-width: 0;
+
+      .softName {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-bottom: 8px;
+
+        .rankTagB {
+          width: 54px;
+          height: 18px;
+        }
+
+        .rankTag0 {
+          display: inline-block;
+          width: 54px;
+          height: 18px;
+
+          &.tab5 {
+            background: url('@/images/gamecenter/nob-red-top1.png') no-repeat;
+            background-size: contain;
+          }
+
+          &.tab7 {
+            background: url('@/images/gamecenter/nob-purple-top1.png') no-repeat;
+            background-size: contain;
+          }
+
+          &.tab8 {
+            background: url('@/images/gamecenter/nob-green-top1.png') no-repeat;
+            background-size: contain;
+          }
+
+          &.tab6 {
+            background: url('@/images/gamecenter/nob-blue-top1.png') no-repeat;
+            background-size: contain;
+          }
+
+          &.tab19 {
+            background: url('@/images/gamecenter/nob-yellow-top1.png') no-repeat;
+            background-size: contain;
+          }
+        }
+
+        .rankTag1 {
+          display: inline-block;
+          width: 54px;
+          height: 18px;
+
+          &.tab5 {
+            background: url('@/images/gamecenter/nob-red-top2.png') no-repeat;
+            background-size: contain;
+          }
+
+          &.tab7 {
+            background: url('@/images/gamecenter/nob-purple-top2.png') no-repeat;
+            background-size: contain;
+          }
+
+          &.tab8 {
+            background: url('@/images/gamecenter/nob-green-top2.png') no-repeat;
+            background-size: contain;
+          }
+
+          &.tab6 {
+            background: url('@/images/gamecenter/nob-blue-top2.png') no-repeat;
+            background-size: contain;
+          }
+
+          &.tab19 {
+            background: url('@/images/gamecenter/nob-yellow-top2.png') no-repeat;
+            background-size: contain;
+          }
+        }
+
+        .rankTag2 {
+          display: inline-block;
+          width: 54px;
+          height: 18px;
+
+          &.tab5 {
+            background: url('@/images/gamecenter/nob-red-top3.png') no-repeat;
+            background-size: contain;
+          }
+
+          &.tab7 {
+            background: url('@/images/gamecenter/nob-purple-top3.png') no-repeat;
+            background-size: contain;
+          }
+
+          &.tab8 {
+            background: url('@/images/gamecenter/nob-green-top3.png') no-repeat;
+            background-size: contain;
+          }
+
+          &.tab6 {
+            background: url('@/images/gamecenter/nob-blue-top3.png') no-repeat;
+            background-size: contain;
+          }
+
+          &.tab19 {
+            background: url('@/images/gamecenter/nob-yellow-top3.png') no-repeat;
+            background-size: contain;
+          }
+        }
+
+        .rankTagOther {
+          display: inline-block;
+          height: 23px;
+          line-height: 23px;
+          background: url('@/images/gamecenter/num-bac.png') no-repeat;
+          background-size: 100% 100%;
+          text-shadow: 0px 1.24px 1.317px rgba(0, 0, 0, 0.54);
+          font-family: Orbitron;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 900;
+          font-variant: small-caps;
+          padding: 0 19px 0 10px;
+          box-sizing: border-box;
+          white-space: nowrap;
+        }
+
+        p {
+          color: #eaf7ff;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 16px;
+          // display: -webkit-box !important;
+          // -webkit-line-clamp: 1;
+          // -webkit-box-orient: vertical;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          overflow: hidden;
+
+          &.IsRankList_p {
+            background: linear-gradient(0, #FFF 1.88%, #929292 98.12%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+        }
+
+        .platform {
+          margin-top: 5px;
+          margin-left: 12px;
+          font-size: 12px;
+          color: rgba(234, 247, 255, 0.6);
+
+          >i {
+            display: inline-block;
+            margin-right: 8px;
+            font-size: 16px;
+          }
+        }
+      }
+      .soft-labels {
+        margin-bottom: 8px;
+      }
+      .soft-text {
+        color: rgba(234, 247, 255, 0.60);
+        font-size: 12px;
+      }
+
+      .play-label {
+        line-height: 12px;
+        padding: 5px 6px 6px 6px;
+        font-size: 12px;
+        background: linear-gradient(143deg, #474F5F 0%, #343B47 44.6%, #232831 89.03%);
+        display: inline-block;
+      }
+
+      >ul {
+        display: inline-block;
+        white-space: nowrap;
+        line-height: 20px;
+
+        >li {
+          display: inline-block;
+          vertical-align: top;
+          box-sizing: border-box;
+          padding: 4px 8px 5px 8px;
+          border: 1px solid rgba(234, 247, 255, 0.2);
+          font-size: 12px;
+          height: 22px;
+          line-height: 14px;
+          margin-right: 8px;
+          text-align: center;
+          background: linear-gradient(178deg, #929292 1.88%, #eaf7ff 98.12%);
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          font-weight: 400;
+          opacity: 0.6;
+
+          &.active {
+            font-weight: bold;
+            color: #386EFE;
+            border-color: rgba(56, 110, 254, 0.6);
+          }
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+
+    }
+
+
+
+
+    .downloadButton {
+      // position: absolute;
+      // right: 30px;
+      // top: 24px;
+      // z-index: 8;
+      width: 72px;
+      height: 28px;
+
+      // :deep(){
+      //   .DownloadButton {
+      //     height: 34px;
+      //   }
+      // }
+
+      // :deep(div span) {
+      //   font-size: 14px;
+      //   width: 100%;
+      // }
+    }
+  }
+}
+
+.auth-icon {
+  height: 22px;
+  margin-right: 4px;
+}
+
+
+  :deep(.grey-rect-btn) {
+    .text {
+      font-size: 14px;
+    }
+  }

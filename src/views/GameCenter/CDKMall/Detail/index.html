@@ -1,0 +1,418 @@
+<div :class="['Detail', $isPadDevice ? 'PadDevice' : 'PcDevice']" @click.stop="hideTipsGuide">
+  <header
+    draggable
+    :class="{ topMask: scrollTop > 50 }"
+    @dragstart.prevent="$startDrag"
+    @dblclick.self="$toggleMaximize">
+    <button @click.stop="back" draggable @dragstart.prevent.stop>
+      <i class="back-arrow" aria-hidden="true"></i>{{ backTitle }}
+    </button>
+  </header>
+  <main
+    v-if="detail"
+    ref="scrollDom"
+    @scroll="scrollHandle">
+    <div>
+      <header :style="{ '--scale': scale }">
+        <div
+          v-if="detail.softDesc.mediaList.length"
+          ref="stage">
+          <section>
+            <MediaStage
+              v-if="currentMedia"
+              :key="(detail.softId || 0) + 1"
+              :detail="detail"
+              :drinfo="drinfo"
+              :showPay="showPay"
+              :rankingItem="rankingItem"
+              :isFollower="isFollower"
+              :clickGameLibrary="clickGameLibrary"
+              :scrollToComment="scrollToComment"
+              :toFollowers="toFollowers"
+/>
+          </section>
+        </div>
+        <div v-else ref="stage"></div>
+      </header>
+      <div style="position: relative;">
+      <div class="wrap-first-back"></div>
+      <div :class="{ 'detail-wrap':true }" >
+        <div 
+        v-if="canWriteReview && userReviewInfo && userReviewInfo.userGameDuration"
+          class="recommend-wrap">
+          <span class="icon"></span>
+          <p class="info">
+            <span class="main">您已玩{{ calcTime(userReviewInfo.userGameDuration) }}</span>
+            <span class="sub">您的看法对游戏和其他玩家很重要，您会向其他玩家推荐这款游戏吗？</span>
+          </p>
+          <span class="action-wrap">
+            <i class="recommend" tabindex="0" role="button" aria-label="推荐" @click="clickRecommend(1)" @keydown.enter.prevent.stop="clickRecommend(1)" @keydown.space.prevent.stop="clickRecommend(1)">
+              <img src="@/images/icon/recommend.svg" class="recommend-icon" aria-hidden="true"/>
+              推荐</i>
+            <i class="not-recommend" tabindex="0" role="button" aria-label="不推荐" @click="clickRecommend(0)" @keydown.enter.prevent.stop="clickRecommend(0)" @keydown.space.prevent.stop="clickRecommend(0)">
+                <img src="@/images/icon/no-recommend.svg" class="recommend-icon" aria-hidden="true"/>
+              不推荐</i>
+          </span>
+        </div>
+        <div class="clcik-scroll">
+          <div class="lick-scroll-item-active">详情</div>
+          <div v-if="detail.softDesc.reviewsCount" class="click-scroll-item" tabindex="0" role="button" :aria-label="'查看评测，共' + detail.softDesc.reviewsCount + '条'" @click="scrollToComment" @keydown.enter.prevent.stop="scrollToComment" @keydown.space.prevent.stop="scrollToComment">评测·{{detail.softDesc.reviewsCount}}</div>
+       </div>
+        <section>
+          <div class="wrap-left">
+            <div  class="left-outer-layer">
+              <ActivityNotice
+              :key="(detail.softId || 0) + 2"
+              :detail="detail"
+              :_stateGame="stateGame"
+              :_statePage="statePage"
+              :_gameClass="gameClass"
+             />
+            </div>
+            <div v-if="detail.softPurpose === 2 && detail.softDesc.whatsNew" class="left-outer-layer">
+              <div class="h1-class">更新日志</div>
+              <div class="uplate-container">
+                <div class="update-desc" :class="{ 'update-desc-expand': whatsNewExpandStatus === 2 }">
+                  <div ref="whatsNew">
+                    <RichTextViewer :rt="detail.softDesc.whatsNew" />
+                  </div>
+                </div>
+                <span
+                  v-if="whatsNewExpandStatus === 1"
+                  class="expand"
+                  tabindex="0" role="button" aria-label="展开更多更新日志"
+                  @click="whatsNewExpandStatus = 2" @keydown.enter.prevent.stop="whatsNewExpandStatus = 2" @keydown.space.prevent.stop="whatsNewExpandStatus = 2">更多</span>
+              </div>
+            </div>
+            <div v-if="detail.softDesc.detailInfo" class="left-outer-layer">
+              <div class="h1-class"style="margin-bottom: 8px">游戏简介</div>
+              <div class="container">
+                <div :class="{ desc: true, expand: detailInfoExpandStatus === 2 }">
+                  <div ref="detailInfo">
+                    <RichTextViewer :rt="detail.softDesc.detailInfo" />
+                  </div>
+                </div>
+                <span
+                  v-if="detailInfoExpandStatus === 1"
+                  class="expand"
+                  tabindex="0" role="button" aria-label="展开更多游戏简介"
+                  @click="detailInfoExpandStatus = 2" @keydown.enter.prevent.stop="detailInfoExpandStatus = 2" @keydown.space.prevent.stop="detailInfoExpandStatus = 2">更多</span>
+              </div>
+            </div>
+            <template>
+              <VideoList 
+              v-if="!$isPadDevice"
+              class="left-outer-layer"
+               ref="goodvideos"
+              :key="(detail.softId || 0) + 3"
+              :detail="detail"  
+               :_stateGame="stateGame"
+              :_statePage="statePage"
+              :_gameClass="gameClass" />
+            </template>
+            <div class="wrap-right-pad">
+              <AIEvaluation
+                class="left-outer-layer"
+                v-if="detail.softDesc.aiReviews && detail.firstClassId === '2002'"
+                :key="(detail.softId || 0) + 5"
+                :aiContent='detail.softDesc.aiReviews' 
+                :softName="detail.softName"
+                :_stateGame="stateGame"
+                :_statePage="statePage"
+                :_gameClass="gameClass"
+                />
+              <div class="awards-wrap left-outer-layer" v-if="detail.showInfo.mediaScores.length">
+                <h4 class="awards-title">
+                  <span class="title">媒体评分</span>
+                </h4>
+                <div class="marks-wrap" v-if="detail.showInfo.mediaScores.length">
+                  <div v-for="(scoreItem, key) in detail.showInfo.mediaScores.slice(0,10)" :key="key">
+                    <span class="score-wrap" :style='`background: transparent url("${scoreItem.backgroundImg || scoreDefaultBac}") no-repeat top center / contain;`'>
+                      <i class="name" :style='`color: ${scoreItem.fontColor || "rgba(234, 247, 255, 1)"}`'>{{ scoreItem.mediaName }}</i>
+                      <i class="score" :style='`color: ${scoreItem.fontColor || "rgba(234, 247, 255, 1)"}`'>{{ scoreItem.score }}<template v-if="scoreItem.scoreType==='3'">%</template></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <VerticalGameListPad style="margin-top: 24px;"
+              :key="(detail.softId || 0) + 6"
+              :detail="detail"
+              :toTop="toTop"
+              :_stateGame="stateGame"
+              :_statePage="statePage"
+              :_gameClass="gameClass"/>
+            </div>
+            <LegionEvaluation
+              class="left-outer-layer"
+              v-if="detail && userReviewInfo && userReviewInfo.enableReviews"
+              :key="(detail.softId || 0) + 4"
+              ref="legionEvaluation"
+              :canWriteReview="canWriteReview"
+              :detail="detail"
+              :userReviewInfo="userReviewInfo"
+              :myEvaluationData="userReviewInfo && userReviewInfo.userSoftReviews"
+              :_stateGame="stateGame"
+              :_statePage="statePage"
+              :_gameClass="gameClass"
+              @addMyEvaluation="refreshPage" 
+              @deleteMyEvaluation="refreshPage" 
+              />
+            </div>
+          <div class="wrap-right">
+            <AIEvaluation
+              v-if="detail.softDesc.aiReviews && detail.firstClassId === '2002'"
+              :key="(detail.softId || 0) + 5"
+              :aiContent='detail.softDesc.aiReviews' 
+              :softName="detail.softName"
+              :_stateGame="stateGame"
+              :_statePage="statePage"
+              :_gameClass="gameClass"
+              />
+              <VerticalGameList style="margin-top: 24px;"
+              :key="(detail.softId || 0) + 6"
+              :detail="detail"
+              :toTop="toTop"
+              :_stateGame="stateGame"
+              :_statePage="statePage"
+              :_gameClass="gameClass"/>
+            <div class="awards-wrap" v-if="detail.showInfo.mediaScores.length">
+              <h3 class="text-stroke-around">Media Review Score</h3>
+              <h4 class="awards-title">
+                <i class="star"></i>
+                <span class="title">媒体评分</span>
+                <i class="star"></i>
+              </h4>
+              <div class="marks-wrap" v-if="detail.showInfo.mediaScores.length">
+                <div v-for="(scoreItem, key) in detail.showInfo.mediaScores.slice(0,10)" :key="key">
+                  <span class="score-wrap" :style='`background: transparent url("${scoreItem.backgroundImg || scoreDefaultBac}") no-repeat top center / contain;`'>
+                    <i class="name" :style='`color: ${scoreItem.fontColor || "rgba(234, 247, 255, 1)"}`'>{{ scoreItem.mediaName }}</i>
+                    <i class="score" :style='`color: ${scoreItem.fontColor || "rgba(234, 247, 255, 1)"}`'>{{ scoreItem.score }}<template v-if="scoreItem.scoreType==='3'">%</template></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="config-require-wrap" v-if="detail.softDesc.configurationRequirement">
+              <h1 class="title">最低配置需求</h1>
+              <ul class="configuration">
+                <li v-if="detail.softDesc.configurationRequirement.system">
+                  <label>系统</label>
+                  <span>{{ detail.softDesc.configurationRequirement.system }}</span>
+                </li>
+                <li v-if="detail.softDesc.configurationRequirement.display">
+                  <label>显卡</label>
+                  <span>{{ detail.softDesc.configurationRequirement.display }}</span>
+                </li>
+                <li v-if="detail.softDesc.configurationRequirement.hardDisk">
+                  <label>硬盘</label>
+                  <span>{{ detail.softDesc.configurationRequirement.hardDisk }}</span>
+                </li>
+                <li v-if="detail.softDesc.configurationRequirement.cpu">
+                  <label>CPU</label>
+                  <span>{{ detail.softDesc.configurationRequirement.cpu }}</span>
+                </li>
+                <li v-if="detail.softDesc.configurationRequirement.directX">
+                  <label>DX版本</label>
+                  <span>{{ detail.softDesc.configurationRequirement.directX }}</span>
+                </li>
+                <li v-if="detail.softDesc.configurationRequirement.ram">
+                  <label>内存</label>
+                  <span>{{ detail.softDesc.configurationRequirement.ram }}</span>
+                </li>
+              </ul>
+            </div>
+            <div class="awards-wrap" v-if="detail.showInfo.awardInfos.length">
+              <h3 class="text-stroke-around">AWARD-WINNING RECORD</h3>
+              <h4 class="awards-title">
+                <i class="star"></i>
+                <span class="title">获奖记录</span>
+                <i class="star"></i>
+              </h4>
+              <div class="img-wrap">
+                <p v-for="(award, index) in detail.showInfo.awardInfos" 
+                  :key="index" 
+                  :class="[award.awardImgUrl ? 'img-info' : 'text-info',
+                          showFengeLine(index) ? 'fenge-line':'',
+                          'content-wrap']">
+                  <template v-if="award.type===2" >
+                    <img width="84" :src="award.awardImgUrl" :alt="award.awardName || '奖项图片'"/>
+                  </template>
+                  <template v-else>
+                    <span class="text">{{ award.awardName }}</span>
+                  </template>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      </div>
+    </div>
+  </main>
+    <img
+    v-show="scrollTop > 422 && !$isPadDevice"
+    class="top"
+    src="./top.png"
+    alt="返回顶部"
+    tabindex="0"
+    role="button"
+    aria-label="返回顶部"
+    @click="toTop"
+    @keydown.enter.prevent.stop="toTop"
+    @keydown.space.prevent.stop="toTop">
+    <template v-if="!$isPadDevice">
+        <div v-if="detail" :class="{ sticky: true, show: scrollTop > 422 }">
+        <div class="img-item">
+          <img :src="detail.showInfo.himg || defaultImg" :alt="detail.softName || '游戏封面'">
+          <img v-if="!detail.showInfo.himg" class="log-img" :src="detail.showInfo.logoFile" :alt="detail.softName || '游戏图标'">
+        </div>
+        <div class="content">
+          <h1 class="sticky-title">{{ detail.softName }}</h1>
+          <div class="sticky-text-container">
+              <template v-if="[1,2].includes(detail.downloadInfo.bizType) && detail.expectations">
+                <span class="pointer-class">·</span>
+                <span class="recommand-num"> 期待值 {{ fixedNum }}</span>
+               </template>
+            <template v-else-if="detail.softDesc.positiveReviewRate">
+              <span class="pointer-class">·</span>
+              <span class="recommand-num">推荐率 <span class="num">{{detail.softDesc.positiveReviewRate}}</span>  </span>
+              <span class="symbol-100">%</span>
+            </template>
+              <template>
+                <span class="pointer-class">·</span>
+                <span class="text-desc">{{ [1,2].includes(detail.downloadInfo.bizType) ? `${ detail.downloadInfo.reservationCount}人预约`  : detail.downloadInfo.downloadCount}}</span>
+              </template>
+              <template v-if="detail.relateActivitys.length">
+                <span class="pointer-class">·</span>
+                <span  class="text-desc" tabindex="0" role="button" :aria-label="detail.relateActivitys[0].title" @click="jumpActive(detail.relateActivitys[0].jumpUrl)" @keydown.enter.prevent.stop="jumpActive(detail.relateActivitys[0].jumpUrl)" @keydown.space.prevent.stop="jumpActive(detail.relateActivitys[0].jumpUrl)">{{detail.relateActivitys[0].title}}<div class="arrow-left"></div></span>
+              </template>
+          <!-- <span v-if="detail.softPurpose === 2">{{ detail.downloadInfo.downloadCount }}</span>
+          <p v-else-if="detail.productInfo.exchangePlatform"><i v-if="detail.productInfo.exchangePlatformFont" class="iconfont" v-html="detail.productInfo.exchangePlatformFont"></i>{{ detail.productInfo.exchangePlatform }}</p> -->
+          </div>
+       
+        </div>
+        <p v-if="detail.softPurpose === 1" class="price">
+          <span v-if="detail.productInfo.discount" class="discount">{{ detail.productInfo.discount }}</span>
+          <span class="currentPrice">¥{{ detail.productInfo.currentPrice }}</span>
+          <span v-if="detail.productInfo.discount && detail.productInfo.originalPrice" class="originalPrice">¥{{ detail.productInfo.originalPrice }}</span>
+        </p>
+        <GameDownloadButton
+          :key="(detail.softId || 0) + 7"
+          v-if="[2,3].includes(detail.softPurpose)"
+          button-style="rect"
+          :downloadInfo="detail.downloadInfo"
+          :softDesc="detail.softDesc"
+          :soft-id="detail.softId"
+          :soft-purpose="detail.softPurpose"
+          :product-info="detail.productInfo"
+          :userPurchasedStatus="detail.productInfo.userPurchasedStatus"
+          :version="detail.softDesc.version"
+          :soft-name="detail.softName"
+          :logo-file="detail.showInfo.logoFile"
+          :fast-install="detail.showInfo.isFastInstall"
+          :drinfo="drinfo"
+          :text="getDownloadText(detail)"
+          :is-click="true"
+          :sku-id="detail.skuId"
+          ref="GameDownloadButton" />
+          <button 
+            v-else
+            ref="ShowPay" 
+            @click.stop="showPay">立即购买</button>
+                        <div class="followers" v-if="![1, 2].includes(detail.downloadInfo.bizType)"
+                          tabindex="0"
+                          role="button"
+                          :aria-label="isFollower ? '取消关注' : '关注' + detail.softName"
+                          :aria-pressed="isFollower ? 'true' : 'false'"
+                          @click.stop="toFollowers"
+                          @keydown.enter.prevent.stop="toFollowers"
+                          @keydown.space.prevent.stop="toFollowers">
+                  <img v-if="isFollower" src="@/images/gamecenter/concern-normal-new.png" alt="" aria-hidden="true">
+                  <img v-else src="@/images/gamecenter/concern-active-new.png" alt="" aria-hidden="true">
+                </div>
+          </div>
+    </template>
+    <template v-else>
+      <div v-if="detail" :class="{ show: true}" class="sticky">
+        <template v-if="[2,3].includes(detail.softPurpose)">
+          <GameDownloadButton
+          v-if="$isPadDevice"
+          :key="(detail.softId || 0) + 7"
+          theme="rect"
+          :downloadInfo="detail.downloadInfo"
+          :softDesc="detail.softDesc"
+          :soft-id="detail.softId"
+          :soft-purpose="detail.softPurpose"
+          :product-info="detail.productInfo"
+          :userPurchasedStatus="detail.productInfo.userPurchasedStatus"
+          :version="detail.softDesc.version"
+          :soft-name="detail.softName"
+          :logo-file="detail.showInfo.logoFile"
+          :fast-install="detail.showInfo.isFastInstall"
+          :drinfo="drinfo"
+          :text="getDownloadText(detail)"
+          :is-click="true"
+          :sku-id="detail.skuId"
+          ref="GameDownloadButton" />
+          <GameDownloadButton
+          v-else
+          :key="(detail.softId || 0) + 7"
+          button-style="rect"
+          :downloadInfo="detail.downloadInfo"
+          :softDesc="detail.softDesc"
+          :soft-id="detail.softId"
+          :soft-purpose="detail.softPurpose"
+          :product-info="detail.productInfo"
+          :userPurchasedStatus="detail.productInfo.userPurchasedStatus"
+          :version="detail.softDesc.version"
+          :soft-name="detail.softName"
+          :logo-file="detail.showInfo.logoFile"
+          :fast-install="detail.showInfo.isFastInstall"
+          :drinfo="drinfo"
+          :text="getDownloadText(detail)"
+          :is-click="true"
+          :sku-id="detail.skuId"
+          ref="GameDownloadButton" />
+        </template>
+        
+          <button 
+            v-else
+            ref="ShowPay" 
+            @click.stop="showPay">立即购买</button>
+            <div :class="[$isPadDevice ? 'pad-follow-wrapper' : 'followers']" v-if="![1, 2].includes(detail.downloadInfo.bizType)"
+              tabindex="0"
+              role="button"
+              :aria-label="isFollower ? '取消关注' : '关注' + detail.softName"
+              :aria-pressed="isFollower ? 'true' : 'false'"
+              @click.stop="toFollowers"
+              @keydown.enter.prevent.stop="toFollowers"
+              @keydown.space.prevent.stop="toFollowers">
+              <template v-if="$isPadDevice">
+                <div v-if="isFollower" class="pad-follower">已关注</div>
+                <div v-else class="pad-follower">
+                  <img src="@/images/gamecenter/concern-active-new.png" alt="" aria-hidden="true"/>关注
+                </div>
+              </template>
+              <template v-else>
+                  <img v-if="isFollower" src="@/images/gamecenter/concern-normal-new.png" alt="" aria-hidden="true"/>
+                  <img v-else src="@/images/gamecenter/concern-active-new.png" alt="" aria-hidden="true"/>
+              </template>
+            </div>
+      </div>
+    </template>
+  <div v-if="ready && !detail" class="nothing">
+    <img src="./nothing.png" alt="">
+    <p>当前游戏不见了</p>
+  </div>
+  <EvaluatioinDialog 
+    v-if="detail && userReviewInfo"
+    :key="(detail.softId || 0) + 8"
+    :softName="detail.softName"
+    :recommendType="recommendType" 
+    :show="showEvaDialog" 
+    :userReviewInfo="userReviewInfo"
+    :stateGame="stateGame"
+    :statePage="statePage"
+    :gameClass="gameClass"
+    @closeDialog="showEvaDialog=false" 
+    @addMyEvaluation="refreshPage"/>
+</div>

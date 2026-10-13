@@ -1,0 +1,38 @@
+<div class="RecentGame">
+  <h3 class="title-wrap" v-if="isLoading && !hasNotData || (recentGames && recentGames.length)">
+    <span class="title-bac gc-text-stroke-around">{{ moduleData && moduleData.moduleEname }}</span>
+    <span v-if="!$isPadDevice"  class="gc-title-text"><i class="gc-title-quote-icon"></i>&nbsp;最近在玩&nbsp;<i class="gc-title-quote-icon"></i></span>
+    <span v-else class="gc-title-text">最近在玩</span>
+    <span @click="navigatorMyGame" class="more">更多</span>
+  </h3>
+  <div v-if="isLoading && !hasNotData && (!recentGames || !recentGames.length)" class="game-normal">
+    <ol>
+      <li
+        v-for="(item, index) of loadingItems"
+        :key="index">
+        <section>
+          <i><img src="./normal.png" alt=""></i>
+          <div class="loading-content">
+            <div class="top"></div>
+            <div class="bottom"></div>
+          </div>
+        </section>
+      </li>
+    </ol>
+  </div>
+  <div 
+    v-if="!isLoading && recentGames && recentGames.length"
+    class="list-wrapper" 
+    ref="list-wrapper">
+    <ul>
+      <li 
+        v-for="(item, index) of recentGames"
+        :key="item && item.id || index"
+        @click="toDetail(item && item.softInfo)">
+        <GameItem 
+          :game-data="item"
+          :show-download-button="recentGames && recentGames.length >= 1"></GameItem>
+      </li>
+    </ul>
+  </div>
+</div>

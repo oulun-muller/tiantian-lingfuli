@@ -1,0 +1,131 @@
+div.ThreeLeaderBoard {
+  margin: 0 auto;
+  box-sizing: content-box;
+  padding: 0 40px;
+  max-width: 1760px;
+  margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  column-gap: 30px;
+  > div {
+    display: none;
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3) {
+      display: block;
+    }
+    > header {
+      height: 20px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      > span.title {
+        width: 0;
+        flex: 1 1 auto;
+        font-size: 18px;
+        font-weight: bold;
+        color: #EAF7FF;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      > span.more {
+        margin-left: 18px;
+        font-size: 14px;
+        color: rgba(234, 247, 255, 0.6);
+        font-weight: normal;
+        cursor: pointer;
+        &:hover {
+          color: #386EFE;
+        }
+      }
+    }
+  }
+}
+
+@media (forced-colors: active) {
+  .PcDevice {
+      .ThreeLeaderBoard {
+        background: Canvas;
+        color: CanvasText;
+        forced-color-adjust: auto;
+      }
+
+      .ThreeLeaderBoard .card,
+      .ThreeLeaderBoard .panel,
+      .ThreeLeaderBoard .tile,
+      .ThreeLeaderBoard .item,
+      .ThreeLeaderBoard li,
+      .ThreeLeaderBoard section,
+      .ThreeLeaderBoard article,
+      .ThreeLeaderBoard .content,
+      .ThreeLeaderBoard .wrapper,
+      .ThreeLeaderBoard .container {
+        background: Canvas;
+        border-color: ButtonText;
+        color: CanvasText;
+      }
+
+      .ThreeLeaderBoard button,
+      .ThreeLeaderBoard [role="button"],
+      .ThreeLeaderBoard .btn,
+      .ThreeLeaderBoard .button,
+      .ThreeLeaderBoard .close,
+      .ThreeLeaderBoard .back,
+      .ThreeLeaderBoard .more,
+      .ThreeLeaderBoard .prev,
+      .ThreeLeaderBoard .next,
+      .ThreeLeaderBoard .arrow,
+      .ThreeLeaderBoard .search-icon {
+        background: ButtonFace;
+        border: 1px solid ButtonText;
+        color: ButtonText;
+      }
+
+      .ThreeLeaderBoard input,
+      .ThreeLeaderBoard textarea,
+      .ThreeLeaderBoard select {
+        background: Canvas;
+        border: 1px solid ButtonText;
+        color: CanvasText;
+      }
+
+      .ThreeLeaderBoard input::placeholder,
+      .ThreeLeaderBoard textarea::placeholder,
+      .ThreeLeaderBoard .empty,
+      .ThreeLeaderBoard .nothing,
+      .ThreeLeaderBoard .placeholder,
+      .ThreeLeaderBoard .disabled,
+      .ThreeLeaderBoard .is-disabled,
+      .ThreeLeaderBoard [disabled],
+      .ThreeLeaderBoard [aria-disabled="true"] {
+        color: GrayText;
+        border-color: GrayText;
+      }
+
+      .ThreeLeaderBoard .active,
+      .ThreeLeaderBoard .selected,
+      .ThreeLeaderBoard .is-active,
+      .ThreeLeaderBoard .is-selected,
+      .ThreeLeaderBoard [aria-selected="true"] {
+        background: Highlight;
+        border-color: Highlight;
+        color: HighlightText;
+      }
+
+      .ThreeLeaderBoard a {
+        color: LinkText;
+      }
+
+      .ThreeLeaderBoard button:focus-visible,
+      .ThreeLeaderBoard a:focus-visible,
+      .ThreeLeaderBoard input:focus-visible,
+      .ThreeLeaderBoard textarea:focus-visible,
+      .ThreeLeaderBoard select:focus-visible,
+      .ThreeLeaderBoard [role="button"]:focus-visible,
+      .ThreeLeaderBoard [tabindex]:focus-visible {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+  }
+}

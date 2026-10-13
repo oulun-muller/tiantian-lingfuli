@@ -1,0 +1,83 @@
+<div class="MiniGameDetail">
+  <header
+    draggable
+    @dragstart.prevent="$startDrag"
+    @dblclick.self="$toggleMaximize">
+    <button @click.stop="back" draggable @dragstart.prevent.stop>
+      <i class="el-icon-arrow-left"></i>游戏推荐
+    </button>
+  </header>
+  <section v-if="ready && miniGamedetailData">
+    <i :style='`background: transparent url("${miniGamedetailData.showInfo.himg || ""}") no-repeat top center / cover`'></i>
+      <div 
+        class="top-content"
+        >
+        <img :src="miniGamedetailData.showInfo.logoFile || ''" :alt="miniGamedetailData.softName" aria-hidden="true">
+        <aside>
+          <h1>{{ miniGamedetailData.softName }}</h1>
+          <h2 v-if="miniGamedetailData.softDesc.introduction">{{ miniGamedetailData.softDesc.introduction }}</h2>
+          <ul>
+            <li 
+              v-if="miniGamedetailData.showInfo.softLabels.length"
+              v-for="(tagItem,tagIndex) in miniGamedetailData.showInfo.softLabels" 
+              :key="tagIndex">{{ tagItem }}</li>
+          </ul>
+          <button @click.stop="openMiniGame(miniGamedetailData,1)">打开</button>
+        </aside>
+      </div>
+      <div class="bottom-content">
+        <h1>玩{{ miniGamedetailData.softName }}的人也喜欢</h1>
+        <ol>
+          <li
+            v-for="(likeItem,likeIndex) in likeList"
+            :key="likeIndex"
+            tabindex="0"
+            role="button"
+            :aria-label="likeItem.softName + '，点击打开'"
+            :style='`background: transparent url("${likeItem.showInfo.vimg || likeItem.softDesc.videoCoverImg|| ""}") no-repeat top center / cover`'
+            @mouseenter.stop="handleCurrentVideo(likeItem)"
+            @mouseleave.stop="currentVideo = -1"
+            @click.stop="openMiniGame(likeItem,2)"
+            @keydown.enter.prevent.stop="openMiniGame(likeItem,2)"
+            @keydown.space.prevent.stop="openMiniGame(likeItem,2)"
+            v-exposure:multiple="{
+                events: [
+                  {
+                    handler: () => onExposure(likeItem, 1,likeIndex,'其他游戏'),
+                    options: { threshold: 0.5 },
+                    delay: 1000
+                  },
+                  {
+                    handler: () => onExposure(likeItem, 0,likeIndex,`其他游戏`),
+                  }
+                ]
+              }"
+            >
+            <section>
+              <img :src="likeItem.showInfo.logoFile || ''" :alt="likeItem.softName" aria-hidden="true">
+              <p>{{ likeItem.softName }}</p>
+              <button>打开</button>
+            </section>
+            <div 
+              class="hover-content" 
+              v-if="currentVideo === likeItem.softId">
+              <video
+                v-if="likeItem.softDesc && 
+                likeItem.softDesc.mediaList[0] && 
+                likeItem.softDesc.mediaList[0].type === 'video'"
+                :src="likeItem.softDesc.mediaList[0].url"
+                :poster="likeItem.showInfo.vimg || ''"
+                muted
+                autoplay
+                loop>
+              </video>
+            </div>
+          </li>
+        </ol>
+      </div>
+  </section>
+  <div v-if="ready && !miniGamedetailData" class="nothing">
+    <img src="./nothing.png" alt="">
+    <p>当前游戏不见了</p>
+  </div>
+</div>

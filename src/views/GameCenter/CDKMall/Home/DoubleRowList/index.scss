@@ -1,0 +1,304 @@
+div.DoubleRowList {
+  margin: 0 auto;
+  box-sizing: content-box;
+  padding: 0 40px;
+  max-width: 1760px;
+  margin-bottom: 40px;
+  > header {
+    height: 20px;
+    display: flex;
+    align-items: center;
+    > span.title {
+      width: 0;
+      flex: 1 1 auto;
+      font-size: 18px;
+      font-weight: bold;
+      color: #EAF7FF;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    > span.more {
+      margin-left: 18px;
+      font-size: 14px;
+      color: rgba(234, 247, 255, 0.6);
+      font-weight: normal;
+      cursor: pointer;
+      &:hover {
+        color: #386EFE;
+      }
+    }
+  }
+  > section {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    grid-template-rows: 140px;
+    grid-auto-rows: 140px;
+    gap: 20px;
+    > div {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      display: none;
+      &:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4),
+      &:nth-child(5),
+      &:nth-child(6),
+      &:nth-child(7),
+      &:nth-child(8) {
+        display: block;
+      }
+      > b {
+        display: block;
+        width: 100%;
+        height: 120px;
+        box-sizing: border-box;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        overflow: hidden;
+        > i {
+          display: block;
+          width: 100%;
+          height: 100%;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+          transition: transform 0.3s ease;
+          position: relative;
+          > img {
+            width: 42px;
+            height: 42px;
+            object-fit: cover;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: 6;
+        width: 100%;
+        height: 80px;
+        background: linear-gradient(0deg, rgba(65, 72, 86, 0.5) 0%, rgba(65, 72, 86, 0) 55.4%), linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 63.02%);
+      }
+      > span {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 8;
+        font-size: 12px;
+        font-style: italic;
+        color: #FFFFFF;
+        font-weight: bold;
+        line-height: 1;
+        box-sizing: content-box;
+        padding: 4px 7px 6px 5px;
+        border-top-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.31);
+        border: 1px solid transparent;
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: linear-gradient(0deg, #0C9B34, #0C9B34), linear-gradient(135deg, #4AD370 7.43%, #0C8E30 94.88%);
+        &.hot {
+          background-image: linear-gradient(0deg, #EB2051, #EB2051), linear-gradient(135deg, #FF5981 7.43%, #A9062E 94.88%);
+        }
+        &.lowest {
+          background-image: linear-gradient(0deg, #2420EB, #2420EB), linear-gradient(135deg, #6B68FF 7.43%, #13119A 94.88%);
+        }
+        &.limit {
+          background-image: linear-gradient(0deg, #7D1BF9, #7D1BF9), linear-gradient(135deg, #B275FF 7.43%, #4C0E9B 94.88%);
+        }
+      }
+      > h1 {
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        bottom: 46px;
+        z-index: 8;
+        font-size: 14px;
+        color: #EAF7FF;
+        font-weight: bold;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      > p.cdk {
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        z-index: 8;
+        display: flex;
+        align-items: center;
+        > span.discount {
+          background-color: #F24A44;
+          border-radius: 4px;
+          font-size: 14px;
+          color: #EAF7FF;
+          font-weight: bold;
+          line-height: 1;
+          box-sizing: content-box;
+          padding: 3px 6px 5.5px;
+          margin-right: 8px;
+        }
+        > span.currentPrice {
+          font-size: 14px;
+          color: #EAF7FF;
+          font-weight: bold;
+          margin-right: 6px;
+          padding-bottom: 1px;
+        }
+        > span.originalPrice {
+          font-size: 12px;
+          color: rgba(234, 247, 255, 0.6);
+          text-decoration: line-through;
+        }
+        > span.platform {
+          position: absolute;
+          right: 0;
+          top: 4px;
+          width: 14px;
+          height: 14px;
+          font-size: 14px;
+          color: rgba(234, 247, 255, 0.4);
+        }
+      }
+      > p.download {
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        bottom: 16px;
+        z-index: 8;
+        color: rgba(234, 247, 255, .6);
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 290;
+        line-height: 14px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+          i {
+          opacity: .4;
+          padding: 0 5px;
+          box-sizing: border-box;
+        }
+      }
+      &:hover {
+        > b > i {
+          transform: scale(1.15);
+        }
+        &:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 7;
+          background: linear-gradient(180deg, rgba(56, 110, 254, 1) 0%, rgba(19, 23, 29, 0) 57%, rgba(19, 23, 29, 0) 71.43%, rgba(56, 110, 254, 1) 100%);
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
+
+@media (forced-colors: active) {
+  .PcDevice {
+      .DoubleRowList {
+        background: Canvas;
+        color: CanvasText;
+        forced-color-adjust: auto;
+      }
+
+      .DoubleRowList .card,
+      .DoubleRowList .panel,
+      .DoubleRowList .tile,
+      .DoubleRowList .item,
+      .DoubleRowList li,
+      .DoubleRowList section,
+      .DoubleRowList article,
+      .DoubleRowList .content,
+      .DoubleRowList .wrapper,
+      .DoubleRowList .container {
+        background: Canvas;
+        border-color: ButtonText;
+        color: CanvasText;
+      }
+
+      .DoubleRowList button,
+      .DoubleRowList [role="button"],
+      .DoubleRowList .btn,
+      .DoubleRowList .button,
+      .DoubleRowList .close,
+      .DoubleRowList .back,
+      .DoubleRowList .more,
+      .DoubleRowList .prev,
+      .DoubleRowList .next,
+      .DoubleRowList .arrow,
+      .DoubleRowList .search-icon {
+        background: ButtonFace;
+        border: 1px solid ButtonText;
+        color: ButtonText;
+      }
+
+      .DoubleRowList input,
+      .DoubleRowList textarea,
+      .DoubleRowList select {
+        background: Canvas;
+        border: 1px solid ButtonText;
+        color: CanvasText;
+      }
+
+      .DoubleRowList input::placeholder,
+      .DoubleRowList textarea::placeholder,
+      .DoubleRowList .empty,
+      .DoubleRowList .nothing,
+      .DoubleRowList .placeholder,
+      .DoubleRowList .disabled,
+      .DoubleRowList .is-disabled,
+      .DoubleRowList [disabled],
+      .DoubleRowList [aria-disabled="true"] {
+        color: GrayText;
+        border-color: GrayText;
+      }
+
+      .DoubleRowList .active,
+      .DoubleRowList .selected,
+      .DoubleRowList .is-active,
+      .DoubleRowList .is-selected,
+      .DoubleRowList [aria-selected="true"] {
+        background: Highlight;
+        border-color: Highlight;
+        color: HighlightText;
+      }
+
+      .DoubleRowList a {
+        color: LinkText;
+      }
+
+      .DoubleRowList button:focus-visible,
+      .DoubleRowList a:focus-visible,
+      .DoubleRowList input:focus-visible,
+      .DoubleRowList textarea:focus-visible,
+      .DoubleRowList select:focus-visible,
+      .DoubleRowList [role="button"]:focus-visible,
+      .DoubleRowList [tabindex]:focus-visible {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+  }
+}

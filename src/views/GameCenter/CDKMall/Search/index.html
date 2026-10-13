@@ -1,0 +1,90 @@
+<div class="Search" :class="[$isPadDevice ? 'PadDevice' : 'PcDevice']">
+    <header v-if="!$isPadDevice" draggable @dragstart.prevent="$startDrag" @dblclick.self="$toggleMaximize">
+        <i class="back" tabindex="0" role="button" aria-label="返回" @click="back" @keydown.enter.prevent.stop="back" @keydown.space.prevent.stop="back" draggable @dragstart.prevent.stop></i>
+        <div draggable @dragstart.prevent.stop>
+            <input
+                ref="placeholderWidthInput"
+                type="text"
+                v-model.trim="keyword"
+                @keydown.enter="toSearch"
+                @click.stop="handleShowSearchUp"
+                @input="searchGameListByKeyword"
+                @focus="onFocus"
+                @blur="onBlur"
+                @mouseenter="handleIsEntered"
+            />
+            <i class="iconfont" tabindex="0" role="button" aria-label="搜索" @click="toSearch" @keydown.enter.prevent.stop="toSearch" @keydown.space.prevent.stop="toSearch"></i>
+            <span class="placeholder" v-if="!isEntered"
+                ><i class="title">{{ defaultKeyword }}</i><i class="sub-title">{{ description }}</i></span
+            >
+
+            <UpSearch
+                @click.stop
+                v-if="showSearchUp"
+                :keyword="keyword"
+                :show-search-up="showSearchUp"
+                :search-word="searchWord"
+                :search-game-list="searchGameList"
+                @selectSearchWord="selectSearchWord"
+                searchUpSource="searchPage"
+                :first-local="firstLocal"
+            />
+        </div>
+    </header>
+    <div v-else class="pad-header">
+        <i class="back-icon" tabindex="0" role="button" aria-label="返回" @click="back" @keydown.enter.prevent.stop="back" @keydown.space.prevent.stop="back" draggable @dragstart.prevent.stop></i>
+        <input
+            ref="placeholderWidthInput"
+            type="text"
+            class="search-input"
+            v-model.trim="keyword"
+            @keydown.enter="toSearch"
+            @click.stop="handleShowSearchUp"
+            @input="searchGameListByKeyword"
+            @focus="onFocus"
+            @blur="onBlur"
+        />
+        <span class="search-text" tabindex="0" role="button" aria-label="搜索" @click="toSearch" @keydown.enter.prevent.stop="toSearch" @keydown.space.prevent.stop="toSearch">搜索</span>
+    </div>
+    <main ref="scroller" @scroll="scrollHandle">
+        <section v-if="!fetching && cdkList.length <= 0" class="nothing">
+            <div class="content">
+                <img src="@/images/gamecenter/nothing.png" alt="" />
+                <p>没有找到您要的游戏</p>
+            </div>
+        </section>
+        <section v-else class="list">
+            <FourColumnListPhone
+                v-if="$isPhoneDevice"
+                :cdkList="cdkList"
+                :page-type="'search'"
+                :first-local="firstLocal"
+                :second-local="secondLocal"
+                :third-local="thirdLocal"
+                :keyword="keyword"
+                :selsect-label-list="[]"
+            />
+            <FourColumnListPad
+                v-else-if="$isPadDevice"
+                :cdkList="cdkList"
+                :page-type="'search'"
+                :first-local="firstLocal"
+                :second-local="secondLocal"
+                :third-local="thirdLocal"
+                :keyword="keyword"
+                :selsect-label-list="[]"
+            />
+            <FourColumnList
+                v-else
+                :cdkList="cdkList"
+                :page-type="'search'"
+                :first-local="firstLocal"
+                :second-local="secondLocal"
+                :third-local="thirdLocal"
+                :keyword="keyword"
+                :selsect-label-list="[]"
+                :precise-match="preciseMatch"
+            />
+        </section>
+    </main>
+</div>

@@ -1,0 +1,227 @@
+.common-rect-btn {
+  cursor: pointer;
+  display: inline-block;
+  width: 90px;
+  height: 34px;
+  line-height: 32px;
+  text-align: center;
+  letter-spacing: 2px;
+  color: #020202;
+  font-size: 15px;
+  font-weight: 700;
+  background: linear-gradient(298deg, rgb(190, 191, 191) 0%, rgb(234, 247, 255) 30%);
+  border: 1px solid;
+  border-image: linear-gradient(245deg, #fff, #999) 1;
+  &:focus-visible {
+    outline: 2px solid #4fc3f7;
+    outline-offset: 2px;
+  }
+}
+.PcDevice {
+  .common-rect-btn {
+    &:hover {
+      color: #fff;
+      background: linear-gradient(to left, rgba(125, 125, 125, 1),rgba(40, 40, 40, 1));
+    }
+    &:active {
+      color: #fff;
+      background: linear-gradient(to left, rgba(95, 91, 91, 1),rgba(16, 16, 16, 1));
+    }
+  }
+}
+.PhoneDevice {
+  .common-rect-btn {
+    background: linear-gradient(174deg, #929292 5.82%, #EAF7FF 96.26%);
+  }
+}
+.soft-labels {
+  display: inline-block;
+  white-space: nowrap;
+  line-height: 20px;
+  > li {
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding: 4px 8px 5px 8px;
+    border: 1px solid rgba(234, 247, 255, 0.2);
+    font-size: 12px;
+    line-height: 1;
+    margin-right: 8px;
+    text-align: center;
+    background: linear-gradient(178deg, #929292 1.88%, #eaf7ff 98.12%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 400;
+    opacity: 0.6;
+    &.active {
+      font-weight: bold;
+      color: #386EFE;
+      border-color: rgba(56, 110, 254, 0.6);
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+.text-linear {
+  background: linear-gradient(180deg, #929292 20%, #EAF7FF 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.common-round-btn {
+  display: inline-block;
+  width: 48px;
+  height: 28px;
+  line-height: 27px;
+  color: #000;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  background: transparent url('~@/images/gamecenter/button/common-round-btn.png') no-repeat center center/ 100% 100%;
+}
+.common-abnomal-btn {
+  cursor: pointer;
+  display: inline-block;
+  width: 158px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 15px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 1);
+  text-align: left;
+  background: transparent url('~@/images/gamecenter/normal-btn.png') no-repeat center center/ contain;
+  border: 0 none;
+  // &:hover {
+  //   background-image: url('~@/images/gamecenter/hover-btn.png');
+  //   color: rgba(255, 255, 255, 1);
+  // }
+  &:active {
+    background-image: url('~@/images/gamecenter/active-btn.png');
+    color: rgba(255, 255, 255, 1);
+  }
+  &:focus-visible {
+    outline: 2px solid #4fc3f7;
+    outline-offset: 2px;
+  }
+  .text {
+    display: inline-block;
+    width: 138px;
+    text-align: center;
+  }
+}
+.gc-text-stroke-around {
+  font-family: Orbitron;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  opacity: 0.3;
+  color: #000;
+  letter-spacing: 3px;
+  -webkit-text-stroke: 2px rgba(0, 0, 0, 0);
+  background: -webkit-linear-gradient(-90deg, rgba(234, 247, 255, 0.8) 9%, rgba(140, 148, 153, 0.15) 88%);
+  background-clip: text;
+}
+.gap {
+  height: 75px;
+  background-color: #000;
+}
+.gc-title-text {
+    background: linear-gradient(178deg, #929292 1.88%, #EAF7FF 98.12%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+  // .gc-title-quote-icon {
+  //   display: inline-block;
+  //   width: 20px;
+  //   height: 6px;
+  //   background: transparent url('~@/images/gamecenter/title-quote.png') no-repeat center center / contain;
+  //   vertical-align: 3px;
+  // }
+
+@media (forced-colors: active) {
+  .PcDevice {
+      .common-rect-btn {
+        background: Canvas;
+        color: CanvasText;
+        forced-color-adjust: auto;
+      }
+
+      .common-rect-btn .card,
+      .common-rect-btn .panel,
+      .common-rect-btn .tile,
+      .common-rect-btn .item,
+      .common-rect-btn li,
+      .common-rect-btn section,
+      .common-rect-btn article,
+      .common-rect-btn .content,
+      .common-rect-btn .wrapper,
+      .common-rect-btn .container {
+        background: Canvas;
+        border-color: ButtonText;
+        color: CanvasText;
+      }
+
+      .common-rect-btn button,
+      .common-rect-btn [role="button"],
+      .common-rect-btn .btn,
+      .common-rect-btn .button,
+      .common-rect-btn .close,
+      .common-rect-btn .back,
+      .common-rect-btn .more,
+      .common-rect-btn .prev,
+      .common-rect-btn .next,
+      .common-rect-btn .arrow,
+      .common-rect-btn .search-icon {
+        background: ButtonFace;
+        border: 1px solid ButtonText;
+        color: ButtonText;
+      }
+
+      .common-rect-btn input,
+      .common-rect-btn textarea,
+      .common-rect-btn select {
+        background: Canvas;
+        border: 1px solid ButtonText;
+        color: CanvasText;
+      }
+
+      .common-rect-btn input::placeholder,
+      .common-rect-btn textarea::placeholder,
+      .common-rect-btn .empty,
+      .common-rect-btn .nothing,
+      .common-rect-btn .placeholder,
+      .common-rect-btn .disabled,
+      .common-rect-btn .is-disabled,
+      .common-rect-btn [disabled],
+      .common-rect-btn [aria-disabled="true"] {
+        color: GrayText;
+        border-color: GrayText;
+      }
+
+      .common-rect-btn .active,
+      .common-rect-btn .selected,
+      .common-rect-btn .is-active,
+      .common-rect-btn .is-selected,
+      .common-rect-btn [aria-selected="true"] {
+        background: Highlight;
+        border-color: Highlight;
+        color: HighlightText;
+      }
+
+      .common-rect-btn a {
+        color: LinkText;
+      }
+
+      .common-rect-btn button:focus-visible,
+      .common-rect-btn a:focus-visible,
+      .common-rect-btn input:focus-visible,
+      .common-rect-btn textarea:focus-visible,
+      .common-rect-btn select:focus-visible,
+      .common-rect-btn [role="button"]:focus-visible,
+      .common-rect-btn [tabindex]:focus-visible {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+  }
+}

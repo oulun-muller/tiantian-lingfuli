@@ -1,0 +1,33 @@
+<div class="Main">
+  <div>
+    <header>
+      激活码购买
+      <i class="iconfont fh-pay-close" tabindex="0" role="button" aria-label="关闭" @click.stop="close" @keydown.enter.prevent.stop="close" @keydown.space.prevent.stop="close">&#xe61b;</i>
+    </header>
+    <main>
+      <template v-if="type === 1">
+        <section class="success">
+          <iframe :src="cdkUrl" title="激活码购买结果"></iframe>
+        </section>
+      </template>
+      <template v-else>
+        <section v-if="stage === 0 || stage === 1" class="loading">
+          <img src="./logo.png" alt="">
+          <p>激活码正在加速向你跑来</p>
+          <p>您即将离开{{BRAND_TEXT}}，前往第三方网站，请注意账号和财产安全</p>
+        </section>
+        <section v-if="stage === 1 || stage === 2" class="paying">
+          <iframe :src="payUrl" title="激活码支付页面" @load="payLoaded(true)" @error="payLoaded(false)"></iframe>
+        </section>
+        <section v-if="stage === 3 || stage === 4" class="success">
+          <iframe :src="cdkUrl" title="激活码购买结果" @load="cdkLoaded" @error="cdkLoaded"></iframe>
+        </section>
+        <section v-if="stage === -1" class="error">
+          <h1><i class="iconfont">&#xe679;</i>激活码走丢了...</h1>
+          <p>{{ message }}</p>
+          <el-button type="primary" @click="init">刷新</el-button>
+        </section>
+      </template>
+    </main>
+  </div>
+</div>

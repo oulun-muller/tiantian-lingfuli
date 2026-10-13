@@ -1,0 +1,339 @@
+// GuideTour组件样式
+
+// 基础容器
+.guide-tour {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+// 蒙层
+.guide-tour-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: opacity 0.3s ease;
+}
+
+// 内容区样式
+.guide-tour-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 524px;
+  width: 840px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.chang-btn {
+  position: absolute;
+  top: 96px;
+  right: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  .change-btn-icon {
+    height: 16px;
+    width: 16px;
+    background-image: url('./img/change-icon.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: 4px;
+  }
+}
+
+.game-list-content {
+  width: 735px;
+  height: 232px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  .game-item {
+    width: 130px;
+    height: 100%;
+    background-color: #000;
+    color: #000;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    // border: 2px solid transparent;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100px;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 36.38%);
+    }
+    .log-class {
+      width: 60px;
+      height: 60px;
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translate(-50%,0);
+     background-repeat: no-repeat;
+    background-size: cover;
+    }
+
+    .bottom-content {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      color: #fff;
+      padding: 0 8px 12px;
+      z-index: 2;
+
+      .game-title {
+        color: #EAF7FF;
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .tag-list {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        .tag-item {
+          border-radius: 1px;
+          border: 0.5px solid rgba(255, 255, 255, 0.30);
+          font-size: 12px;
+          opacity: 0.7;
+          padding: 4px 2px;
+        }
+      }
+    }
+    .select-icon-class {
+      display: none;
+      width: 20px;
+      height: 20px;
+      background-image: url('./img/select-icon.png');
+      background-size: cover;
+      position: absolute;
+      right: -2px;
+      top: -2px;
+    }
+
+  }
+  .game-item-select {
+    border: 2px solid #EAF7FF;
+    .select-icon-class {
+      display: block;
+    }
+  }
+}
+
+.close-icon {
+  background-image: url('./img//close.png');
+  background-size: cover;
+  height: 16px;
+  width: 16px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+}
+
+.jump {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  color: var(--color-T60, rgba(234, 247, 255, 0.60));
+    text-align: right;
+    font-family: "Microsoft YaHei UI";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  cursor: pointer;
+}
+
+// 按钮区域
+.guide-tour-actions {
+  height: 80px;
+  position: relative;
+  height: 40px;
+  width: 148px;
+
+  .isDisable {
+    opacity: 0.5;
+  }
+
+  // 当按钮区域需要居中时
+  &.center-bottom {
+    position: absolute;
+    left: 50%;
+    bottom: 56px;
+    transform: translate(-50%, 0);
+  }
+
+  // 当按钮区域在左侧（二三四步）
+  &.left-center {
+    position: absolute;
+    left: 66px;
+    bottom: 130px;
+  }
+
+}
+
+// 上一步按钮基础样式
+.guide-tour-prev-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 16px;
+  position: absolute;
+  left: 66px;
+  bottom: 26px;
+  color: #EAF7FF;
+  opacity: 0.5;
+  font-size: 12px;
+  cursor: pointer;
+
+  .img-class {
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+  }
+
+}
+
+// 下一步按钮样式
+.guide-tour-next-btn {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  background-image: url('./img/btn-background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+
+  // 一键安装按钮特殊样式
+  // &.install-btn {
+  //   background: linear-gradient(135deg, #4CAF50, #45a049);
+  //   color: white;
+  //   font-weight: bold;
+  // }
+}
+
+@media (forced-colors: active) {
+  .PcDevice {
+      .guide-tour {
+        background: Canvas;
+        color: CanvasText;
+        forced-color-adjust: auto;
+      }
+
+      .guide-tour .card,
+      .guide-tour .panel,
+      .guide-tour .tile,
+      .guide-tour .item,
+      .guide-tour li,
+      .guide-tour section,
+      .guide-tour article,
+      .guide-tour .content,
+      .guide-tour .wrapper,
+      .guide-tour .container {
+        background: Canvas;
+        border-color: ButtonText;
+        color: CanvasText;
+      }
+
+      .guide-tour button,
+      .guide-tour [role="button"],
+      .guide-tour .btn,
+      .guide-tour .button,
+      .guide-tour .close,
+      .guide-tour .back,
+      .guide-tour .more,
+      .guide-tour .prev,
+      .guide-tour .next,
+      .guide-tour .arrow,
+      .guide-tour .search-icon {
+        background: ButtonFace;
+        border: 1px solid ButtonText;
+        color: ButtonText;
+      }
+
+      .guide-tour input,
+      .guide-tour textarea,
+      .guide-tour select {
+        background: Canvas;
+        border: 1px solid ButtonText;
+        color: CanvasText;
+      }
+
+      .guide-tour input::placeholder,
+      .guide-tour textarea::placeholder,
+      .guide-tour .empty,
+      .guide-tour .nothing,
+      .guide-tour .placeholder,
+      .guide-tour .disabled,
+      .guide-tour .is-disabled,
+      .guide-tour [disabled],
+      .guide-tour [aria-disabled="true"] {
+        color: GrayText;
+        border-color: GrayText;
+      }
+
+      .guide-tour .active,
+      .guide-tour .selected,
+      .guide-tour .is-active,
+      .guide-tour .is-selected,
+      .guide-tour [aria-selected="true"] {
+        background: Highlight;
+        border-color: Highlight;
+        color: HighlightText;
+      }
+
+      .guide-tour a {
+        color: LinkText;
+      }
+
+      .guide-tour button:focus-visible,
+      .guide-tour a:focus-visible,
+      .guide-tour input:focus-visible,
+      .guide-tour textarea:focus-visible,
+      .guide-tour select:focus-visible,
+      .guide-tour [role="button"]:focus-visible,
+      .guide-tour [tabindex]:focus-visible {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+      }
+  }
+}
