@@ -19,7 +19,7 @@
     .ActivityZone > main > div.container .activity-ing{
         margin: 0 auto 31px;
     }
-  
+
     .phone_style > main > div.container .activity-begin-list > b{
         grid-template-columns: repeat(1, 1fr);
         li{
@@ -30,14 +30,14 @@
             div.w100{
                 width: fit-content;
             }
-          
+
         }
         .begin-list-item{
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             .game-banner{
-               
+
                 max-height: auto;
                 height: 209px;
                 background-size: cover;       /* 铺满 + 保持比例 */
@@ -62,7 +62,7 @@
                         line-height: normal;
                         text-transform: capitalize;
                     }
-                    
+
                     .begin-time-text{
                         color: rgba(234, 247, 255, 0.60);
                         font-family: Orbitron;
@@ -83,7 +83,7 @@
                     width: 72px;
                     height: 28px;
                     border: 1px solid transparent; /* 1px透明边框，作为渐变载体 */
-                    border-image: linear-gradient(to bottom, #fff, #999) 1 stretch; 
+                    border-image: linear-gradient(to bottom, #fff, #999) 1 stretch;
                     color: #020202;
                     text-align: center;
                     font-size: 12px;
@@ -94,7 +94,7 @@
                     justify-content: center;
                     letter-spacing: 0
 
-                    
+
                 }
             }
         }
@@ -131,7 +131,7 @@
     .isExpire{
         margin-top: 30px;
         position: relative;
-       
+
     }
     .infinite-scroll-component-box-left{
         height: 164px;

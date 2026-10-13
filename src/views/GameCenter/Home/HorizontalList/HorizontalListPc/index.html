@@ -1,5 +1,5 @@
-<div 
-  class="HorizontalList" 
+<div
+  class="HorizontalList"
   v-if="rankSoftList.data.length"
   v-exposure="{
     handler: ()=>onExposure(),
@@ -54,7 +54,7 @@
               <img class="img-item" :src="item.softDesc.mediaList[0].url" :alt="item.softName || ''" />
           </template>
         </div>
-        <div 
+        <div
           :class="{
             'hover_content':true
           }">
@@ -64,20 +64,20 @@
               <span v-if="item.downloadInfo.tagUrls.length">
                 <img :src="item.downloadInfo.tagUrls[0]" alt="" class="tag-img">
               </span>
-              <!-- <p 
+              <!-- <p
                 v-if="item.showInfo.mediaScores.length"
                 v-for="(scoresItem, scoresIndex) of item.showInfo.mediaScores.slice(0,2)"
                 :key="scoresIndex">
                 <i>{{ scoresItem.score }}</i>{{ scoresItem.mediaName }}
               </p> -->
-            </div>            
+            </div>
           </div>
           <template v-if="item.softDesc.introduction">
             <div class="game-introduction" style="margin-top: 9px; margin-right: 100px">{{item.softDesc.introduction}}</div>
           </template>
           <template v-else>
             <ol v-if="item.showInfo.softLabels.length">
-                <TagNormal 
+                <TagNormal
                   v-for="(tagItem, tagIndex) of item.showInfo.softLabels.slice(0, 4)"
                   style="margin-right: 4px;"
                   :key="tagIndex" :title="tagItem" />
@@ -86,7 +86,7 @@
           <div class="tag-wrap-2" @click.stop="(e) => {e.preventDefault()}">
             <TagRank v-if="item.showInfo.rankingLabelInfos.length" style="margin-right: 6px;" :rank-list="item.showInfo.rankingLabelInfos"/>
             <template v-if="item.relateActivitys.length" >
-              <TagActivity 
+              <TagActivity
               :class="{ 'tag-has-rank': item.showInfo.rankingLabelInfos.length }"
               :title="item.relateActivitys[0].title"
               :plate-name="rankSoftList.name"
@@ -101,7 +101,7 @@
               :type="2"
               :game-item="item"/>
              </template>
-          </div>  
+          </div>
           <div class="bottom-btn" @click.stop="(e) => {e.preventDefault()}">
             <GameDownloadButton
               class="downloadButton"
@@ -132,7 +132,7 @@
                     <p class="text">期待值</p>
                     <div class="rating-num">{{ item.expectations }}</div>
               </template>
-            </div>                  
+            </div>
         </div>
         <div
           class="concern"
@@ -151,7 +151,7 @@
       </section>
       <section class="smallCard" v-else>
         <!-- himg:横图，vimg:竖图 -->
-        <b :style="{ backgroundImage: `url('${ item.showInfo.img162x285 || item.showInfo.vimg || defaultImg }')` }" 
+        <b :style="{ backgroundImage: `url('${ item.showInfo.img162x285 || item.showInfo.vimg || defaultImg }')` }"
       @mouseenter="curBigCradIn(index)">
           <sub class="horn-right"></sub>
           <sub class="horn-left"></sub>
@@ -161,15 +161,15 @@
           <sub class="bor-left"></sub>
           <sub class="bor-dot0"></sub>
           <sub class="bor-dot2"></sub>
-          <img 
-            v-if="!item.showInfo.img162x285 && !item.showInfo.vimg && item.showInfo.logoFile" 
+          <img
+            v-if="!item.showInfo.img162x285 && !item.showInfo.vimg && item.showInfo.logoFile"
             :src="item.showInfo.logoFile" alt="">
         </b>
         <div class="bottom_small">
           <h1>{{ item.softName }}</h1>
           <template v-if="item.relateActivitys.length">
             <div style="margin-top: 4px">
-              <TagActivity 
+              <TagActivity
               :title="item.relateActivitys[0].title"
               :plate-name="rankSoftList.name"
               :show-shadow="false"

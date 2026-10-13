@@ -582,7 +582,7 @@ export default {
 .small-pagination-wrap {
   padding: 0;
 
-  
+
 
     :deep(.btn-next,
     .btn-prev,
@@ -621,7 +621,7 @@ export default {
     :deep(button[disabled='disabled']) {
       opacity: 0.6;
     }
-  
+
 }
 
 .my-evaluation {

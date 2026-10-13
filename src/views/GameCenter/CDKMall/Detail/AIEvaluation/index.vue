@@ -381,7 +381,7 @@ export default {
       }
     }
 
-    
+
       :deep(h3) {
         font-size: 14px;
       }
@@ -401,7 +401,7 @@ export default {
         font-size: 12px;
         font-weight: 400;
       }
-    
+
   }
   .ai-border {
     z-index: 2;

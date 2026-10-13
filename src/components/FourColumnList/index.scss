@@ -82,7 +82,7 @@
         justify-content: flex-start;
         p {
           color: #eaf7ff;
-          font-size: 16px;  
+          font-size: 16px;
           font-style: normal;
           font-weight: 700;
           margin: 11px 0;
@@ -209,13 +209,13 @@
         font-size: 12px;
         width: 100%;
       }
-      
+
         :deep(.grey-rect-btn) {
           font-size: 12px;
           height: 34px;
           line-height: 28px;
         }
-      
+
     }
     &:hover {
       background: linear-gradient(77deg, rgba(30, 34, 39, 0.3) 4.98%, rgba(112, 118, 150, 0.3) 100.17%);
@@ -235,7 +235,7 @@
 
   :deep(.downloadButton .buyButton) {
     top: 0px !important;
-    right: 0px !important;  
+    right: 0px !important;
   }
 
 .FourColumnList .tags-wrap {
@@ -274,7 +274,7 @@
     justify-content: center;
     flex-direction: column;
   }
-  
+
 .FourColumnList .item > section > div.softName p {
   margin: 0 0 9px 0;
 }
@@ -299,7 +299,7 @@
   // .PadDevice  .FourColumnList .item  .downloadButton {
   //   top: calc(6vw - 17px)
   // }
-  
+
   .FourColumnList .item > section > ul > li {
     padding: 4px 6px 3px;
   }
@@ -310,7 +310,7 @@
     height: 12vw;
     width: 12vw;
   }
-  
+
 }
 .FourColumnList > div:focus-visible {
   outline: 2px solid #4fc3f7;

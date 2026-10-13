@@ -306,7 +306,7 @@ div.DoubleArrayList {
           >div.downloadButton {
             margin-top: 16px;
 
-            
+
 
               :deep(.grey-rect-btn,
               .DownloadButton) {
@@ -314,7 +314,7 @@ div.DoubleArrayList {
                 height: 34px;
                 line-height: 32px;
               }
-            
+
 
             :deep(div span),
             :deep(.text) {
@@ -521,7 +521,7 @@ div.DoubleArrayList.PadDevice>ul>li>b>img {
     height: 34px;
     :deep(.grey-rect-btn) {
       width: 72px;
-      
+
     background: linear-gradient(175deg, #929292 5.94%, #EAF7FF 98.2%), #5B0EFE;
 
     }

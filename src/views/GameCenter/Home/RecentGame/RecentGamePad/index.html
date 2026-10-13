@@ -20,16 +20,16 @@
       </li>
     </ol>
   </div>
-  <div 
+  <div
     v-if="!isLoading && recentGames && recentGames.length"
-    class="list-wrapper" 
+    class="list-wrapper"
     ref="list-wrapper">
     <ul>
-      <li 
+      <li
         v-for="(item, index) of recentGames"
         :key="item && item.id || index"
         @click="toDetail(item && item.softInfo)">
-        <GameItem 
+        <GameItem
           :game-data="item"
           :show-download-button="recentGames && recentGames.length >= 1"></GameItem>
       </li>

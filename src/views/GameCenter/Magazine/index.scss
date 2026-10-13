@@ -226,8 +226,8 @@
           background: linear-gradient(177.77deg, #929292 1.88%, #EAF7FF 98.12%);
           background-clip: text;
           -webkit-text-fill-color: transparent;
-          width: 24vw; 
-          max-width: 326px; 
+          width: 24vw;
+          max-width: 326px;
           word-break: break-word;
 
           overflow: hidden;
@@ -405,9 +405,9 @@ h3.sgame-title {
 .mag-banner {
   position: relative;
   padding: 0 40px;
-  width: calc(100% - 80px);  
+  width: calc(100% - 80px);
   height: 380px;
-  
+
   .img {
     height: 100%;
     background-size: cover;
@@ -424,7 +424,7 @@ h3.sgame-title {
   position: relative;
   padding: 50px 40px 40px 40px;
   background: transparent url('~@/images/gamecenter/magazine/catalog-bac.png') no-repeat center 44px/ cover;
-  &::before { 
+  &::before {
     content: '';
     position: absolute;
     top: 0;
@@ -444,13 +444,13 @@ h3.sgame-title {
     backdrop-filter: blur(2px);
     background: linear-gradient(-90deg, rgba(0,0,0) 0%, rgba(0,0,0,0) 100%);
   }
-  
+
   .catalog-title {
     display: flex;
     justify-content: space-between;
     background: transparent url('~@/images/gamecenter/magazine/catalog-name.png') no-repeat left top/ 351px 46px;
     padding-top: 30px;
-    
+
     .exchange-code {
       cursor: pointer;
       width: 130px;
@@ -523,7 +523,7 @@ h3.sgame-title {
   -webkit-text-fill-color: transparent;
   font-size: 22px;
   font-weight: 700;
-  line-height: 22px;  
+  line-height: 22px;
   letter-spacing: 0.6px;
 }
 
@@ -569,7 +569,7 @@ h3.sgame-title {
       h4 {
         font-size: 18px;
         font-weight: 700;
-        line-height: 18px; 
+        line-height: 18px;
         letter-spacing: 1px;
         margin: 24px 0 16px 0;
       }
@@ -605,7 +605,7 @@ h3.sgame-title {
         color: #EAF7FF;
         font-size: 12px;
         font-weight: 400;
-        line-height: 22px; 
+        line-height: 22px;
       }
       .link {
         color: rgb(56, 110, 254);

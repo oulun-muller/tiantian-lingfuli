@@ -9,7 +9,7 @@
   </header>
   <section v-if="ready && miniGamedetailData">
     <i :style='`background: transparent url("${miniGamedetailData.showInfo.himg || ""}") no-repeat top center / cover`'></i>
-      <div 
+      <div
         class="top-content"
         >
         <img :src="miniGamedetailData.showInfo.logoFile || ''" :alt="miniGamedetailData.softName" aria-hidden="true">
@@ -17,9 +17,9 @@
           <h1>{{ miniGamedetailData.softName }}</h1>
           <h2 v-if="miniGamedetailData.softDesc.introduction">{{ miniGamedetailData.softDesc.introduction }}</h2>
           <ul>
-            <li 
+            <li
               v-if="miniGamedetailData.showInfo.softLabels.length"
-              v-for="(tagItem,tagIndex) in miniGamedetailData.showInfo.softLabels" 
+              v-for="(tagItem,tagIndex) in miniGamedetailData.showInfo.softLabels"
               :key="tagIndex">{{ tagItem }}</li>
           </ul>
           <button @click.stop="openMiniGame(miniGamedetailData,1)">打开</button>
@@ -58,12 +58,12 @@
               <p>{{ likeItem.softName }}</p>
               <button>打开</button>
             </section>
-            <div 
-              class="hover-content" 
+            <div
+              class="hover-content"
               v-if="currentVideo === likeItem.softId">
               <video
-                v-if="likeItem.softDesc && 
-                likeItem.softDesc.mediaList[0] && 
+                v-if="likeItem.softDesc &&
+                likeItem.softDesc.mediaList[0] &&
                 likeItem.softDesc.mediaList[0].type === 'video'"
                 :src="likeItem.softDesc.mediaList[0].url"
                 :poster="likeItem.showInfo.vimg || ''"

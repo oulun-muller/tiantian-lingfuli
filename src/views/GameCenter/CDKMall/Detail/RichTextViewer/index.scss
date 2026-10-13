@@ -8,7 +8,7 @@ div.RichTextViewer {
     white-space: pre-line;
     line-height: 26px;
   }
-  
+
     :deep(*) {
       box-sizing: border-box;
       margin: 0;
@@ -97,7 +97,7 @@ div.RichTextViewer {
         text-align: center;
       }
     }
-  
+
 }
 
 @media (forced-colors: active) {

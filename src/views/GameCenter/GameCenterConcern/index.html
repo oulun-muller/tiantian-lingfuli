@@ -35,12 +35,12 @@
     </div>
   </header>
   <h1>我关注的游戏</h1>
-  <el-tabs 
-    :class="{'hideTab2':!reducedPriceListLength}" 
-    v-model="activeName" 
+  <el-tabs
+    :class="{'hideTab2':!reducedPriceListLength}"
+    v-model="activeName"
     @tab-click="handleClick">
     <el-tab-pane :label="`全部（ ${concernListLength} ）`" name="1">
-      <All 
+      <All
         ref="all"
         :activeName="activeName"
         :first-local="firstLocal"
@@ -50,7 +50,7 @@
         @deleteCurrent="deleteCurrent" />
     </el-tab-pane>
     <el-tab-pane :label="`比关注时降价（ ${reducedPriceListLength} ）`" name="2">
-      <ReducedPrice 
+      <ReducedPrice
         ref="reducedPrice"
         :activeName="activeName"
         :first-local="firstLocal"

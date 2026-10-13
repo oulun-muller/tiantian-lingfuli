@@ -29,7 +29,7 @@
         searchUpSource="searchPage"
         :first-local="firstLocal" />
     </div>
-  </header>  
+  </header>
   <div ref="stage" class="stage">
     <main ref="listScroller" @scroll="scrollHandle" class="popover-relative-dom">
       <section class="filter">
@@ -37,7 +37,7 @@
         <div class="selectAnItem" v-if="!$isPhoneDevice">
           <b></b>
           <div
-            v-if="column2" 
+            v-if="column2"
             class="arrowhead"
             @click.stop="filterChange(column2)">
             <i :class="{'iconfont':true,'isActive':asc}">&#xe67a;</i>

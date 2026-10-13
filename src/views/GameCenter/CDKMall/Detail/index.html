@@ -37,7 +37,7 @@
       <div style="position: relative;">
       <div class="wrap-first-back"></div>
       <div :class="{ 'detail-wrap':true }" >
-        <div 
+        <div
         v-if="canWriteReview && userReviewInfo && userReviewInfo.userGameDuration"
           class="recommend-wrap">
           <span class="icon"></span>
@@ -100,12 +100,12 @@
               </div>
             </div>
             <template>
-              <VideoList 
+              <VideoList
               v-if="!$isPadDevice"
               class="left-outer-layer"
                ref="goodvideos"
               :key="(detail.softId || 0) + 3"
-              :detail="detail"  
+              :detail="detail"
                :_stateGame="stateGame"
               :_statePage="statePage"
               :_gameClass="gameClass" />
@@ -115,7 +115,7 @@
                 class="left-outer-layer"
                 v-if="detail.softDesc.aiReviews && detail.firstClassId === '2002'"
                 :key="(detail.softId || 0) + 5"
-                :aiContent='detail.softDesc.aiReviews' 
+                :aiContent='detail.softDesc.aiReviews'
                 :softName="detail.softName"
                 :_stateGame="stateGame"
                 :_statePage="statePage"
@@ -154,15 +154,15 @@
               :_stateGame="stateGame"
               :_statePage="statePage"
               :_gameClass="gameClass"
-              @addMyEvaluation="refreshPage" 
-              @deleteMyEvaluation="refreshPage" 
+              @addMyEvaluation="refreshPage"
+              @deleteMyEvaluation="refreshPage"
               />
             </div>
           <div class="wrap-right">
             <AIEvaluation
               v-if="detail.softDesc.aiReviews && detail.firstClassId === '2002'"
               :key="(detail.softId || 0) + 5"
-              :aiContent='detail.softDesc.aiReviews' 
+              :aiContent='detail.softDesc.aiReviews'
               :softName="detail.softName"
               :_stateGame="stateGame"
               :_statePage="statePage"
@@ -228,8 +228,8 @@
                 <i class="star"></i>
               </h4>
               <div class="img-wrap">
-                <p v-for="(award, index) in detail.showInfo.awardInfos" 
-                  :key="index" 
+                <p v-for="(award, index) in detail.showInfo.awardInfos"
+                  :key="index"
                   :class="[award.awardImgUrl ? 'img-info' : 'text-info',
                           showFengeLine(index) ? 'fenge-line':'',
                           'content-wrap']">
@@ -288,7 +288,7 @@
           <!-- <span v-if="detail.softPurpose === 2">{{ detail.downloadInfo.downloadCount }}</span>
           <p v-else-if="detail.productInfo.exchangePlatform"><i v-if="detail.productInfo.exchangePlatformFont" class="iconfont" v-html="detail.productInfo.exchangePlatformFont"></i>{{ detail.productInfo.exchangePlatform }}</p> -->
           </div>
-       
+
         </div>
         <p v-if="detail.softPurpose === 1" class="price">
           <span v-if="detail.productInfo.discount" class="discount">{{ detail.productInfo.discount }}</span>
@@ -314,9 +314,9 @@
           :is-click="true"
           :sku-id="detail.skuId"
           ref="GameDownloadButton" />
-          <button 
+          <button
             v-else
-            ref="ShowPay" 
+            ref="ShowPay"
             @click.stop="showPay">立即购买</button>
                         <div class="followers" v-if="![1, 2].includes(detail.downloadInfo.bizType)"
                           tabindex="0"
@@ -373,10 +373,10 @@
           :sku-id="detail.skuId"
           ref="GameDownloadButton" />
         </template>
-        
-          <button 
+
+          <button
             v-else
-            ref="ShowPay" 
+            ref="ShowPay"
             @click.stop="showPay">立即购买</button>
             <div :class="[$isPadDevice ? 'pad-follow-wrapper' : 'followers']" v-if="![1, 2].includes(detail.downloadInfo.bizType)"
               tabindex="0"
@@ -403,16 +403,16 @@
     <img src="./nothing.png" alt="">
     <p>当前游戏不见了</p>
   </div>
-  <EvaluatioinDialog 
+  <EvaluatioinDialog
     v-if="detail && userReviewInfo"
     :key="(detail.softId || 0) + 8"
     :softName="detail.softName"
-    :recommendType="recommendType" 
-    :show="showEvaDialog" 
+    :recommendType="recommendType"
+    :show="showEvaDialog"
     :userReviewInfo="userReviewInfo"
     :stateGame="stateGame"
     :statePage="statePage"
     :gameClass="gameClass"
-    @closeDialog="showEvaDialog=false" 
+    @closeDialog="showEvaDialog=false"
     @addMyEvaluation="refreshPage"/>
 </div>

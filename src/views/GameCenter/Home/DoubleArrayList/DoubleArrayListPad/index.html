@@ -1,11 +1,11 @@
-<div 
+<div
   :class="['DoubleArrayList', $isPadDevice ? 'PadDevice' : 'PcDevice']"   v-if="rankSoftList.data.length">
   <h3 class="title-wrap">
     <span class="title-bac gc-text-stroke-around">{{ moduleEname }}</span>
     <span v-if="!$isPadDevice" class="gc-title-text"><i class="gc-title-quote-icon"></i>&nbsp;{{ rankSoftList.name }}&nbsp;<i class="gc-title-quote-icon"></i></span>
     <span v-else class="gc-title-text">{{ rankSoftList.name }}</span>
-    <span 
-      class="more" 
+    <span
+      class="more"
       @click="toList(rankSoftList.id,rankSoftList.name)"
       v-if="rankSoftList.showMore">更多</span>
   </h3>
@@ -17,7 +17,7 @@
     once: true
     }"
     >
-    <li 
+    <li
       v-for="(item, index) of rankSoftList.data"
       :key="item.softId"
       :ref="'gameDouble'+item.softId"
@@ -25,18 +25,18 @@
       @mouseenter="!$isPadDevice && handleCurrentVideo(item)"
       @mouseleave="!$isPadDevice && (currentVideo = -1)">
       <!-- {{item.isAiGame}} -->
-      <b 
+      <b
         :style="{ backgroundImage: `url('${ handleCurImg(item) }')` }">
         <sub class="bor-top"></sub>
         <sub class="bor-right"></sub>
         <sub class="bor-bottom"></sub>
         <sub class="bor-left"></sub>
-        <img 
-        v-if="currentVideo !== item.softId && !item.showInfo.himg && item.showInfo.logoFile" 
+        <img
+        v-if="currentVideo !== item.softId && !item.showInfo.himg && item.showInfo.logoFile"
         :src="item.showInfo.logoFile" alt="">
         <div class="hover_content">
-          <div 
-            class="concern" 
+          <div
+            class="concern"
             @click.stop="toFollowers(item)"
             v-if="![1,2].includes(item.downloadInfo.bizType)" >
             <img v-if="isFollower" src="../image/concern-active.png" alt="">
@@ -45,8 +45,8 @@
           </div>
           <ol>
             <span v-if="item.downloadInfo.tagUrls.length">
-              <img 
-                :src="item.downloadInfo.tagUrls[0]" 
+              <img
+                :src="item.downloadInfo.tagUrls[0]"
                 alt="">
             </span>
             <template v-if="item.showInfo.softLabels && item.showInfo.softLabels.length && item.downloadInfo.tagUrls.length">
@@ -87,7 +87,7 @@
           <p class="download" v-else>{{ item.downloadInfo.downloadCount }}</p>
         </div>
         <div class="right">
-          <div 
+          <div
             class="buyButton common-rect-btn"
             @click.stop="showPay(item)"
             v-if="item.softPurpose === 1">购买</div>

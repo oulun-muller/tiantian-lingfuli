@@ -646,7 +646,7 @@ dd {
   .download-btn {
     width: 64px;
     height: 26px;
-    
+
       :deep(div.DownloadButton) {
         width: 64px;
         height: 26px;
@@ -660,8 +660,8 @@ dd {
         font-weight: normal;
         font-size: 12px;
       }
-    
-    
+
+
       :deep(.grey-rect-btn) {
           min-width: 0;
           font-size: 12px;
@@ -670,7 +670,7 @@ dd {
           height: 26px;
           font-weight: normal;
       }
-    
+
   }
 }
 @media screen  and (max-width: 800px) {
@@ -705,7 +705,7 @@ dd {
     .download-btn {
       width: 64px;
       height: 26px;
-      
+
         :deep(.grey-rect-btn) {
           font-size: 12px;
           line-height: auto;
@@ -714,7 +714,7 @@ dd {
           width: 64px;
           height: 26px;
         }
-      
+
     }
     .btn {
       cursor: pointer;

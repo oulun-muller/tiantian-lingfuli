@@ -1031,7 +1031,7 @@ export default {
   }
 }
 .downloadButton {
-  
+
     :deep(.ReserveButton) {
       width: 90px;
       height: 34px;
@@ -1042,7 +1042,7 @@ export default {
       height: 34px;
       line-height: 32px;
     }
-  
+
 }
 @media screen and (min-width: 1540px) {
   .RankList .top-1 .content-wrap, .RankList .top-3 .content-wrap {

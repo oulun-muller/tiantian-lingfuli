@@ -515,11 +515,11 @@ export default {
         height: 34px;
         font-size: 12px;
 
-        
+
           :deep(div.DownloadButton>div>span) {
             font-size: 12px;
           }
-        
+
       }
     }
   }

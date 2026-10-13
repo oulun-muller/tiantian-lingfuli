@@ -29,7 +29,7 @@
         <span v-if="item.productInfo.discount && item.productInfo.originalPrice" class="originalPrice">¥{{ item.productInfo.originalPrice }}</span>
         <span v-if="item.productInfo.exchangePlatformFont" class="iconfont platform" v-html="item.productInfo.exchangePlatformFont"></span>
       </p>
-      <p class="download" v-else>免费开玩<i>|</i>{{ item.downloadInfo.downloadCount }}</p> 
+      <p class="download" v-else>免费开玩<i>|</i>{{ item.downloadInfo.downloadCount }}</p>
       <ul v-if="index === 0">
         <li v-for="(tagItem, tagIndex) of item.showInfo.softLabels.slice(0, 5)" :key="tagIndex"
         :class="{ active: tagItem === 'DLC' }">{{ tagItem }}</li>

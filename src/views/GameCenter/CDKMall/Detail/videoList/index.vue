@@ -33,7 +33,7 @@
         <template v-for="(item, index) in list" :key="index">
           <div
             class="video-item"
-           
+
             tabindex="0"
             role="button"
             :aria-label="item.name + '，点击查看视频'"

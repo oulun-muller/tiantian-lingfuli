@@ -1,4 +1,4 @@
-<div 
+<div
   class="EvaluationRecommendation"
   v-if="rankSoftList.data.length">
   <h3 class="title-wrap">
@@ -96,8 +96,8 @@
     </section>
      <section v-else class="slider-pad" :show-indicators="false" lazy-render>
       <swiper  class="ul-class" @slideChange="onSwiperChange" ref="swiper" :options="swiperOption">
-        <swiper-slide 
-          v-for="(item, index) of rankSoftList.data" 
+        <swiper-slide
+          v-for="(item, index) of rankSoftList.data"
           :key="index"
           class="li-class">
           <div class="left" tabindex="0" role="button" :aria-label="item.softInfo && item.softInfo.softName ? item.softInfo.softName + '，点击查看详情' : '点击查看详情'" @click.stop="toDetail(item)" @keydown.enter.prevent.stop="toDetail(item)" @keydown.space.prevent.stop="toDetail(item)">

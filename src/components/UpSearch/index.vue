@@ -623,7 +623,7 @@ export default {
               }
             }
 
-            
+
               :deep(.grey-rect-btn) {
                 min-width: 64px;
                 height: 28px;
@@ -640,7 +640,7 @@ export default {
                 line-height: 26px;
                 font-size: 12px;
               }
-            
+
           }
         }
       }
@@ -651,19 +651,19 @@ export default {
         display: none;
         margin-left: auto;
 
-        
+
           :deep(div.DownloadButton) {
             width: 64px;
             height: 26px;
           }
-        
+
 
         :deep(div span) {
           font-size: 12px;
           width: 100%;
         }
 
-        
+
           :deep(.grey-rect-btn) {
             min-width: 64px;
             width: 64px;
@@ -675,7 +675,7 @@ export default {
               font-size: 12px;
             }
           }
-        
+
       }
     }
 
@@ -785,19 +785,19 @@ export default {
           width: 64px;
           height: 28px;
 
-          
+
             :deep(.DownloadButton) {
               width: 64px;
               height: 28px;
             }
-          
+
 
           :deep(div span) {
             font-size: 12px;
             width: 100%;
           }
 
-          
+
             :deep(.grey-rect-btn) {
               min-width: 64px;
               width: 64px;
@@ -808,7 +808,7 @@ export default {
                 font-size: 12px;
               }
             }
-          
+
         }
       }
     }

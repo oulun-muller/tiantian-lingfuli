@@ -12,7 +12,7 @@
       <div
         v-if="item.bannerImgUrl && index === 0"
         class="item-banner"
-       
+
         tabindex="0"
         role="button"
         :aria-label="(item.type === 1 ? '活动' : '公告') + '，' + (item.longTitle || '点击查看详情')"

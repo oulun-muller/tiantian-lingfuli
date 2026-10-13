@@ -5,10 +5,10 @@
   width: 100%;
   padding: 0 20px;
   box-sizing: border-box;
-  
+
   > div {
     margin-bottom: 28px;
-    
+
     .item {
       position: relative;
       background: transparent;
@@ -18,7 +18,7 @@
       box-sizing: border-box;
       display: flex;
       align-items: center;
-      
+
       .img_box {
         position: relative;
         width: var(--img-size);
@@ -27,7 +27,7 @@
         overflow: hidden;
         margin-right: 16px;
         flex-shrink: 0;
-        
+
         // 渐变边框效果
         &::before {
           content: '';
@@ -43,7 +43,7 @@
           -webkit-mask-composite: xor;
           mask-composite: exclude;
         }
-        
+
         b {
           display: block;
           width: 100%;
@@ -52,7 +52,7 @@
           background-position: center;
           background-repeat: no-repeat;
           border-radius: var(--border-radius);
-          
+
           img {
             width: 100%;
             height: 100%;
@@ -61,7 +61,7 @@
           }
         }
       }
-      
+
       > span {
         position: absolute;
         top: 8px;
@@ -73,14 +73,14 @@
         color: var(--text-white);
         background: rgba(0, 0, 0, 0.6);
       }
-      
+
       .content-container {
         flex: 1;
         display: flex;
         flex-direction: column;
         min-width: 0;
         height: var(--img-size);
-        
+
         .softName {
           font-size: 16px;
           font-style: normal;
@@ -96,30 +96,30 @@
           background-clip: text;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
-          
+
           .platform {
             margin-left: 8px;
             font-size: 12px;
             color: var(--text-light);
-            
+
             i {
               font-size: 12px;
             }
           }
         }
-        
+
         .tags-wrap {
           display: flex;
           align-items: center;
           flex-wrap: wrap;
           margin-bottom: 6px;
-          
+
           .auth-icon {
             width: 16px;
             height: 16px;
             margin-right: 6px;
           }
-          
+
           li {
             display: flex;
             height: 22px;
@@ -137,7 +137,7 @@
             line-height: 13px; /* 118.182% */
             text-transform: capitalize;
           }
-          
+
           .rank-tag {
             display: flex;
             height: 22px;
@@ -166,7 +166,7 @@
             }
           }
         }
-        
+
         .download-count {
           color:var(--fontColor-downloadCount) ;
           font-family: "Microsoft YaHei";
@@ -175,29 +175,29 @@
           font-weight: 400;
           line-height: normal;
         }
-        
+
         aside {
           display: flex;
           align-items: center;
-          
+
           .discount {
             font-size: 12px;
             font-weight: 600;
             color: var(--text-accent);
             margin-right: 8px;
           }
-          
+
           .price {
             display: flex;
             align-items: center;
-            
+
             .currentPrice {
               font-size: 16px;
               font-weight: 600;
               color: var(--text-accent);
               margin-right: 8px;
             }
-            
+
             .originalPrice {
               font-size: 12px;
               color: var(--text-light);
@@ -206,28 +206,28 @@
           }
         }
       }
-      
+
       .right-btn-content {
         margin-left: 12px;
         flex-shrink: 0;
-        
+
         .buy-information {
           display: flex;
           flex-direction: column;
-          
+
           .orgin-price-class {
             font-size: 12px;
             color: var(--text-light);
             text-decoration: line-through;
           }
-          
+
           .current-price-class {
             font-size: 16px;
             font-weight: 600;
             color: var(--text-accent);
           }
         }
-        
+
         // 按钮样式
         .buyButton, .downloadButton {
           width: 72px;
@@ -242,8 +242,8 @@
           // align-items: center;
           // justify-content: center;
           // white-space: nowrap;
-          
-          
+
+
           &:active {
             opacity: 0.8;
           }
@@ -252,10 +252,10 @@
     }
   }
 
-  
+
     :deep(div.DownloadButtonPad.rect > div > div) {
       background: linear-gradient(174deg, #929292 5.82%, #EAF7FF 96.26%);;
     }
-  
-  
+
+
 }

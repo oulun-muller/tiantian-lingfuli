@@ -532,7 +532,7 @@ export default {
     align-items: center;
   }
 
-  
+
   :deep(.lgSelect) {
     width: 118px;
 height: 32px;

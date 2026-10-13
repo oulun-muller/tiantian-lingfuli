@@ -627,7 +627,7 @@ export default {
   margin: 30px auto;
   text-align: center;
 
-  
+
 
     :deep(.el-pagination) {
     .btn-prev,
@@ -688,7 +688,7 @@ export default {
       opacity: 0.6;
     }
   }
-  
+
 }
 
 @media screen and (min-width: 1500px) {

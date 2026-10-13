@@ -642,7 +642,7 @@ export default {
     height: 42px;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    
+
       :deep(div.DownloadButton) {
         width: 140px;
         height: 42px;
@@ -687,7 +687,7 @@ export default {
           font-size: 16px;
         }
       }
-    
+
   }
   .button {
     cursor: pointer;
