@@ -189,7 +189,7 @@ export default {
   --reward-gold: #ffde68;
   --reward-danger: #ee5555;
   --reward-border: #ffffff1f;
-  --reward-enter: 320ms;
+  --reward-enter: 1250ms;
   --reward-leave: 220ms;
   position: fixed;
   inset: 0;
@@ -281,7 +281,16 @@ export default {
   background: #ff400026;
 }
 /* SVG export includes 2.5px of glyph overflow around the 142px Figma text-path frame. */
-.welfare-claim__ring { position: absolute; left: 6px; top: 5.75px; }
+.welfare-claim__ring {
+  position: absolute;
+  left: 6px;
+  top: 5.75px;
+  transform-origin: center;
+  animation: welfare-claim-ring-spin 24s linear infinite;
+}
+@keyframes welfare-claim-ring-spin {
+  to { transform: rotate(360deg); }
+}
 .welfare-claim__gift {
   position: relative;
   width: 111px;
@@ -375,10 +384,50 @@ export default {
   .welfare-claim__subtitle { font-size: 18px; }
   .welfare-claim__close { width: 120px; height: 120px; }
 }
-.welfare-reward-enter-active { transition: opacity var(--reward-enter) ease-out; }
+.welfare-reward-enter-active { animation: welfare-claim-reveal var(--reward-enter) linear both; }
+@keyframes welfare-claim-reveal {
+  0% { opacity: 0; }
+  18%, 100% { opacity: 1; }
+}
+.welfare-reward-enter-active .welfare-claim__card {
+  backface-visibility: hidden;
+  animation: welfare-claim-card-flip var(--reward-enter) cubic-bezier(0.25, 0.8, 0.35, 1) both,
+    welfare-claim-card-brighten var(--reward-enter) ease-in-out both;
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(115deg, transparent 38%, #fff2ba18 44%, #fff8dd80 50%, #fff2ba18 56%, transparent 62%);
+    background-size: 300% 100%;
+    background-repeat: no-repeat;
+    animation: welfare-claim-card-sheen var(--reward-enter) ease-in-out both;
+  }
+}
+@keyframes welfare-claim-card-brighten {
+  0%, 32%, 100% { filter: brightness(1); }
+  58% { filter: brightness(1.25); }
+  80% { filter: brightness(1.08); }
+}
+@keyframes welfare-claim-card-sheen {
+  0%, 32% { opacity: 0; background-position: 100% 0; }
+  42% { opacity: 0.85; }
+  76% { opacity: 0.65; background-position: 0% 0; }
+  88%, 100% { opacity: 0; background-position: 0% 0; }
+}
+@keyframes welfare-claim-card-flip {
+  0% { transform: perspective(800px) rotateY(-180deg) scale(0.9); }
+  30% { transform: perspective(800px) rotateY(-85deg) scale(0.94); }
+  58% { transform: perspective(800px) rotateY(22deg) scale(1.055); }
+  74% { transform: perspective(800px) rotateY(-11deg) scale(0.985); }
+  86% { transform: perspective(800px) rotateY(5deg) scale(1.015); }
+  94% { transform: perspective(800px) rotateY(-2deg) scale(0.997); }
+  100% { opacity: 1; transform: perspective(1000px) rotateY(0deg) scale(1); }
+}
 .welfare-reward-leave-active { transition: opacity var(--reward-leave) ease-in; }
 .welfare-reward-enter-active .welfare-claim__stage {
-  transition: opacity var(--reward-enter) ease-out, transform var(--reward-enter) cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 200ms ease-out, transform 200ms ease-out;
 }
 .welfare-reward-leave-active .welfare-claim__stage {
   transition: opacity var(--reward-leave) ease-in, transform var(--reward-leave) cubic-bezier(0.4, 0, 1, 1);
@@ -391,6 +440,9 @@ export default {
   .welfare-claim__close, .welfare-claim.is-streak .welfare-claim__close { height: 48px; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .welfare-reward-enter-active .welfare-claim__card { animation: none; }
+  .welfare-reward-enter-active .welfare-claim__card::after { display: none; }
+  .welfare-claim__ring { animation: none; }
   .welfare-claim { --reward-enter: 1ms; --reward-leave: 1ms; }
   .welfare-reward-enter-from .welfare-claim__stage,
   .welfare-reward-leave-to .welfare-claim__stage { transform: none; }
