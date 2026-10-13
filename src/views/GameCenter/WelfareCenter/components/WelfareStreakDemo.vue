@@ -1,5 +1,6 @@
 <template>
   <WelfareStreakSection
+    ref="streakSection"
     :days="activity.days"
     :completed-days="activity.completedDays"
     :progress-days="progressDays"
@@ -73,6 +74,7 @@ export default {
       receipt: null,
       pendingTimer: null,
       advanceTimer: null,
+      scrollFrame: null,
       arrivalTimer: null,
       advancingDay: null,
       progressDays: null,
@@ -133,18 +135,51 @@ export default {
       this.advancingDay = target
       this.progressDays = this.activity.completedDays
       this.advanceTimer = window.setTimeout(() => {
-        this.progressDays = target
         this.advanceTimer = null
-        const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
-        this.arrivalTimer = window.setTimeout(() => {
-          this.activity.completedDays = target
-          this.activeRewardDay = target
-          this.advancingDay = null
-          this.arrivalTimer = null
-        }, reducedMotion ? 0 : 1200)
+        this.scrollToStreak(() => {
+          this.progressDays = target
+          this.advanceTimer = null
+          const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+          this.arrivalTimer = window.setTimeout(() => {
+            this.activity.completedDays = target
+            this.activeRewardDay = target
+            this.advancingDay = null
+            this.arrivalTimer = null
+          }, reducedMotion ? 0 : 1200)
+        })
       }, 200)
     },
+    scrollToStreak(done) {
+      const section = this.$refs.streakSection?.$el
+      const container = section?.closest('.welfare-center')
+      if (!container) return done()
+      const start = container.scrollTop
+      const rect = section.getBoundingClientRect()
+      const viewport = container.getBoundingClientRect()
+      const destination = Math.min(container.scrollHeight - container.clientHeight,
+        Math.max(0, start + rect.top - viewport.top - (container.clientHeight - rect.height) / 2))
+      const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+      if (reducedMotion || Math.abs(destination - start) < 2) {
+        container.scrollTop = destination
+        done()
+        return
+      }
+      const started = performance.now()
+      const step = (now) => {
+        const progress = Math.min(1, (now - started) / 520)
+        const eased = progress < 0.5 ? 4 * progress ** 3 : 1 - (-2 * progress + 2) ** 3 / 2
+        container.scrollTop = start + (destination - start) * eased
+        if (progress < 1) this.scrollFrame = requestAnimationFrame(step)
+        else {
+          this.scrollFrame = null
+          done()
+        }
+      }
+      this.scrollFrame = requestAnimationFrame(step)
+    },
     clearAdvanceTimers() {
+      cancelAnimationFrame(this.scrollFrame)
+      this.scrollFrame = null
       clearTimeout(this.advanceTimer)
       clearTimeout(this.arrivalTimer)
       this.advanceTimer = null
